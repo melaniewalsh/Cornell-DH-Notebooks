@@ -2,7 +2,9 @@
 
 This is the start of our Jupyter Book project for the Cornell DH Notebooks Series.
 
-The Python package [`jupyter-book`](https://jupyterbook.org/start/build.html) will process Jupyter notebook files (.ipynb) from this repository and output them as publication-quality HTML files to be hosted on our corresponding website. The HTML files are currently hidden in this branch of the GitHub repository, but you can find them in the gh-pages branch, which hosts our corresponding website.
+The Python package [`jupyter-book`](https://jupyterbook.org/start/build.html) will process the Jupyter notebook files (.ipynb) from this repository and output them as publication-quality HTML files to be hosted on our corresponding website.
+
+The HTML files are currently hidden in this branch of the GitHub repository, but you can find them in the gh-pages branch, which hosts our corresponding website.
 
 ## How to add to this book
 
@@ -13,7 +15,7 @@ If you'd like to add a notebook to the Cornell-DH-Notebooks Jupyter Book, you sh
 - Add your notebook to the correct issue directory, e.g., `jupyterbook/notebooks/Issue-1`
 - Run `jupyter-book build jupyterbook/`
 
-A fully-rendered HTML version of the book will be built in `jupyterbook/_build/html/`. A GitHub actions workflow has been created that automatically builds and pushes the book to the `gh-pages` branch of this repository whenever you push changes to the main branch. 
+A fully-rendered HTML version of the book will be built in `jupyterbook/_build/html/`. You can push these HTML files to our website by pushing them to the `gh-pages` of this repository. To do so, you can [install `gh-import`](https://jupyterbook.org/publish/gh-pages.html#push-your-book-to-a-branch-hosted-by-github-pages) and then run `ghp-import -n -p -f jupyterbook/_build/html`
 
 ## What's in this repository?
 
