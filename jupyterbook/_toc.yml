@@ -1,0 +1,18 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+- file: notebooks/intro
+
+- part: How To
+  chapters:
+  - file: notebooks/How-To-Interact-With-This-Series
+    title: Interact With This Series
+    
+- part: Issues
+  chapters:
+  - file: notebooks/Issue-1/intro
+    title: Issue 1
+    sections:
+      - file: notebooks/Issue-1/Mapping-Kate-Chopin 
+
+

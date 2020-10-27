@@ -1,0 +1,48 @@
+#######################################################################################
+# A default configuration that will be loaded for all jupyter books
+# See the documentation for help and more options: 
+# https://jupyterbook.org/customize/config.html
+
+#######################################################################################
+# Book settings
+title                       : Cornell Digital Humanities Notebook Series  # The title of the book. Will be placed in the left navbar.
+author                      : The Lux Lab // Cornell University  # The author of the book
+copyright                   : "2020"  # Copyright year to be placed in the footer
+logo                        : images/clocktower.jpeg  # A path to the book logo
+
+execute:
+  execute_notebooks         : "off"  # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
+parse:
+  myst_extended_syntax: true
+#######################################################################################
+# HTML-specific settings
+html:
+  favicon                   : "images/clocktower.jpeg"  # A path to a favicon image
+  use_edit_page_button      : false  # Whether to add an "edit this page" button to pages. If `true`, repository information in repository: must be filled in
+  use_repository_button     : true  # Whether to add a link to your repository button
+  use_issues_button         : true  # Whether to add an "open an issue" button
+  extra_navbar              : Powered by <a href="https://jupyterbook.org">Jupyter Book</a>  #Will be displayed underneath the left navbar.
+  extra_footer              : |
+    <div>
+    <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img class="license" alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a> This book is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>. The code is licensed under a <a href="https://choosealicense.com/licenses/gpl-3.0/#">GNU General Public License v3.0</a>.
+    </div>
+    
+  google_analytics_id       : ""  # A GA id that can be used to track book views.
+  home_page_in_navbar       : false  # Whether to include your home page in the left Navigation Bar
+  baseurl                   : "https://melaniewalsh.github.io/Cornell-DH-Notebooks"  # The base URL where your book will be hosted. Used for creating image previews and social links. e.g.: https://mypage.com/mybook/
+  comments:
+    hypothesis              : false
+    utterances              : false
+
+
+#######################################################################################
+# Launch button settings
+launch_buttons:
+  notebook_interface        : jupyterlab  # The interface interactive links will activate ["classic", "jupyterlab"]
+  binderhub_url             : https://mybinder.org  # The URL of the BinderHub (e.g., https://mybinder.org)
+  colab_url                 : "false" # The URL of Google Colab (e.g., https://colab.research.google.com)
+
+repository:
+  url                       : https://melaniewalsh.github.io/Cornell-DH-Notebooks  # The URL to your book's repository
+  path_to_book              : "cornell_dh_jupyterbook"  # A path to your book's folder, relative to the repository root.
+  branch                    : ""  # Which branch of the repository should be used when creating links
