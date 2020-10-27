@@ -45,4 +45,4 @@ launch_buttons:
 repository:
   url                       : https://github.com/melaniewalsh/Cornell-DH-Notebooks  # The URL to your book's repository
   path_to_book              : "jupyterbook"  # A path to your book's folder, relative to the repository root.
-  branch                    : ""  # Which branch of the repository should be used when creating links
+  branch                    : "main"  # Which branch of the repository should be used when creating links
