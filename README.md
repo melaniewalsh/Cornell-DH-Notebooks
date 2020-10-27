@@ -2,9 +2,9 @@
 
 This is the start of our Jupyter Book project for the Cornell DH Notebooks Series.
 
-The Python package [`jupyter-book`](https://jupyterbook.org/start/build.html) will process the Jupyter notebook files (.ipynb) from this repository and output them as publication-quality HTML files to be hosted on our corresponding website.
+The Python package [`jupyter-book`](https://jupyterbook.org/start/build.html) will process the Jupyter notebook files (.ipynb) from this repository and output them as publication-quality HTML files for our [corresponding website](https://melaniewalsh.github.io/Cornell-DH-Notebooks/).
 
-The HTML files are currently hidden in this branch of the GitHub repository, but you can find them in the gh-pages branch, which hosts our corresponding website.
+The HTML files are currently hidden in this branch of the GitHub repository, but you can find them in the [gh-pages branch](https://github.com/melaniewalsh/Cornell-DH-Notebooks/tree/gh-pages), which generates our website.
 
 ## How to add to this book
 
