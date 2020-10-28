@@ -2,7 +2,7 @@
 
 This is the start of our Jupyter Book project for the Cornell DH Notebooks Series.
 
-![](jupyterbook/images/home-page.png)
+[![](jupyterbook/images/home-page.png)](https://melaniewalsh.github.io/Cornell-DH-Notebooks/)
 
 The Python package [`jupyter-book`](https://jupyterbook.org/start/build.html) processes the Jupyter notebook files from this repository and outputs them as the publication-quality HTML files that generate our [corresponding website](https://melaniewalsh.github.io/Cornell-DH-Notebooks/).
 
