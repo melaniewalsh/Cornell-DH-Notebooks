@@ -17,14 +17,14 @@ parse:
 #######################################################################################
 # HTML-specific settings
 html:
-  favicon                   : "images/clocktower.jpeg"  # A path to a favicon image
+  favicon                   : "images/clocktower.ico"  # A path to a favicon image
   use_edit_page_button      : false  # Whether to add an "edit this page" button to pages. If `true`, repository information in repository: must be filled in
   use_repository_button     : true  # Whether to add a link to your repository button
   use_issues_button         : true  # Whether to add an "open an issue" button
   extra_navbar              : Powered by <a href="https://jupyterbook.org">Jupyter Book</a>  #Will be displayed underneath the left navbar.
   extra_footer              : |
     <div>
-    <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img class="license" alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a> This book is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>. The code is licensed under a <a href="https://choosealicense.com/licenses/gpl-3.0/#">GNU General Public License v3.0</a>.
+    <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img class="license" alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a> This series is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>. The code is licensed under a <a href="https://choosealicense.com/licenses/gpl-3.0/#">GNU General Public License v3.0</a>.
     </div>
     
   google_analytics_id       : ""  # A GA id that can be used to track book views.
@@ -40,7 +40,7 @@ html:
 launch_buttons:
   notebook_interface        : jupyterlab  # The interface interactive links will activate ["classic", "jupyterlab"]
   binderhub_url             : https://mybinder.org  # The URL of the BinderHub (e.g., https://mybinder.org)
-  colab_url                 : "false" # The URL of Google Colab (e.g., https://colab.research.google.com)
+  colab_url                 : "" # The URL of Google Colab (e.g., https://colab.research.google.com)
 
 repository:
   url                       : https://github.com/melaniewalsh/Cornell-DH-Notebooks  # The URL to your book's repository
