@@ -1,9 +1,10 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mapping Kate Chopin’s The Awakening &#8212; Cornell Digital Humanities Notebook Series</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
@@ -24,8 +25,8 @@
     href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -39,12 +40,11 @@
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
     <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -56,6 +56,7 @@
     <link rel="shortcut icon" href="../../_static/clocktower.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="EEBO Word Embeddings" href="EEBO-Project/CleanEEBOEmbeddings.html" />
     <link rel="prev" title="Issue 1" href="intro.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -90,15 +91,12 @@
   <h1 class="site-logo" id="site-title">Cornell Digital Humanities Notebook Series</h1>
   
 </a>
-</div>
-
-<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form>
-
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <p class="caption">
+    <p class="caption collapsible-parent">
  <span class="caption-text">
   How To
  </span>
@@ -110,17 +108,17 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption collapsible-parent">
  <span class="caption-text">
   Issues
  </span>
 </p>
 <ul class="current nav sidenav_l1">
- <li class="toctree-l1 current active">
+ <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="intro.html">
    Issue 1
   </a>
-  <ul class="current">
+  <ul class="current collapse-ul">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Mapping Kate Chopin’s
@@ -129,13 +127,43 @@
      </em>
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="EEBO-Project/CleanEEBOEmbeddings.html">
+     EEBO Word Embeddings
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="EEBO-Project/CleanEEBOEmbeddings.html#introduction">
+     Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="EEBO-Project/CleanEEBOEmbeddings.html#pre-post-formation-of-the-royal-society">
+     Pre/Post Formation of the Royal Society
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="EEBO-Project/CleanEEBOEmbeddings.html#change-in-language-over-time-using-eebo">
+     Change in Language Over Time using EEBO
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Scandinavian-Languages-Project/Scandinavian-Languages.html">
+     Scandinavian Languages Project
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Scandinavian-Languages-Project/Scandinavian-Languages.html#word-analysis">
+     3. Word Analysis
+    </a>
+   </li>
   </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
 </ul>
 
-</nav>
-
- <!-- To handle the deprecated key -->
+</nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
   Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
@@ -164,11 +192,11 @@
             <i class="fas fa-arrow-up"></i>
         </button>
         
-        <div class="dropdown-buttons-trigger">
+        
+<div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
 
-    
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         
@@ -180,8 +208,8 @@
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
-    
 </div>
+
         <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
@@ -380,7 +408,7 @@ New Orleans, where an equal familiarity with English, French and Spanish gave hi
 <p class="attribution">—Kate Chopin, <em>The Awakening</em></p>
 </div></blockquote>
 <div class="dropdown tip admonition">
-<p class="admonition-title"> Jupyter Book Tip</p>
+<p class="admonition-title">Jupyter Book Tip</p>
 <p>Jupyter Book allows you to include special “directives” for creating cool features on our published website. For example, we can create a dropdown tip like this one by using a <a class="reference external" href="https://jupyterbook.org/content/content-blocks.html#hiding-the-content-of-admonitions">dropdown tip directive</a> or we can create an epigraph like the one above by using an <a class="reference external" href="https://jupyterbook.org/content/content-blocks.html#quotations-and-epigraphs">epigraph directive</a>.</p>
 </div>
 </div>
@@ -14649,7 +14677,7 @@ Gutenberg-tm
 </div></span></div></div>
 </div>
 <div class="dropdown tip admonition">
-<p class="admonition-title"> Jupyter Book Tip</p>
+<p class="admonition-title">Jupyter Book Tip</p>
 <p>You can hide cells, hide outputs, or choose to make an output scrollable by adding the <a class="reference external" href="https://jupyterbook.org/interactive/hiding.html?highlight=hide#the-toggle-directive">correct directives</a> or <a class="reference external" href="https://jupyterbook.org/content/layout.html?highlight=output_scroll#scrolling-cell-outputs">metadata tags</a> to Jupyter cells. Read more about <a class="reference external" href="https://jupyterbook.org/advanced/advanced.html#how-should-i-add-cell-tags-and-metadata-to-my-notebooks">How to Add Metadata Tags to Jupyter Notebook Cells</a></p>
 </div>
 <div class="section" id="get-places">
@@ -15722,6 +15750,7 @@ Gutenberg-tm
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Issue 1</a>
+    <a class='right-next' id="next-link" href="EEBO-Project/CleanEEBOEmbeddings.html" title="next page">EEBO Word Embeddings</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

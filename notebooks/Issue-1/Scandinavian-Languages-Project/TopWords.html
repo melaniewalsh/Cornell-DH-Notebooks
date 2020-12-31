@@ -1,0 +1,1214 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project with both languages &#8212; Cornell Digital Humanities Notebook Series</title>
+    
+  <link rel="stylesheet" href="../../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://melaniewalsh.github.io/Cornell-DH-Notebooks/notebooks/Issue-1/Scandinavian-Languages-Project/TopWords.html" />
+    <link rel="shortcut icon" href="../../../_static/clocktower.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://melaniewalsh.github.io/Cornell-DH-Notebooks/notebooks/Issue-1/Scandinavian-Languages-Project/TopWords.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Project with both languages" />
+<meta property="og:description" content="Project with both languages  # Find top 250 most frequent words across both langauges, based on frequency totalSwed = sum([s[1] for s in swe.topWordsCounter]) f" />
+<meta property="og:image"       content="https://melaniewalsh.github.io/Cornell-DH-Notebooks/_static/clocktower.jpeg" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../index.html">
+  
+  <img src="../../../_static/clocktower.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Cornell Digital Humanities Notebook Series</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  How To
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../How-To-Interact-With-This-Series.html">
+   Interact With This Series
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Issues
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../intro.html">
+   Issue 1
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Mapping-Kate-Chopin.html">
+     Mapping Kate Chopin’s
+     <em>
+      The Awakening
+     </em>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../EEBO-Project/CleanEEBOEmbeddings.html">
+     EEBO Word Embeddings
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../EEBO-Project/CleanEEBOEmbeddings.html#introduction">
+     Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../EEBO-Project/CleanEEBOEmbeddings.html#pre-post-formation-of-the-royal-society">
+     Pre/Post Formation of the Royal Society
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../EEBO-Project/CleanEEBOEmbeddings.html#change-in-language-over-time-using-eebo">
+     Change in Language Over Time using EEBO
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Scandinavian-Languages.html">
+     Scandinavian Languages Project
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Scandinavian-Languages.html#word-analysis">
+     3. Word Analysis
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/notebooks/Issue-1/Scandinavian-Languages-Project/TopWords.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/melaniewalsh/Cornell-DH-Notebooks"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/melaniewalsh/Cornell-DH-Notebooks/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Issue-1/Scandinavian-Languages-Project/TopWords.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/melaniewalsh/Cornell-DH-Notebooks/main?urlpath=lab/tree/jupyterbook/notebooks/Issue-1/Scandinavian-Languages-Project/TopWords.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Project with both languages
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#initial-qualitative-analysis">
+   Initial Qualitative Analysis
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#overlapping-words">
+     Overlapping Words
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">spatial</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log</span>
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">LanguageCounter</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>base dir is /home/lm686/scandinavian-languages
+data dir is /share/magpie/datasets/Swedish
+output dir is /home/lm686/scandinavian-languages/data/Finnish/temp_txt
+earliest_time is 1740
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">finCountSource</span> <span class="o">=</span> <span class="s2">&quot;data/Finnish/temp_txt&quot;</span>
+<span class="n">sweCountSource</span> <span class="o">=</span> <span class="s2">&quot;data/Swedish/&quot;</span>
+<span class="n">decades</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1750</span><span class="p">,</span> <span class="mi">1910</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fin</span> <span class="o">=</span> <span class="n">LanguageCounter</span><span class="p">(</span><span class="n">finCountSource</span><span class="p">)</span>
+<span class="n">fin</span><span class="o">.</span><span class="n">buildCommonCounters</span><span class="p">(</span><span class="n">fin</span><span class="o">.</span><span class="n">dataPath</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>adding decade 1770
+adding decade 1780
+adding decade 1790
+adding decade 1800
+adding decade 1810
+adding decade 1820
+adding decade 1830
+adding decade 1840
+adding decade 1850
+adding decade 1860
+adding decade 1870
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">swe</span> <span class="o">=</span> <span class="n">LanguageCounter</span><span class="p">(</span><span class="n">sweCountSource</span><span class="p">)</span>
+<span class="n">swe</span><span class="o">.</span><span class="n">buildCommonCounters</span><span class="p">(</span><span class="n">swe</span><span class="o">.</span><span class="n">dataPath</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>adding decade 1780
+adding decade 1820
+adding decade 1840
+adding decade 1860
+adding decade 1880
+adding decade 1800
+adding decade 1760
+adding decade 1750
+adding decade 1770
+adding decade 1790
+adding decade 1810
+adding decade 1830
+adding decade 1850
+adding decade 1870
+adding decade 1890
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">finYears</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">fin</span><span class="o">.</span><span class="n">allCounters</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="c1"># [y.astype(datetime) for y in fin.allCounters.keys()]</span>
+<span class="n">sweYears</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">swe</span><span class="o">.</span><span class="n">allCounters</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="c1"># [y.astype(datetime) for y in swe.allCounters.keys()]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Similarity wrt 1770 decade over time</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">finSimToBase</span> <span class="o">=</span> <span class="n">fin</span><span class="o">.</span><span class="n">getOverlaps</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">finYears</span><span class="p">,</span> <span class="n">finSimToBase</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Finnish&quot;</span><span class="p">)</span>
+
+<span class="n">_</span><span class="p">,</span> <span class="n">sweSimToBase</span> <span class="o">=</span> <span class="n">swe</span><span class="o">.</span><span class="n">getOverlaps</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sweYears</span><span class="p">,</span> <span class="n">sweSimToBase</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Swedish&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">% o</span><span class="s2">f overlap with first year&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/TopWords_5_0.png" src="../../../_images/TopWords_5_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fin</span><span class="o">.</span><span class="n">buildFeatures</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>word  (&#39;och&#39;, 13093167) in % of texts:  1.0
+word  (&#39;att&#39;, 7109041) in % of texts:  1.0
+word  (&#39;den&#39;, 5927745) in % of texts:  1.0
+word  (&#39;till&#39;, 5756171) in % of texts:  1.0
+word  (&#39;för&#39;, 4744115) in % of texts:  1.0
+word  (&#39;som&#39;, 3915510) in % of texts:  1.0
+word  (&#39;med&#39;, 3811842) in % of texts:  1.0
+word  (&#39;det&#39;, 3183713) in % of texts:  1.0
+word  (&#39;sig&#39;, 2310128) in % of texts:  1.0
+word  (&#39;ett&#39;, 2109138) in % of texts:  1.0
+word  (&#39;icke&#39;, 1802716) in % of texts:  1.0
+word  (&#39;har&#39;, 1649863) in % of texts:  1.0
+word  (&#39;han&#39;, 1503086) in % of texts:  1.0
+word  (&#39;eller&#39;, 1233506) in % of texts:  1.0
+word  (&#39;samt&#39;, 1219247) in % of texts:  1.0
+word  (&#39;man&#39;, 1206344) in % of texts:  1.0
+word  (&#39;jag&#39;, 1062656) in % of texts:  1.0
+word  (&#39;under&#39;, 1055095) in % of texts:  1.0
+word  (&#39;vid&#39;, 1039063) in % of texts:  1.0
+word  (&#39;sin&#39;, 1004965) in % of texts:  1.0
+word  (&#39;hos&#39;, 995370) in % of texts:  1.0
+word  (&#39;från&#39;, 959604) in % of texts:  1.0
+word  (&#39;denna&#39;, 956351) in % of texts:  1.0
+word  (&#39;wid&#39;, 952880) in % of texts:  1.0
+word  (&#39;men&#39;, 925147) in % of texts:  1.0
+word  (&#39;genom&#39;, 844444) in % of texts:  1.0
+word  (&#39;alla&#39;, 831918) in % of texts:  1.0
+word  (&#39;frän&#39;, 813767) in % of texts:  1.0
+word  (&#39;hade&#39;, 785526) in % of texts:  1.0
+word  (&#39;detta&#39;, 732097) in % of texts:  1.0
+word  (&#39;efter&#39;, 694893) in % of texts:  1.0
+word  (&#39;uti&#39;, 680761) in % of texts:  1.0
+word  (&#39;skulle&#39;, 657775) in % of texts:  1.0
+word  (&#39;der&#39;, 646706) in % of texts:  1.0
+word  (&#39;utan&#39;, 626782) in % of texts:  1.0
+word  (&#39;Den&#39;, 626016) in % of texts:  1.0
+word  (&#39;Helsingfors&#39;, 607595) in % of texts:  1.0
+word  (&#39;andra&#39;, 599951) in % of texts:  1.0
+word  (&#39;kan&#39;, 597889) in % of texts:  1.0
+word  (&#39;dem&#39;, 592168) in % of texts:  1.0
+word  (&#39;mig&#39;, 580478) in % of texts:  1.0
+word  (&#39;honom&#39;, 573149) in % of texts:  1.0
+word  (&#39;hans&#39;, 543260) in % of texts:  1.0
+word  (&#39;sina&#39;, 539187) in % of texts:  1.0
+word  (&#39;Det&#39;, 536371) in % of texts:  1.0
+word  (&#39;äro&#39;, 534454) in % of texts:  1.0
+word  (&#39;var&#39;, 530142) in % of texts:  1.0
+word  (&#39;hon&#39;, 524905) in % of texts:  1.0
+word  (&#39;amp&#39;, 475606) in % of texts:  1.0
+word  (&#39;skall&#39;, 473403) in % of texts:  1.0
+word  (&#39;inom&#39;, 470686) in % of texts:  1.0
+word  (&#39;dessa&#39;, 461492) in % of texts:  1.0
+word  (&#39;sitt&#39;, 443264) in % of texts:  1.0
+word  (&#39;ännu&#39;, 430115) in % of texts:  1.0
+word  (&#39;kunna&#39;, 421768) in % of texts:  1.0
+word  (&#39;dag&#39;, 418803) in % of texts:  1.0
+word  (&#39;såsom&#39;, 406519) in % of texts:  1.0
+word  (&#39;allt&#39;, 405076) in % of texts:  1.0
+word  (&#39;alt&#39;, 402579) in % of texts:  1.0
+word  (&#39;ben&#39;, 402074) in % of texts:  1.0
+word  (&#39;samma&#39;, 400584) in % of texts:  1.0
+word  (&#39;tid&#39;, 390264) in % of texts:  1.0
+word  (&#39;war&#39;, 389736) in % of texts:  1.0
+word  (&#39;dock&#39;, 380408) in % of texts:  1.0
+word  (&#39;ock&#39;, 377000) in % of texts:  1.0
+word  (&#39;emot&#39;, 368488) in % of texts:  1.0
+word  (&#39;mot&#39;, 367618) in % of texts:  1.0
+word  (&#39;endast&#39;, 364765) in % of texts:  1.0
+word  (&#39;här&#39;, 359137) in % of texts:  1.0
+word  (&#39;min&#39;, 358888) in % of texts:  1.0
+word  (&#39;vara&#39;, 356621) in % of texts:  1.0
+word  (&#39;mycket&#39;, 352310) in % of texts:  1.0
+word  (&#39;hafva&#39;, 345068) in % of texts:  0.8181818181818182
+word  (&#39;kunde&#39;, 342128) in % of texts:  1.0
+word  (&#39;redan&#39;, 341381) in % of texts:  1.0
+word  (&#39;första&#39;, 340374) in % of texts:  1.0
+word  (&#39;Men&#39;, 338452) in % of texts:  1.0
+word  (&#39;del&#39;, 336532) in % of texts:  1.0
+word  (&#39;hvilka&#39;, 336275) in % of texts:  0.7272727272727273
+word  (&#39;rum&#39;, 334090) in % of texts:  1.0
+word  (&#39;deras&#39;, 331668) in % of texts:  1.0
+word  (&#39;sedan&#39;, 324953) in % of texts:  1.0
+word  (&#39;mark&#39;, 322761) in % of texts:  1.0
+word  (&#39;mindre&#39;, 310843) in % of texts:  1.0
+word  (&#39;öfver&#39;, 304612) in % of texts:  1.0
+word  (&#39;hela&#39;, 303348) in % of texts:  1.0
+word  (&#39;blifvit&#39;, 301990) in % of texts:  0.9090909090909091
+word  (&#39;blott&#39;, 295967) in % of texts:  1.0
+word  (&#39;någon&#39;, 293855) in % of texts:  1.0
+word  (&#39;Jag&#39;, 290888) in % of texts:  1.0
+word  (&#39;dess&#39;, 288105) in % of texts:  1.0
+word  (&#39;göra&#39;, 286541) in % of texts:  1.0
+word  (&#39;Till&#39;, 284360) in % of texts:  1.0
+word  (&#39;kommer&#39;, 280815) in % of texts:  1.0
+word  (&#39;äfven&#39;, 278450) in % of texts:  0.9090909090909091
+word  (&#39;mera&#39;, 275024) in % of texts:  1.0
+word  (&#39;all&#39;, 271434) in % of texts:  1.0
+word  (&#39;Han&#39;, 269801) in % of texts:  1.0
+word  (&#39;större&#39;, 262922) in % of texts:  1.0
+word  (&#39;ifrån&#39;, 261234) in % of texts:  1.0
+word  (&#39;följande&#39;, 258352) in % of texts:  1.0
+word  (&#39;dagar&#39;, 255681) in % of texts:  1.0
+word  (&#39;nya&#39;, 253870) in % of texts:  1.0
+word  (&#39;hafwa&#39;, 250836) in % of texts:  1.0
+word  (&#39;Finland&#39;, 250493) in % of texts:  1.0
+word  (&#39;några&#39;, 247621) in % of texts:  1.0
+word  (&#39;Petersburg&#39;, 245318) in % of texts:  1.0
+word  (&#39;hvilken&#39;, 243065) in % of texts:  0.7272727272727273
+word  (&#39;skola&#39;, 242775) in % of texts:  1.0
+word  (&#39;wara&#39;, 241358) in % of texts:  1.0
+word  (&#39;stora&#39;, 240557) in % of texts:  1.0
+word  (&#39;henne&#39;, 239810) in % of texts:  1.0
+word  (&#39;något&#39;, 238751) in % of texts:  1.0
+word  (&#39;För&#39;, 236114) in % of texts:  1.0
+word  (&#39;upp&#39;, 227113) in % of texts:  1.0
+word  (&#39;for&#39;, 225061) in % of texts:  1.0
+word  (&#39;komma&#39;, 224874) in % of texts:  1.0
+word  (&#39;enligt&#39;, 221909) in % of texts:  1.0
+word  (&#39;blifwit&#39;, 221220) in % of texts:  1.0
+word  (&#39;äfwen&#39;, 220057) in % of texts:  1.0
+word  (&#39;socken&#39;, 218704) in % of texts:  1.0
+word  (&#39;annat&#39;, 216534) in % of texts:  1.0
+word  (&#39;Och&#39;, 215349) in % of texts:  1.0
+word  (&#39;Åbo&#39;, 214134) in % of texts:  1.0
+word  (&#39;oss&#39;, 212415) in % of texts:  1.0
+word  (&#39;Wiborg&#39;, 210947) in % of texts:  1.0
+word  (&#39;varit&#39;, 207372) in % of texts:  1.0
+word  (&#39;hennes&#39;, 206172) in % of texts:  1.0
+word  (&#39;stor&#39;, 205918) in % of texts:  1.0
+word  (&#39;öfwer&#39;, 205747) in % of texts:  1.0
+word  (&#39;Juni&#39;, 204738) in % of texts:  0.9090909090909091
+word  (&#39;stad&#39;, 204598) in % of texts:  1.0
+word  (&#39;annan&#39;, 203396) in % of texts:  1.0
+word  (&#39;Maj&#39;, 203347) in % of texts:  1.0
+word  (&#39;Abo&#39;, 201310) in % of texts:  1.0
+word  (&#39;staden&#39;, 200849) in % of texts:  1.0
+word  (&#39;sätt&#39;, 200191) in % of texts:  1.0
+word  (&#39;hwilka&#39;, 198793) in % of texts:  1.0
+word  (&#39;måste&#39;, 198412) in % of texts:  1.0
+word  (&#39;mer&#39;, 196716) in % of texts:  1.0
+word  (&#39;tre&#39;, 195354) in % of texts:  1.0
+word  (&#39;Stockholm&#39;, 194014) in % of texts:  1.0
+word  (&#39;väl&#39;, 193151) in % of texts:  1.0
+word  (&#39;Paris&#39;, 192647) in % of texts:  1.0
+word  (&#39;Man&#39;, 191329) in % of texts:  1.0
+word  (&#39;lör&#39;, 191066) in % of texts:  1.0
+word  (&#39;London&#39;, 190101) in % of texts:  1.0
+word  (&#39;hvarje&#39;, 189492) in % of texts:  0.6363636363636364
+word  (&#39;bör&#39;, 189420) in % of texts:  1.0
+word  (&#39;före&#39;, 186380) in % of texts:  1.0
+word  (&#39;bland&#39;, 184894) in % of texts:  1.0
+word  (&#39;jemte&#39;, 184457) in % of texts:  1.0
+word  (&#39;barn&#39;, 183810) in % of texts:  1.0
+word  (&#39;stall&#39;, 181920) in % of texts:  1.0
+word  (&#39;emellan&#39;, 181309) in % of texts:  1.0
+word  (&#39;finska&#39;, 180740) in % of texts:  0.8181818181818182
+word  (&#39;ingen&#39;, 180673) in % of texts:  1.0
+word  (&#39;personer&#39;, 180487) in % of texts:  1.0
+word  (&#39;sade&#39;, 179667) in % of texts:  1.0
+word  (&#39;landet&#39;, 177190) in % of texts:  1.0
+word  (&#39;anledning&#39;, 177159) in % of texts:  1.0
+word  (&#39;närmare&#39;, 175540) in % of texts:  1.0
+word  (&#39;genast&#39;, 173448) in % of texts:  1.0
+word  (&#39;torde&#39;, 172341) in % of texts:  1.0
+word  (&#39;ord&#39;, 171821) in % of texts:  1.0
+word  (&#39;omkring&#39;, 171590) in % of texts:  1.0
+word  (&#39;kop&#39;, 171198) in % of texts:  1.0
+word  (&#39;April&#39;, 171062) in % of texts:  1.0
+word  (&#39;Herr&#39;, 170015) in % of texts:  1.0
+word  (&#39;dagen&#39;, 168211) in % of texts:  1.0
+word  (&#39;huru&#39;, 165822) in % of texts:  1.0
+word  (&#39;rätt&#39;, 165319) in % of texts:  1.0
+word  (&#39;Ett&#39;, 163773) in % of texts:  1.0
+word  (&#39;gärd&#39;, 163278) in % of texts:  1.0
+word  (&#39;helt&#39;, 163221) in % of texts:  1.0
+word  (&#39;mellan&#39;, 162654) in % of texts:  1.0
+word  (&#39;gärden&#39;, 161461) in % of texts:  1.0
+word  (&#39;blef&#39;, 159782) in % of texts:  1.0
+word  (&#39;förut&#39;, 157023) in % of texts:  1.0
+word  (&#39;Juli&#39;, 154296) in % of texts:  0.9090909090909091
+word  (&#39;sjelf&#39;, 154256) in % of texts:  1.0
+word  (&#39;emedan&#39;, 153474) in % of texts:  1.0
+word  (&#39;hvad&#39;, 152997) in % of texts:  0.6363636363636364
+word  (&#39;hwad&#39;, 152470) in % of texts:  1.0
+word  (&#39;Wasa&#39;, 151982) in % of texts:  1.0
+word  (&#39;när&#39;, 151112) in % of texts:  1.0
+word  (&#39;dennes&#39;, 150538) in % of texts:  1.0
+word  (&#39;finnes&#39;, 149909) in % of texts:  1.0
+word  (&#39;Mars&#39;, 149071) in % of texts:  0.9090909090909091
+word  (&#39;von&#39;, 146859) in % of texts:  1.0
+word  (&#39;Johan&#39;, 146426) in % of texts:  1.0
+word  (&#39;hvilket&#39;, 145204) in % of texts:  0.7272727272727273
+word  (&#39;god&#39;, 142937) in % of texts:  1.0
+word  (&#39;pris&#39;, 142532) in % of texts:  1.0
+word  (&#39;Med&#39;, 141437) in % of texts:  1.0
+word  (&#39;fom&#39;, 141312) in % of texts:  1.0
+word  (&#39;lill&#39;, 141074) in % of texts:  1.0
+word  (&#39;September&#39;, 140390) in % of texts:  1.0
+word  (&#39;lika&#39;, 139541) in % of texts:  1.0
+word  (&#39;böra&#39;, 138927) in % of texts:  1.0
+word  (&#39;säsom&#39;, 138543) in % of texts:  1.0
+word  (&#39;warit&#39;, 138312) in % of texts:  1.0
+word  (&#39;manad&#39;, 137720) in % of texts:  1.0
+word  (&#39;Finlands&#39;, 137382) in % of texts:  1.0
+word  (&#39;densamma&#39;, 137225) in % of texts:  1.0
+word  (&#39;först&#39;, 136626) in % of texts:  1.0
+word  (&#39;dig&#39;, 136609) in % of texts:  1.0
+word  (&#39;nog&#39;, 136537) in % of texts:  1.0
+word  (&#39;penni&#39;, 136490) in % of texts:  0.9090909090909091
+word  (&#39;snart&#39;, 136372) in % of texts:  1.0
+word  (&#39;Hans&#39;, 136278) in % of texts:  1.0
+word  (&#39;wäl&#39;, 135804) in % of texts:  1.0
+word  (&#39;fall&#39;, 135195) in % of texts:  1.0
+word  (&#39;gamla&#39;, 134818) in % of texts:  1.0
+word  (&#39;allmänna&#39;, 133305) in % of texts:  1.0
+word  (&#39;denne&#39;, 133066) in % of texts:  1.0
+word  (&#39;Finska&#39;, 132951) in % of texts:  1.0
+word  (&#39;mcd&#39;, 130963) in % of texts:  1.0
+word  (&#39;land&#39;, 130713) in % of texts:  1.0
+word  (&#39;namn&#39;, 129433) in % of texts:  1.0
+word  (&#39;dels&#39;, 128927) in % of texts:  1.0
+word  (&#39;början&#39;, 128583) in % of texts:  1.0
+word  (&#39;hwilken&#39;, 128184) in % of texts:  1.0
+word  (&#39;vore&#39;, 128047) in % of texts:  1.0
+word  (&#39;Carl&#39;, 127409) in % of texts:  1.0
+word  (&#39;borde&#39;, 127282) in % of texts:  1.0
+word  (&#39;också&#39;, 127242) in % of texts:  1.0
+word  (&#39;Närmare&#39;, 125113) in % of texts:  0.9090909090909091
+word  (&#39;sista&#39;, 125030) in % of texts:  1.0
+word  (&#39;afseende&#39;, 124423) in % of texts:  1.0
+word  (&#39;bet&#39;, 124390) in % of texts:  1.0
+word  (&#39;November&#39;, 123846) in % of texts:  1.0
+word  (&#39;aldrig&#39;, 123729) in % of texts:  1.0
+word  (&#39;voro&#39;, 123476) in % of texts:  1.0
+word  (&#39;gjort&#39;, 123290) in % of texts:  1.0
+word  (&#39;ganska&#39;, 122722) in % of texts:  1.0
+word  (&#39;Att&#39;, 122573) in % of texts:  1.0
+word  (&#39;gar&#39;, 122241) in % of texts:  1.0
+word  (&#39;Augusti&#39;, 121993) in % of texts:  0.9090909090909091
+word  (&#39;hwarje&#39;, 121792) in % of texts:  1.0
+word  (&#39;regeringen&#39;, 121661) in % of texts:  1.0
+word  (&#39;åter&#39;, 121390) in % of texts:  0.9090909090909091
+word  (&#39;län&#39;, 121074) in % of texts:  1.0
+word  (&#39;sådant&#39;, 120847) in % of texts:  1.0
+word  (&#39;vill&#39;, 120742) in % of texts:  1.0
+word  (&#39;stället&#39;, 120741) in % of texts:  1.0
+word  (&#39;sta&#39;, 120052) in % of texts:  1.0
+word  (&#39;Äbo&#39;, 119439) in % of texts:  1.0
+word  (&#39;Enligt&#39;, 119425) in % of texts:  1.0
+word  (&#39;alltid&#39;, 119177) in % of texts:  1.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">swe</span><span class="o">.</span><span class="n">buildFeatures</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>word  (&#39;och&#39;, 8797507) in % of texts:  1.0
+word  (&#39;att&#39;, 4338934) in % of texts:  1.0
+word  (&#39;till&#39;, 4184704) in % of texts:  1.0
+word  (&#39;den&#39;, 3773970) in % of texts:  1.0
+word  (&#39;för&#39;, 3011790) in % of texts:  1.0
+word  (&#39;med&#39;, 2494393) in % of texts:  1.0
+word  (&#39;som&#39;, 2305741) in % of texts:  1.0
+word  (&#39;det&#39;, 2141029) in % of texts:  1.0
+word  (&#39;ett&#39;, 1543461) in % of texts:  1.0
+word  (&#39;sig&#39;, 1369393) in % of texts:  1.0
+word  (&#39;han&#39;, 1081186) in % of texts:  1.0
+word  (&#39;har&#39;, 1077902) in % of texts:  1.0
+word  (&#39;samt&#39;, 945320) in % of texts:  1.0
+word  (&#39;icke&#39;, 904895) in % of texts:  1.0
+word  (&#39;från&#39;, 882296) in % of texts:  1.0
+word  (&#39;under&#39;, 837031) in % of texts:  1.0
+word  (&#39;wid&#39;, 832402) in % of texts:  1.0
+word  (&#39;eller&#39;, 821835) in % of texts:  1.0
+word  (&#39;hos&#39;, 811937) in % of texts:  1.0
+word  (&#39;jag&#39;, 800365) in % of texts:  1.0
+word  (&#39;man&#39;, 758882) in % of texts:  1.0
+word  (&#39;men&#39;, 671261) in % of texts:  1.0
+word  (&#39;vid&#39;, 666384) in % of texts:  1.0
+word  (&#39;frän&#39;, 654518) in % of texts:  1.0
+word  (&#39;denna&#39;, 583260) in % of texts:  1.0
+word  (&#39;sin&#39;, 577196) in % of texts:  1.0
+word  (&#39;alla&#39;, 553403) in % of texts:  1.0
+word  (&#39;efter&#39;, 532099) in % of texts:  1.0
+word  (&#39;hade&#39;, 522491) in % of texts:  1.0
+word  (&#39;genom&#39;, 519064) in % of texts:  1.0
+word  (&#39;detta&#39;, 472657) in % of texts:  1.0
+word  (&#39;kan&#39;, 447824) in % of texts:  1.0
+word  (&#39;öre&#39;, 409764) in % of texts:  1.0
+word  (&#39;sorn&#39;, 407462) in % of texts:  1.0
+word  (&#39;uti&#39;, 396147) in % of texts:  1.0
+word  (&#39;var&#39;, 393346) in % of texts:  1.0
+word  (&#39;der&#39;, 388632) in % of texts:  1.0
+word  (&#39;hon&#39;, 384239) in % of texts:  1.0
+word  (&#39;norrköping&#39;, 378385) in % of texts:  0.9333333333333333
+word  (&#39;andra&#39;, 376357) in % of texts:  1.0
+word  (&#39;honom&#39;, 365111) in % of texts:  1.0
+word  (&#39;mot&#39;, 361097) in % of texts:  1.0
+word  (&#39;hans&#39;, 359062) in % of texts:  1.0
+word  (&#39;äro&#39;, 351217) in % of texts:  1.0
+word  (&#39;utan&#39;, 346834) in % of texts:  1.0
+word  (&#39;oell&#39;, 333007) in % of texts:  0.9333333333333333
+word  (&#39;stockholm&#39;, 332647) in % of texts:  1.0
+word  (&#39;kunna&#39;, 322937) in % of texts:  1.0
+word  (&#39;mig&#39;, 321992) in % of texts:  1.0
+word  (&#39;skulle&#39;, 321479) in % of texts:  1.0
+word  (&#39;sedan&#39;, 309044) in % of texts:  1.0
+word  (&#39;sör&#39;, 304908) in % of texts:  1.0
+word  (&#39;örn&#39;, 303451) in % of texts:  1.0
+word  (&#39;inom&#39;, 302929) in % of texts:  1.0
+word  (&#39;dag&#39;, 301058) in % of texts:  1.0
+word  (&#39;nied&#39;, 294427) in % of texts:  1.0
+word  (&#39;sina&#39;, 292191) in % of texts:  1.0
+word  (&#39;sitt&#39;, 286358) in % of texts:  1.0
+word  (&#39;dessa&#39;, 284020) in % of texts:  1.0
+word  (&#39;här&#39;, 283330) in % of texts:  1.0
+word  (&#39;samma&#39;, 277006) in % of texts:  1.0
+word  (&#39;allt&#39;, 275820) in % of texts:  1.0
+word  (&#39;nya&#39;, 273405) in % of texts:  1.0
+word  (&#39;war&#39;, 270538) in % of texts:  1.0
+word  (&#39;mycket&#39;, 249260) in % of texts:  1.0
+word  (&#39;ben&#39;, 248206) in % of texts:  1.0
+word  (&#39;dem&#39;, 246469) in % of texts:  1.0
+word  (&#39;rum&#39;, 246349) in % of texts:  1.0
+word  (&#39;rdr&#39;, 242291) in % of texts:  0.8666666666666667
+word  (&#39;lund&#39;, 239111) in % of texts:  1.0
+word  (&#39;herr&#39;, 232302) in % of texts:  1.0
+word  (&#39;mindre&#39;, 232225) in % of texts:  1.0
+word  (&#39;större&#39;, 231304) in % of texts:  1.0
+word  (&#39;wara&#39;, 231217) in % of texts:  1.0
+word  (&#39;maj&#39;, 231181) in % of texts:  0.9333333333333333
+word  (&#39;dagar&#39;, 230317) in % of texts:  1.0
+word  (&#39;stora&#39;, 223067) in % of texts:  1.0
+word  (&#39;endast&#39;, 220887) in % of texts:  1.0
+word  (&#39;skall&#39;, 220854) in % of texts:  1.0
+word  (&#39;dock&#39;, 217364) in % of texts:  1.0
+word  (&#39;tid&#39;, 216891) in % of texts:  1.0
+word  (&#39;första&#39;, 213906) in % of texts:  1.0
+word  (&#39;såsom&#39;, 205809) in % of texts:  1.0
+word  (&#39;april&#39;, 205237) in % of texts:  1.0
+word  (&#39;kommer&#39;, 204592) in % of texts:  1.0
+word  (&#39;ännu&#39;, 203276) in % of texts:  1.0
+word  (&#39;del&#39;, 202645) in % of texts:  1.0
+word  (&#39;min&#39;, 200429) in % of texts:  1.0
+word  (&#39;oktober&#39;, 199806) in % of texts:  0.9333333333333333
+word  (&#39;pris&#39;, 197341) in % of texts:  1.0
+word  (&#39;hwilka&#39;, 196788) in % of texts:  1.0
+word  (&#39;kongl&#39;, 194424) in % of texts:  1.0
+word  (&#39;staden&#39;, 192485) in % of texts:  1.0
+word  (&#39;torde&#39;, 189982) in % of texts:  1.0
+word  (&#39;hela&#39;, 188732) in % of texts:  1.0
+word  (&#39;vara&#39;, 187989) in % of texts:  1.0
+word  (&#39;hafva&#39;, 186777) in % of texts:  1.0
+word  (&#39;öfver&#39;, 186290) in % of texts:  1.0
+word  (&#39;kunde&#39;, 185045) in % of texts:  1.0
+word  (&#39;komma&#39;, 183299) in % of texts:  1.0
+word  (&#39;äfven&#39;, 183006) in % of texts:  1.0
+word  (&#39;genast&#39;, 174908) in % of texts:  1.0
+word  (&#39;hafwa&#39;, 173081) in % of texts:  1.0
+word  (&#39;enligt&#39;, 172577) in % of texts:  1.0
+word  (&#39;någon&#39;, 172379) in % of texts:  1.0
+word  (&#39;alt&#39;, 172244) in % of texts:  1.0
+word  (&#39;något&#39;, 170246) in % of texts:  1.0
+word  (&#39;lill&#39;, 169763) in % of texts:  1.0
+word  (&#39;kronor&#39;, 169735) in % of texts:  0.9333333333333333
+word  (&#39;följande&#39;, 169159) in % of texts:  1.0
+word  (&#39;priser&#39;, 167193) in % of texts:  1.0
+word  (&#39;närmare&#39;, 166493) in % of texts:  1.0
+word  (&#39;dennes&#39;, 165397) in % of texts:  0.9333333333333333
+word  (&#39;deras&#39;, 163813) in % of texts:  1.0
+word  (&#39;göra&#39;, 161937) in % of texts:  1.0
+word  (&#39;hvad&#39;, 161284) in % of texts:  1.0
+word  (&#39;stor&#39;, 161224) in % of texts:  1.0
+word  (&#39;sätt&#39;, 160445) in % of texts:  1.0
+word  (&#39;flera&#39;, 160084) in % of texts:  1.0
+word  (&#39;redan&#39;, 158227) in % of texts:  1.0
+word  (&#39;norrköpings&#39;, 156817) in % of texts:  0.9333333333333333
+word  (&#39;gamla&#39;, 156665) in % of texts:  1.0
+word  (&#39;hwilken&#39;, 152887) in % of texts:  1.0
+word  (&#39;dagen&#39;, 152477) in % of texts:  1.0
+word  (&#39;omkring&#39;, 152350) in % of texts:  1.0
+word  (&#39;bland&#39;, 151882) in % of texts:  1.0
+word  (&#39;blott&#39;, 151507) in % of texts:  1.0
+word  (&#39;malmö&#39;, 150844) in % of texts:  1.0
+word  (&#39;god&#39;, 150619) in % of texts:  1.0
+word  (&#39;mars&#39;, 150531) in % of texts:  1.0
+word  (&#39;undertecknad&#39;, 150087) in % of texts:  0.9333333333333333
+word  (&#39;äfwen&#39;, 149945) in % of texts:  1.0
+word  (&#39;hvarje&#39;, 148841) in % of texts:  0.8
+word  (&#39;finnes&#39;, 147400) in % of texts:  1.0
+word  (&#39;blifwit&#39;, 147238) in % of texts:  0.9333333333333333
+word  (&#39;öfwer&#39;, 146856) in % of texts:  1.0
+word  (&#39;upp&#39;, 145461) in % of texts:  1.0
+word  (&#39;carl&#39;, 145018) in % of texts:  1.0
+word  (&#39;några&#39;, 144478) in % of texts:  1.0
+word  (&#39;henne&#39;, 144263) in % of texts:  1.0
+word  (&#39;juni&#39;, 142568) in % of texts:  1.0
+word  (&#39;hennes&#39;, 142171) in % of texts:  1.0
+word  (&#39;personer&#39;, 141413) in % of texts:  1.0
+word  (&#39;juli&#39;, 141013) in % of texts:  1.0
+word  (&#39;nästa&#39;, 140646) in % of texts:  1.0
+word  (&#39;ock&#39;, 139490) in % of texts:  1.0
+word  (&#39;jemte&#39;, 139256) in % of texts:  1.0
+word  (&#39;hvilka&#39;, 139090) in % of texts:  0.9333333333333333
+word  (&#39;stall&#39;, 138540) in % of texts:  1.0
+word  (&#39;hvilken&#39;, 138356) in % of texts:  1.0
+word  (&#39;emot&#39;, 136750) in % of texts:  1.0
+word  (&#39;ooh&#39;, 135789) in % of texts:  0.6666666666666666
+word  (&#39;mellan&#39;, 134472) in % of texts:  1.0
+word  (&#39;wäl&#39;, 133396) in % of texts:  1.0
+word  (&#39;dito&#39;, 132348) in % of texts:  1.0
+word  (&#39;hwad&#39;, 131918) in % of texts:  1.0
+word  (&#39;boktryckeriet&#39;, 131593) in % of texts:  0.9333333333333333
+word  (&#39;kök&#39;, 130649) in % of texts:  1.0
+word  (&#39;barn&#39;, 129290) in % of texts:  1.0
+word  (&#39;när&#39;, 128347) in % of texts:  1.0
+word  (&#39;ingen&#39;, 126712) in % of texts:  1.0
+word  (&#39;godt&#39;, 126443) in % of texts:  1.0
+word  (&#39;annat&#39;, 126156) in % of texts:  1.0
+word  (&#39;väl&#39;, 125412) in % of texts:  1.0
+word  (&#39;warit&#39;, 124050) in % of texts:  1.0
+word  (&#39;dels&#39;, 120351) in % of texts:  1.0
+word  (&#39;lager&#39;, 119576) in % of texts:  1.0
+word  (&#39;mera&#39;, 119066) in % of texts:  1.0
+word  (&#39;torget&#39;, 117120) in % of texts:  1.0
+word  (&#39;härstädes&#39;, 117109) in % of texts:  1.0
+word  (&#39;förut&#39;, 116933) in % of texts:  1.0
+word  (&#39;tre&#39;, 116755) in % of texts:  1.0
+word  (&#39;annan&#39;, 116593) in % of texts:  1.0
+word  (&#39;september&#39;, 115809) in % of texts:  1.0
+word  (&#39;före&#39;, 115433) in % of texts:  1.0
+word  (&#39;varit&#39;, 114865) in % of texts:  0.9333333333333333
+word  (&#39;auktion&#39;, 114297) in % of texts:  0.9333333333333333
+word  (&#39;plats&#39;, 112507) in % of texts:  1.0
+word  (&#39;stadens&#39;, 112261) in % of texts:  0.9333333333333333
+word  (&#39;mer&#39;, 111358) in % of texts:  1.0
+word  (&#39;ali&#39;, 110331) in % of texts:  1.0
+word  (&#39;kapten&#39;, 110212) in % of texts:  0.7333333333333333
+word  (&#39;sjelf&#39;, 109930) in % of texts:  1.0
+word  (&#39;all&#39;, 108362) in % of texts:  1.0
+word  (&#39;blifvit&#39;, 108248) in % of texts:  1.0
+word  (&#39;januari&#39;, 108172) in % of texts:  1.0
+word  (&#39;säsom&#39;, 108154) in % of texts:  1.0
+word  (&#39;december&#39;, 108145) in % of texts:  1.0
+word  (&#39;fru&#39;, 106729) in % of texts:  1.0
+word  (&#39;goda&#39;, 106389) in % of texts:  1.0
+word  (&#39;carlskrona&#39;, 106131) in % of texts:  0.8666666666666667
+word  (&#39;hyra&#39;, 105324) in % of texts:  1.0
+word  (&#39;dess&#39;, 105095) in % of texts:  0.9333333333333333
+word  (&#39;hwarje&#39;, 104855) in % of texts:  0.9333333333333333
+word  (&#39;bör&#39;, 104511) in % of texts:  1.0
+word  (&#39;augusti&#39;, 104457) in % of texts:  0.9333333333333333
+word  (&#39;göteborg&#39;, 103516) in % of texts:  0.8666666666666667
+word  (&#39;tiden&#39;, 101183) in % of texts:  1.0
+word  (&#39;par&#39;, 101089) in % of texts:  1.0
+word  (&#39;anledning&#39;, 100231) in % of texts:  1.0
+word  (&#39;finnas&#39;, 99968) in % of texts:  1.0
+word  (&#39;skola&#39;, 99256) in % of texts:  1.0
+word  (&#39;herrar&#39;, 99114) in % of texts:  1.0
+word  (&#39;salu&#39;, 98506) in % of texts:  1.0
+word  (&#39;hwilket&#39;, 98238) in % of texts:  1.0
+word  (&#39;billigt&#39;, 98032) in % of texts:  1.0
+word  (&#39;stället&#39;, 97573) in % of texts:  1.0
+word  (&#39;helt&#39;, 97424) in % of texts:  1.0
+word  (&#39;månad&#39;, 97292) in % of texts:  0.9333333333333333
+word  (&#39;härmed&#39;, 96585) in % of texts:  1.0
+word  (&#39;billiga&#39;, 96565) in % of texts:  0.9333333333333333
+word  (&#39;början&#39;, 95144) in % of texts:  1.0
+word  (&#39;von&#39;, 94880) in % of texts:  1.0
+word  (&#39;nägon&#39;, 94806) in % of texts:  1.0
+word  (&#39;nästkommande&#39;, 94788) in % of texts:  1.0
+word  (&#39;sista&#39;, 94325) in % of texts:  0.9333333333333333
+word  (&#39;stort&#39;, 94322) in % of texts:  1.0
+word  (&#39;snart&#39;, 93711) in % of texts:  1.0
+word  (&#39;lika&#39;, 93061) in % of texts:  1.0
+word  (&#39;gärd&#39;, 92874) in % of texts:  1.0
+word  (&#39;november&#39;, 92112) in % of texts:  1.0
+word  (&#39;blef&#39;, 91644) in % of texts:  1.0
+word  (&#39;februari&#39;, 91226) in % of texts:  0.9333333333333333
+word  (&#39;lördagen&#39;, 91081) in % of texts:  1.0
+word  (&#39;huset&#39;, 91059) in % of texts:  1.0
+word  (&#39;hus&#39;, 91035) in % of texts:  1.0
+word  (&#39;emellertid&#39;, 90884) in % of texts:  0.8666666666666667
+word  (&#39;nog&#39;, 90425) in % of texts:  1.0
+word  (&#39;socken&#39;, 90318) in % of texts:  0.9333333333333333
+word  (&#39;andersson&#39;, 89630) in % of texts:  1.0
+word  (&#39;meddelar&#39;, 89519) in % of texts:  1.0
+word  (&#39;ester&#39;, 89314) in % of texts:  1.0
+word  (&#39;allmänna&#39;, 88726) in % of texts:  1.0
+word  (&#39;oss&#39;, 87961) in % of texts:  1.0
+word  (&#39;ord&#39;, 87631) in % of texts:  1.0
+word  (&#39;mäste&#39;, 87494) in % of texts:  1.0
+word  (&#39;norra&#39;, 87130) in % of texts:  1.0
+word  (&#39;son&#39;, 87095) in % of texts:  1.0
+word  (&#39;kontor&#39;, 86548) in % of texts:  0.6666666666666666
+word  (&#39;går&#39;, 86412) in % of texts:  1.0
+word  (&#39;derefter&#39;, 86396) in % of texts:  1.0
+word  (&#39;rätt&#39;, 86143) in % of texts:  1.0
+word  (&#39;arbete&#39;, 85986) in % of texts:  1.0
+word  (&#39;afton&#39;, 85897) in % of texts:  1.0
+word  (&#39;parti&#39;, 85075) in % of texts:  0.9333333333333333
+word  (&#39;afgår&#39;, 84631) in % of texts:  0.9333333333333333
+word  (&#39;linköping&#39;, 84446) in % of texts:  0.8666666666666667
+word  (&#39;ocb&#39;, 84376) in % of texts:  0.9333333333333333
+word  (&#39;aldrig&#39;, 84347) in % of texts:  1.0
+word  (&#39;paris&#39;, 84237) in % of texts:  1.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">similarity</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="n">spatial</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">cosine</span><span class="p">(</span><span class="n">fin</span><span class="o">.</span><span class="n">allFeatize</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">fin</span><span class="o">.</span><span class="n">allFeatize</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fin</span><span class="o">.</span><span class="n">allFeatize</span><span class="p">))]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">finYears</span><span class="p">,</span> <span class="n">similarity</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Finnish&quot;</span><span class="p">)</span>
+<span class="n">similarity</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="n">spatial</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">cosine</span><span class="p">(</span><span class="n">swe</span><span class="o">.</span><span class="n">allFeatize</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">swe</span><span class="o">.</span><span class="n">allFeatize</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">swe</span><span class="o">.</span><span class="n">allFeatize</span><span class="p">))]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sweYears</span><span class="p">,</span> <span class="n">similarity</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Swedish&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Similarity to first decade over time&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="n">e576ba35a908</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">similarity</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="n">spatial</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">cosine</span><span class="p">(</span><span class="n">fin</span><span class="o">.</span><span class="n">allFeatize</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">fin</span><span class="o">.</span><span class="n">allFeatize</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fin</span><span class="o">.</span><span class="n">allFeatize</span><span class="p">))]</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">finYears</span><span class="p">,</span> <span class="n">similarity</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Finnish&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">similarity</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="n">spatial</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">cosine</span><span class="p">(</span><span class="n">swe</span><span class="o">.</span><span class="n">allFeatize</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">swe</span><span class="o">.</span><span class="n">allFeatize</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">swe</span><span class="o">.</span><span class="n">allFeatize</span><span class="p">))]</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sweYears</span><span class="p">,</span> <span class="n">similarity</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Swedish&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Similarity to first decade over time&quot;</span><span class="p">)</span>
+
+<span class="ne">AttributeError</span>: &#39;LanguageCounter&#39; object has no attribute &#39;allFeatize&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">pca_result</span><span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">fin</span><span class="o">.</span><span class="n">allFeatize</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">pca_result</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">pca_result</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">fin</span><span class="o">.</span><span class="n">allCounters</span><span class="o">.</span><span class="n">keys</span><span class="p">()))):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">fin</span><span class="o">.</span><span class="n">allCounters</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="n">i</span><span class="p">],</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/TopWords_10_0.png" src="../../../_images/TopWords_10_0.png" />
+</div>
+</div>
+<div class="section" id="project-with-both-languages">
+<h1>Project with both languages<a class="headerlink" href="#project-with-both-languages" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find top 250 most frequent words across both langauges, based on frequency</span>
+<span class="n">totalSwed</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">swe</span><span class="o">.</span><span class="n">topWordsCounter</span><span class="p">])</span>
+<span class="n">freqsSwed</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">swe</span><span class="o">.</span><span class="n">topWordsCounter</span><span class="p">:</span>
+    <span class="n">freqsSwed</span> <span class="o">+=</span> <span class="p">[(</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">totalSwed</span><span class="p">)]</span>
+    
+<span class="n">totalFin</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">fin</span><span class="o">.</span><span class="n">topWordsCounter</span><span class="p">])</span>
+<span class="n">freqsFin</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">fin</span><span class="o">.</span><span class="n">topWordsCounter</span><span class="p">:</span>
+    <span class="n">freqsFin</span> <span class="o">+=</span> <span class="p">[(</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">totalFin</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">combined</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">freqsSwed</span><span class="p">:</span> 
+    <span class="n">combined</span><span class="p">[</span><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">word</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">freqsFin</span><span class="p">:</span> 
+    <span class="n">combined</span><span class="p">[</span><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">word</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sweAllFeatize</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">counter</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">swe</span><span class="o">.</span><span class="n">allCounters</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
+    <span class="n">lenDoc</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">counter</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="c1">#featize = np.array([counter[combined[i][0]] for i in range(len(combined))])</span>
+    <span class="n">featize</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">counter</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">combined</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
+    <span class="n">featize</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">featize</span><span class="p">,</span> <span class="n">lenDoc</span><span class="p">)</span>
+    <span class="n">sweAllFeatize</span> <span class="o">+=</span> <span class="p">[</span><span class="n">featize</span><span class="p">]</span>
+    
+<span class="n">finAllFeatize</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">counter</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">fin</span><span class="o">.</span><span class="n">allCounters</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
+    <span class="n">lenDoc</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">counter</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="c1">#featize = np.array([counter[combined[i][0]] for i in range(len(combined))])</span>
+    <span class="n">featize</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">counter</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">combined</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
+    <span class="n">featize</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">featize</span><span class="p">,</span> <span class="n">lenDoc</span><span class="p">)</span>
+    <span class="n">finAllFeatize</span> <span class="o">+=</span> <span class="p">[</span><span class="n">featize</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sweAllFeatize</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">finAllFeatize</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15 11
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">pca_result</span><span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">sweAllFeatize</span> <span class="o">+</span> <span class="n">finAllFeatize</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_swe</span> <span class="o">=</span> <span class="n">pca_result</span><span class="p">[:</span><span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">x_fin</span> <span class="o">=</span> <span class="n">pca_result</span><span class="p">[</span><span class="mi">15</span><span class="p">:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">y_swe</span> <span class="o">=</span> <span class="n">pca_result</span><span class="p">[:</span><span class="mi">15</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">y_fin</span> <span class="o">=</span> <span class="n">pca_result</span><span class="p">[</span><span class="mi">15</span><span class="p">:,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_swe</span><span class="p">,</span> <span class="n">y_swe</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Swedish&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">swe</span><span class="o">.</span><span class="n">allCounters</span><span class="o">.</span><span class="n">keys</span><span class="p">()))):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">swe</span><span class="o">.</span><span class="n">allCounters</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="n">i</span><span class="p">],</span> <span class="p">(</span><span class="n">x_swe</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y_swe</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_fin</span><span class="p">,</span> <span class="n">y_fin</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Finnish&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">fin</span><span class="o">.</span><span class="n">allCounters</span><span class="o">.</span><span class="n">keys</span><span class="p">()))):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">fin</span><span class="o">.</span><span class="n">allCounters</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="n">i</span><span class="p">],</span> <span class="p">(</span><span class="n">x_fin</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y_fin</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/TopWords_17_0.png" src="../../../_images/TopWords_17_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="initial-qualitative-analysis">
+<h1>Initial Qualitative Analysis<a class="headerlink" href="#initial-qualitative-analysis" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>“wid” in Finnish vs. “vid” in Swedish- are they same word/different spelling?</p></li>
+<li><p>från(F) vs. frän (S)</p></li>
+<li><p>Helsingfors (F), stockholm (S) &amp; norrkoping</p></li>
+<li><p>Words I’m not sure about: amp, Det, sina, ore,</p></li>
+<li><p>Generally similar words, but different orderings</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fin</span><span class="o">.</span><span class="n">topWordsTotal</span><span class="p">[:</span><span class="mi">50</span><span class="p">],</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">swe</span><span class="o">.</span><span class="n">topWordsTotal</span><span class="p">[:</span><span class="mi">50</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;och&#39;, &#39;att&#39;, &#39;den&#39;, &#39;till&#39;, &#39;för&#39;, &#39;som&#39;, &#39;med&#39;, &#39;det&#39;, &#39;sig&#39;, &#39;ett&#39;, &#39;icke&#39;, &#39;har&#39;, &#39;han&#39;, &#39;eller&#39;, &#39;samt&#39;, &#39;man&#39;, &#39;jag&#39;, &#39;under&#39;, &#39;vid&#39;, &#39;sin&#39;, &#39;hos&#39;, &#39;från&#39;, &#39;denna&#39;, &#39;wid&#39;, &#39;men&#39;, &#39;genom&#39;, &#39;alla&#39;, &#39;frän&#39;, &#39;hade&#39;, &#39;detta&#39;, &#39;efter&#39;, &#39;uti&#39;, &#39;skulle&#39;, &#39;der&#39;, &#39;utan&#39;, &#39;Den&#39;, &#39;Helsingfors&#39;, &#39;andra&#39;, &#39;kan&#39;, &#39;dem&#39;, &#39;mig&#39;, &#39;honom&#39;, &#39;hans&#39;, &#39;sina&#39;, &#39;Det&#39;, &#39;äro&#39;, &#39;var&#39;, &#39;hon&#39;, &#39;amp&#39;, &#39;skall&#39;] 
+ [&#39;och&#39;, &#39;att&#39;, &#39;till&#39;, &#39;den&#39;, &#39;för&#39;, &#39;med&#39;, &#39;som&#39;, &#39;det&#39;, &#39;ett&#39;, &#39;sig&#39;, &#39;han&#39;, &#39;har&#39;, &#39;samt&#39;, &#39;icke&#39;, &#39;från&#39;, &#39;under&#39;, &#39;wid&#39;, &#39;eller&#39;, &#39;hos&#39;, &#39;jag&#39;, &#39;man&#39;, &#39;men&#39;, &#39;vid&#39;, &#39;frän&#39;, &#39;denna&#39;, &#39;sin&#39;, &#39;alla&#39;, &#39;efter&#39;, &#39;hade&#39;, &#39;genom&#39;, &#39;detta&#39;, &#39;kan&#39;, &#39;öre&#39;, &#39;sorn&#39;, &#39;uti&#39;, &#39;var&#39;, &#39;der&#39;, &#39;hon&#39;, &#39;norrköping&#39;, &#39;andra&#39;, &#39;honom&#39;, &#39;mot&#39;, &#39;hans&#39;, &#39;äro&#39;, &#39;utan&#39;, &#39;oell&#39;, &#39;stockholm&#39;, &#39;kunna&#39;, &#39;mig&#39;, &#39;skulle&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;in F but not S: &quot;</span><span class="p">,</span> <span class="nb">set</span><span class="p">(</span><span class="n">fin</span><span class="o">.</span><span class="n">topWordsTotal</span><span class="p">[:</span><span class="mi">50</span><span class="p">])</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">swe</span><span class="o">.</span><span class="n">topWordsTotal</span><span class="p">[:</span><span class="mi">50</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;in S but not F: &quot;</span><span class="p">,</span> <span class="nb">set</span><span class="p">(</span><span class="n">swe</span><span class="o">.</span><span class="n">topWordsTotal</span><span class="p">[:</span><span class="mi">50</span><span class="p">])</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">fin</span><span class="o">.</span><span class="n">topWordsTotal</span><span class="p">[:</span><span class="mi">50</span><span class="p">])</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>in F but not S:  {&#39;amp&#39;, &#39;Det&#39;, &#39;sina&#39;, &#39;skall&#39;, &#39;Helsingfors&#39;, &#39;Den&#39;, &#39;dem&#39;}
+in S but not F:  {&#39;stockholm&#39;, &#39;norrköping&#39;, &#39;öre&#39;, &#39;kunna&#39;, &#39;oell&#39;, &#39;sorn&#39;, &#39;mot&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="overlapping-words">
+<h2>Overlapping Words<a class="headerlink" href="#overlapping-words" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">totalFin</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">fin</span><span class="o">.</span><span class="n">allCounters</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+<span class="n">totalSwe</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">swe</span><span class="o">.</span><span class="n">allCounters</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">Counter</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlaps</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">simToBase</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fin</span><span class="o">.</span><span class="n">commonWords</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">overlaps</span> <span class="o">+=</span> <span class="p">[(</span><span class="nb">set</span><span class="p">(</span><span class="n">fin</span><span class="o">.</span><span class="n">commonWords</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">fin</span><span class="o">.</span><span class="n">commonWords</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]))]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fin</span><span class="o">.</span><span class="n">commonWords</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">decade</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">fin</span><span class="o">.</span><span class="n">commonWords</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">overlaps</span> <span class="o">+=</span> <span class="p">[</span><span class="n">fin</span><span class="o">.</span><span class="n">commonWords</span><span class="p">[</span><span class="n">decade</span><span class="p">]</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">decade</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">finEntireOverlap</span> <span class="o">=</span> <span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="nb">set</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">fin</span><span class="o">.</span><span class="n">commonWords</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
+<span class="n">sweEntireOverlap</span> <span class="o">=</span> <span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="nb">set</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">swe</span><span class="o">.</span><span class="n">commonWords</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Finnish overlap words </span><span class="si">{:d}</span><span class="s2">: </span><span class="se">\n</span><span class="si">{:s}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">finEntireOverlap</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">finEntireOverlap</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Swedish overlap words </span><span class="si">{:d}</span><span class="s2">: </span><span class="se">\n</span><span class="si">{:s}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sweEntireOverlap</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">sweEntireOverlap</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Finnish overlap words 63: 
+{&#39;han&#39;, &#39;hos&#39;, &#39;sin&#39;, &#39;frän&#39;, &#39;emot&#39;, &#39;med&#39;, &#39;sig&#39;, &#39;kunde&#39;, &#39;hon&#39;, &#39;genom&#39;, &#39;mera&#39;, &#39;hans&#39;, &#39;Den&#39;, &#39;endast&#39;, &#39;tid&#39;, &#39;denna&#39;, &#39;detta&#39;, &#39;äro&#39;, &#39;kan&#39;, &#39;som&#39;, &#39;efter&#39;, &#39;wid&#39;, &#39;första&#39;, &#39;alt&#39;, &#39;del&#39;, &#39;uti&#39;, &#39;alla&#39;, &#39;deras&#39;, &#39;och&#39;, &#39;all&#39;, &#39;den&#39;, &#39;Det&#39;, &#39;här&#39;, &#39;till&#39;, &#39;sedan&#39;, &#39;men&#39;, &#39;sina&#39;, &#39;min&#39;, &#39;icke&#39;, &#39;har&#39;, &#39;kunna&#39;, &#39;hade&#39;, &#39;der&#39;, &#39;andra&#39;, &#39;under&#39;, &#39;för&#39;, &#39;dag&#39;, &#39;samma&#39;, &#39;eller&#39;, &#39;man&#39;, &#39;honom&#39;, &#39;dem&#39;, &#39;Men&#39;, &#39;hela&#39;, &#39;ock&#39;, &#39;ännu&#39;, &#39;mig&#39;, &#39;utan&#39;, &#39;jag&#39;, &#39;att&#39;, &#39;samt&#39;, &#39;det&#39;, &#39;amp&#39;}
+Swedish overlap words 36: 
+{&#39;han&#39;, &#39;hos&#39;, &#39;sin&#39;, &#39;sig&#39;, &#39;med&#39;, &#39;hans&#39;, &#39;denna&#39;, &#39;detta&#39;, &#39;äro&#39;, &#39;kan&#39;, &#39;som&#39;, &#39;efter&#39;, &#39;stockholm&#39;, &#39;alla&#39;, &#39;och&#39;, &#39;den&#39;, &#39;här&#39;, &#39;till&#39;, &#39;sedan&#39;, &#39;icke&#39;, &#39;har&#39;, &#39;hade&#39;, &#39;andra&#39;, &#39;under&#39;, &#39;för&#39;, &#39;samma&#39;, &#39;eller&#39;, &#39;man&#39;, &#39;honom&#39;, &#39;mig&#39;, &#39;ett&#39;, &#39;utan&#39;, &#39;jag&#39;, &#39;samt&#39;, &#39;det&#39;, &#39;men&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks/Issue-1/Scandinavian-Languages-Project"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Lux Lab // Cornell University<br/>
+        
+            &copy; Copyright 2020.<br/>
+          <div class="extra_footer">
+            <div>
+<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img class="license" alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a> This series is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>. The code is licensed under a <a href="https://choosealicense.com/licenses/gpl-3.0/#">GNU General Public License v3.0</a>.
+</div>
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

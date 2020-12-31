@@ -1,0 +1,1323 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EEBO Word Embeddings &#8212; Cornell Digital Humanities Notebook Series</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://melaniewalsh.github.io/Cornell-DH-Notebooks/notebooks/Issue-1/CleanEEBOEmbeddings.html" />
+    <link rel="shortcut icon" href="../../_static/clocktower.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Scandinavian Languages Project" href="Scandinavian-Languages.html" />
+    <link rel="prev" title="Mapping Kate Chopin’s The Awakening" href="Mapping-Kate-Chopin.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://melaniewalsh.github.io/Cornell-DH-Notebooks/notebooks/Issue-1/CleanEEBOEmbeddings.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="EEBO Word Embeddings" />
+<meta property="og:description" content="EEBO Word Embeddings  Helen LiangIntroduction  In this project, we are modeling the change in how the same English word is used from the Early Modern English pe" />
+<meta property="og:image"       content="https://melaniewalsh.github.io/Cornell-DH-Notebooks/_static/clocktower.jpeg" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/clocktower.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Cornell Digital Humanities Notebook Series</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  How To
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../How-To-Interact-With-This-Series.html">
+   Interact With This Series
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Issues
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="intro.html">
+   Issue 1
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="Mapping-Kate-Chopin.html">
+     Mapping Kate Chopin’s
+     <em>
+      The Awakening
+     </em>
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     EEBO Word Embeddings
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="#introduction">
+     Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="#pre-post-formation-of-the-royal-society">
+     Pre/Post Formation of the Royal Society
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="#change-in-language-over-time-using-eebo">
+     Change in Language Over Time using EEBO
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Scandinavian-Languages.html">
+     Scandinavian Languages Project
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Scandinavian-Languages.html#word-analysis">
+     3. Word Analysis
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notebooks/Issue-1/CleanEEBOEmbeddings.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/melaniewalsh/Cornell-DH-Notebooks"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/melaniewalsh/Cornell-DH-Notebooks/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Issue-1/CleanEEBOEmbeddings.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/melaniewalsh/Cornell-DH-Notebooks/main?urlpath=lab/tree/jupyterbook/notebooks/Issue-1/CleanEEBOEmbeddings.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   EEBO Word Embeddings
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preprocessing">
+     Preprocessing
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nearest-words">
+     Nearest Words
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualization">
+     Visualization
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#comparison-with-1890-english-history-corpus">
+       Comparison with 1890 English History Corpus
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#comparison-with-1990-english-history-corpus">
+       Comparison with 1990 English History Corpus
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pre-post-formation-of-the-royal-society">
+   Pre/Post Formation of the Royal Society
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#change-in-language-over-time-using-eebo">
+   Change in Language Over Time using EEBO
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="eebo-word-embeddings">
+<h1>EEBO Word Embeddings<a class="headerlink" href="#eebo-word-embeddings" title="Permalink to this headline">¶</a></h1>
+<p>Helen Liang</p>
+</div>
+<div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>In this project, we are modeling the change in how the same English word is used from the Early Modern English period.
+<br>
+English is an unstable language, with spellings, usage, and word frequencies changing rapidly over short periods of time. Even within the same time period, there are many variations of the same word due to inconsistent spelling. Because of the instability of English, we are interested in seeing how the meaning of words change over time. To find and visualize the shifts in how a particular word is used, we will be using word embeddings.
+<br>
+<br>
+There is relatively more stability in Early Modern English than Old or Middle English, hence the choice of Early Modern English texts. Our early modern corpus is <a class="reference external" href="https://quod.lib.umich.edu/e/eebogroup/">EEBO</a>, which will be compared with books from 1800-1990.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">regex</span>
+<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
+<span class="kn">import</span> <span class="nn">gensim</span>
+<span class="kn">from</span> <span class="nn">gensim</span> <span class="kn">import</span> <span class="n">corpora</span>
+<span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">CoherenceModel</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">read_files</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+    <span class="n">f_names</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="n">f_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">file</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">f_names</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eebo</span> <span class="o">=</span> <span class="n">read_files</span><span class="p">(</span><span class="s1">&#39;balanced_txt&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">eebo</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20082
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="preprocessing">
+<h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h2>
+<p>To preprocess the text, we must first strip punctuation. A modified strip_punct.py script was run on all_text_v1_v2.txt
+(all of the EEBO text in one file) to create all_text_v1_v2_nopunct.txt, a clean version of all_text_v1_v2.txt with all non-words removed. A demo of strip punctuation is shown below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">strip_punct</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="n">token_pattern</span> <span class="o">=</span> <span class="n">regex</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;(\w[\w</span><span class="se">\&#39;</span><span class="s2">\-]*\w|\w)&quot;</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">reader</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;∣&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="n">tokens</span> <span class="o">=</span> <span class="n">token_pattern</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+            <span class="n">c</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">:</span> 
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokens</span><span class="p">))</span>
+            
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># An example of cleaned text</span>
+<span class="n">strip_punct</span><span class="p">(</span><span class="s1">&#39;balanced_txt/000/A00268.headed.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10376 99847128 12146
+articles to be enquired off within the prouince of yorke in the metropoliticall visitation of the most reuerend father in go edwin archbishoppe of yorke primate of england and metropolitane in the xix and xx yeare of the raigne of our most gratious souereigne lady elizabeth by the grace of god of england fraunce and ireland queene defendor of the fayth c 1577 1578 imprinted at london by william seres
+articles to be enqvired off within the prouince of yorke in the metropoliticall visitation of the most reuerend father in god edwin archbishoppe of yorke primate of england and metropolitane in the xix yeare of the raigne of our most gratious soueraigne lady elizabath by the grace of god of england fraunce and ireland queene defendour of the faith c first whether commō praier be sayd in your church or chappel vpon the sundaies holy dayes at conuenient houres reuerently distinctly and in such order without any kinde of alteration as is appoynted by the booke of commō prayer and whether your minister so turne himselfe and stande in such place of your church or chauncell as the people may best here the same and whether the holy sacraments be duely and reuerently ministred in such manner as is set foorth by the same booke and whether vpon wednesdayes and fridaies the letany and other prayers be sayd accordingly the comminatiō against sinners redde thryce yearely 2 whether you haue in your church or chappell all things necessarie and requisite for common prayer administration of the holy sacramentes specially the booke of common prayer with the newe kalender the psalter the bible of the largest volume the homilies bothe the firste and seconde tome a comely and decent table standing on a frame for the communion table with a fayre linnen cloth to lay vpon the same and some coueringe of silke buckram or other such like for the cleane kéeping thereof a fayre and comely communion cup of siluer and a couer of siluer for the same which may serue for the administration of the lordes bread a comely large
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we extract the dates of each text from its XML version. Each date is written out in the date_txt/all directory as a txt file containing the date as one line. The name of the txt file is the same name as the xml file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ALL_DIR</span> <span class="o">=</span> <span class="s1">&#39;date_txt/all/&#39;</span>
+<span class="k">def</span> <span class="nf">extract_year</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.xml&#39;</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="n">f_name</span> <span class="o">=</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">file</span><span class="p">))</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">f_name</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+                <span class="k">while</span> <span class="n">line</span> <span class="ow">and</span> <span class="s1">&#39;&lt;date&gt;&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span> 
+                    <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span> 
+                <span class="n">searcher</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;(?&lt;=&lt;date&gt;)[0-9]+(?=.*&lt;\/date&gt;)&#39;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span> <span class="c1"># match the first date that occurs between the tags &lt;date&gt; &lt;/date&gt;</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">searcher</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="n">f_name</span><span class="p">)</span>
+                <span class="n">year</span> <span class="o">=</span> <span class="n">searcher</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">century</span> <span class="o">=</span> <span class="n">year</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;00&quot;</span>
+                <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;date_txt&#39;</span><span class="p">,</span> <span class="n">century</span><span class="p">)</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">exist_ok</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> 
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">Path</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span> <span class="o">+</span> <span class="s2">&quot;.txt&quot;</span><span class="p">),</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">ALL_DIR</span><span class="p">,</span> <span class="n">exist_ok</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ALL_DIR</span><span class="p">,</span> <span class="n">Path</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span> <span class="o">+</span> <span class="s2">&quot;.txt&quot;</span><span class="p">),</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>An example of a date file is A89519.txt (parsed from A89519.xml). The date is read in as the first (and only) line. A demo is shown below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;date_txt/all/A89519.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">reader</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">reader</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1651
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># REDEFINED strip_punct for cleaning txt files in balanced_txt directory and outputting </span>
+<span class="c1"># each cleaned file separately in the no_punct directory</span>
+<span class="k">def</span> <span class="nf">strip_punct</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+    <span class="n">token_pattern</span> <span class="o">=</span> <span class="n">regex</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;(\w[\w</span><span class="se">\&#39;</span><span class="s2">\-]*\w|\w)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">f_name</span> <span class="ow">in</span> <span class="n">glob</span><span class="p">(</span><span class="n">directory</span> <span class="o">+</span> <span class="s2">&quot;*.txt&quot;</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">f_name</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">reader</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;no_punct&#39;</span><span class="p">,</span> <span class="n">exist_ok</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> 
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;no_punct&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f_name</span><span class="p">)),</span> <span class="s1">&#39;a+&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span> 
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span> 
+                    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;∣&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                    <span class="n">tokens</span> <span class="o">=</span> <span class="n">token_pattern</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                    <span class="n">writer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># To run this cell, uncomment. </span>
+<span class="c1"># strip_punct(&#39;balanced_txt/**/&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="nearest-words">
+<h2>Nearest Words<a class="headerlink" href="#nearest-words" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://pypi.org/project/fasttext/">Fasttext</a> and the cbow model was used to generate the word embeddings. The .vec file outputted is the human readable version of word embeddings. Tokenization has already been done by fasttext.
+The nearest function below normalizes and dot product vectors to find the top 20 nearest words.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="o">!</span>python nearest.py embeddings/sgns_v1_v2_d100_1.vec true
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clean_output</span><span class="p">(</span><span class="n">output</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;[\.0-9]+&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">output</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">read_vec_file</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="n">words_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">file</span><span class="p">):</span> 
+            <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span> 
+                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+                <span class="n">words_dict</span><span class="p">[</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+        <span class="k">return</span> <span class="n">words_dict</span>
+<span class="n">words_dict</span> <span class="o">=</span> <span class="n">read_vec_file</span><span class="p">(</span><span class="s1">&#39;embeddings/sgns_v1_v2_d100_1.vec&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find nearest function from nearest.py</span>
+<span class="k">def</span> <span class="nf">find_nearest</span><span class="p">(</span><span class="n">input_word</span><span class="p">,</span> <span class="n">embeddings</span><span class="p">,</span> <span class="n">vocab</span><span class="p">):</span>
+    <span class="n">query_id</span> <span class="o">=</span> <span class="n">vocab</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">input_word</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">embeddings</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+    <span class="n">normalizer</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">embeddings</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">embeddings</span> <span class="o">*=</span> <span class="n">normalizer</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">embeddings</span><span class="p">,</span> <span class="n">embeddings</span><span class="p">[</span><span class="n">query_id</span><span class="p">,:])</span>
+    <span class="n">sorted_list</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">vocab</span><span class="p">)),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="n">nearest</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">score</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">sorted_list</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.3f}</span><span class="se">\t</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">word</span><span class="p">))</span>
+        <span class="n">nearest</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">nearest</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>words_dict is a dictionary representation of the .vec file. Words from the corpus are keys and their respective vector representations are values. This will be later used to visualize embeddings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">words_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the
+[-0.18489848, 0.06808506, 0.25595662, 0.17188543, 0.037654955, 0.0051366338, -0.04474668, -0.043178707, 0.04380905, -0.3671004, 0.15313336, -0.13872255, -0.49349466, 0.1728954, 0.18529195, 0.038108274, 0.20786463, 0.15146597, -0.044726238, 0.049716745, -0.26126888, -0.10828109, -0.04244245, 0.01174636, 0.04659954, 0.26178488, 0.08462093, -0.03321066, -0.020420447, -0.24766025, -0.050465543, -0.28281528, 0.13968821, -0.3628608, 0.07868071, 0.068998545, -0.056997843, 0.19090831, -0.15597442, 0.1672764, 0.20952386, -0.100779526, -0.08410791, 0.009130444, 0.17206787, -0.05249392, -0.14769125, -0.2557637, -0.14989932, -0.055034913, -0.27376437, 0.17862496, 0.06681945, -0.15870348, 0.055367753, -0.21392596, -0.24123484, 0.29547364, 0.22669992, 0.17882921, -0.22640234, -0.30965278, 0.16120891, 0.048422385, 0.05698442, 0.17416024, 0.13867001, -0.17245133, 0.11170741, -0.020344907, 0.06829954, 0.043494076, -0.08843164, -0.11732712, -0.2400157, 0.049039885, 0.06697231, 0.24299929, 0.3211362, 0.1534983, 0.16074911, -0.004460037, -0.24492615, 0.015541584, 0.03150539, 0.018963872, -0.022136496, 0.009280925, 0.11890575, 0.119002886, 0.010449158, 0.20215543, 0.26147762, 0.009835368, -0.2393157, -0.030447803, 0.027741708, 0.0014076424, 0.13687038, -0.054821152]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="visualization">
+<h2>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">¶</a></h2>
+<p>The EEBO word embeddings are visualized below. The green indicates the ranking of a neighbor word of how close it is to the input word according to nearest.py. The distance of a neighbor word to the input word is closeness determined by PCA. The words we will be looking at are ‘true’ and ‘awe’.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Word</p></th>
+<th class="head"><p>Modern Meaning</p></th>
+<th class="head"><p>Expected EME Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>true</p></td>
+<td><p>True (not False)</p></td>
+<td><p>True/just/righteous</p></td>
+</tr>
+<tr class="row-odd"><td><p>awe</p></td>
+<td><p>awe/fear/terror</p></td>
+<td><p>awesome/amazing</p></td>
+</tr>
+</tbody>
+</table>
+<p>The embeddings graph was created with help from <a class="reference external" href="https://towardsdatascience.com/visualization-of-word-embedding-vectors-using-gensim-and-pca-8f592a5d3354">reference</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">visualize_embeddings</span><span class="p">(</span><span class="n">nearest_words</span><span class="p">,</span> <span class="n">target_word</span><span class="p">,</span> <span class="n">words_dict</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Word Embedding Space&#39;</span><span class="p">):</span> 
+    <span class="n">vectors</span> <span class="o">=</span> <span class="p">[</span><span class="n">words_dict</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">nearest_words</span><span class="p">]</span>
+    <span class="n">two_dim</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">vectors</span><span class="p">)[:,:</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">x_length</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">two_dim</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">two_dim</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x_length</span><span class="p">)</span>
+    <span class="n">y_length</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">two_dim</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">two_dim</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">y_length</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">two_dim</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">two_dim</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="n">linewidths</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;PC1&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;PC2&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nearest_words</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">word</span> <span class="o">==</span> <span class="n">target_word</span><span class="p">:</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">two_dim</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">0.02</span><span class="o">*</span><span class="n">x_length</span><span class="p">,</span><span class="n">two_dim</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mf">0.015</span><span class="o">*</span><span class="n">y_length</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">)</span>
+        
+        <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">two_dim</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">0.01</span><span class="o">*</span><span class="n">x_length</span><span class="p">,</span><span class="n">two_dim</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mf">0.05</span><span class="o">*</span><span class="n">y_length</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="n">two_dim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">two_dim</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">0.1</span><span class="o">*</span><span class="n">x_length</span><span class="p">,</span> <span class="n">two_dim</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">0.1</span><span class="o">*</span><span class="n">x_length</span><span class="p">),</span>
+        <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.05</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">execute_graph_embeddings</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">vector_file</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">date</span><span class="p">):</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">clean_output</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+    <span class="n">words_dict</span> <span class="o">=</span> <span class="n">read_vec_file</span><span class="p">(</span><span class="n">vector_file</span><span class="p">)</span>
+    <span class="n">visualize_embeddings</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">word</span><span class="p">,</span> <span class="n">words_dict</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Word Embedding for &quot;</span><span class="si">{</span><span class="n">word</span><span class="si">}</span><span class="s1">&quot; </span><span class="si">{</span><span class="n">date</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_true</span> <span class="o">=</span> <span class="o">!</span>python nearest.py embeddings/sgns_v1_v2_d100_1.vec true
+<span class="n">execute_graph_embeddings</span><span class="p">(</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="s1">&#39;embeddings/sgns_v1_v2_d100_1.vec&#39;</span><span class="p">,</span> <span class="n">output_true</span><span class="p">,</span> <span class="s1">&#39;in EEBO&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.1341537391016048
+2.6460360288361002
+</pre></div>
+</div>
+<img alt="../../_images/CleanEEBOEmbeddings_28_1.png" src="../../_images/CleanEEBOEmbeddings_28_1.png" />
+</div>
+</div>
+<p>Some notable observations for ‘true’ in EEBO and PCA:
+<br></p>
+<ol class="simple">
+<li><p>The word embeddings visualized above capture synonyms, alternate spellings, and co-occurrence. An example of a synonym is “truth” or “sincere”. An example of alternate spelling is “trew” or “tru”. An example of co-occurrence is christian and and certainly (i.e. true christian or certainly true)
+<br></p></li>
+<li><p>PCA and nearest neighbors have different similarity rankings. For example, the word “verity” is the 7th nearest word to true using dot product but after reducing vector dimensions down to 2, it is roughly the 2nd closest word. The PCA graph therefore is not a perfect visualization of the nearest words.</p></li>
+<li><p>Some clusters of words with similar meanings are revealed in this graph. The religious cluster on the top left with words such as faith and religion. There there “truth” and “verity” cluster on bottom left. “certainly” and “indeed” are synonyms and form the cluster meaning agreement on the bottom left.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_awe</span> <span class="o">=</span> <span class="o">!</span>python nearest.py embeddings/sgns_v1_v2_d100_1.vec awe
+<span class="n">execute_graph_embeddings</span><span class="p">(</span><span class="s1">&#39;awe&#39;</span><span class="p">,</span> <span class="s1">&#39;embeddings/sgns_v1_v2_d100_1.vec&#39;</span><span class="p">,</span> <span class="n">output_awe</span><span class="p">,</span> <span class="s1">&#39;in EEBO&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.417725795343853
+3.601340399733183
+</pre></div>
+</div>
+<img alt="../../_images/CleanEEBOEmbeddings_30_1.png" src="../../_images/CleanEEBOEmbeddings_30_1.png" />
+</div>
+</div>
+<p>Some notable clusters ‘awe’ in EEBO:
+<br></p>
+<ol class="simple">
+<li><p>Fear/terror as a Synonym. The words “dreading”, “feare”, “tremble” in the bottom left corner form this definition.</p></li>
+<li><p>Awful/bad as a Synonym. The cluster of various spellings of ‘awful’ in the bottom right form this cluster.</p></li>
+<li><p>Reverential as a Synonym. Despite being ranked as 16 (out of 20) and located in the far bottom right corner, ‘reverential’ could be an emerging definition for ‘awe’ that is more similar to the way we use ‘awe’ positively today.</p></li>
+</ol>
+<div class="section" id="comparison-with-1890-english-history-corpus">
+<h3>Comparison with 1890 English History Corpus<a class="headerlink" href="#comparison-with-1890-english-history-corpus" title="Permalink to this headline">¶</a></h3>
+<p>Let’s see how these word meanings have changed 2 centuries later! The English History Corpus uses data and embeddings from <a class="reference external" href="https://nlp.stanford.edu/projects/histwords/">here</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;sgns/1890-vocab.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">vocab</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modern_embeddings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;sgns/1890-w.npy&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_true</span> <span class="o">=</span> <span class="n">find_nearest</span><span class="p">(</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">modern_embeddings</span><span class="p">,</span> <span class="n">vocab</span><span class="p">)</span>
+<span class="n">output_true</span> <span class="o">=</span> <span class="n">clean_output</span><span class="p">(</span><span class="n">output_true</span><span class="p">)</span>
+<span class="n">true_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">w</span><span class="p">:</span><span class="n">modern_embeddings</span><span class="p">[</span><span class="n">vocab</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">w</span><span class="p">)]</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">output_true</span><span class="p">}</span>
+<span class="n">visualize_embeddings</span><span class="p">(</span><span class="n">output_true</span><span class="p">,</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">true_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1. 1. 1. ... 0. 0. 0.]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/share/apps/anaconda3/2020.02/lib/python3.7/site-packages/ipykernel_launcher.py:5: RuntimeWarning: divide by zero encountered in true_divide
+  &quot;&quot;&quot;
+/share/apps/anaconda3/2020.02/lib/python3.7/site-packages/ipykernel_launcher.py:6: RuntimeWarning: invalid value encountered in multiply
+  
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.000	true
+0.448	truth
+0.389	genuine
+0.385	false
+0.376	ideal
+0.365	nevertheless
+0.359	essence
+0.356	axiomatic
+0.352	believed
+0.349	demonstrably
+0.348	meaning
+0.347	reality
+0.344	untrue
+0.341	sincere
+0.340	truer
+0.340	faith
+0.334	statement
+0.332	real
+0.331	correct
+0.323	because
+0.9873966504203289
+0.856515680236961
+</pre></div>
+</div>
+<img alt="../../_images/CleanEEBOEmbeddings_36_3.png" src="../../_images/CleanEEBOEmbeddings_36_3.png" />
+</div>
+</div>
+<p>Exciting to see that the meaning of ‘true’ has shifted a lot from EME to Late Modern English!
+Some things to note for ‘true’ in 1800:
+<br></p>
+<ol class="simple">
+<li><p>The religious co-occurrence has mostly disappeared (as expected)! ‘Faith’ is the only word left and is ranked 15 out of 20.</p></li>
+<li><p>Many, many new definitions of ‘true’ have emerged. This could in part be due to the greater diversity of modern day fiction texts and topics. ‘True’ today could mean ‘real’ (bottom left cluster) or ‘truth’ (middle bottom cluster) or correct/false (bottom right cluster) or genuine/sincere (top left cluster).</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_awe</span> <span class="o">=</span> <span class="n">find_nearest</span><span class="p">(</span><span class="s1">&#39;awe&#39;</span><span class="p">,</span> <span class="n">modern_embeddings</span><span class="p">,</span> <span class="n">vocab</span><span class="p">)</span>
+<span class="n">output_awe</span> <span class="o">=</span> <span class="n">clean_output</span><span class="p">(</span><span class="n">output_awe</span><span class="p">)</span>
+<span class="n">awe_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">w</span><span class="p">:</span><span class="n">modern_embeddings</span><span class="p">[</span><span class="n">vocab</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">w</span><span class="p">)]</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">output_awe</span><span class="p">}</span>
+<span class="n">visualize_embeddings</span><span class="p">(</span><span class="n">output_awe</span><span class="p">,</span> <span class="s1">&#39;awe&#39;</span><span class="p">,</span> <span class="n">awe_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1.  1.  1. ... nan nan nan]
+1.000	awe
+0.536	reverence
+0.514	terror
+0.514	veneration
+0.479	horror
+0.460	dread
+0.453	inspire
+0.445	wonder
+0.436	amazement
+0.431	admiration
+0.416	dismay
+0.414	astonishment
+0.408	superstitious
+0.394	beholder
+0.392	sadness
+0.391	solemnity
+0.381	inspiring
+0.379	awful
+0.375	speechless
+0.375	inspired
+0.9810345491670139
+1.0859115367774033
+</pre></div>
+</div>
+<img alt="../../_images/CleanEEBOEmbeddings_38_1.png" src="../../_images/CleanEEBOEmbeddings_38_1.png" />
+</div>
+</div>
+<p>Similarly, ‘awe’ has also become overloaded with meaning in Late Modern English.
+For example, some synonyms are amazement/astonishment in bottom right, reverence/inspired in the bottom left, sadness/awful in top middle, and terror/horror in the middle right.</p>
+</div>
+<div class="section" id="comparison-with-1990-english-history-corpus">
+<h3>Comparison with 1990 English History Corpus<a class="headerlink" href="#comparison-with-1990-english-history-corpus" title="Permalink to this headline">¶</a></h3>
+<p>The 1990 English word embeddings are generally very similar to the 1800 word embeddings. Can you find all the different clusters of meaning for ‘true’ and ‘awe’?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;sgns/1990-vocab.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">vocab</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">modern_embeddings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;sgns/1990-w.npy&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_true</span> <span class="o">=</span> <span class="n">find_nearest</span><span class="p">(</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">modern_embeddings</span><span class="p">,</span> <span class="n">vocab</span><span class="p">)</span>
+<span class="n">output_true</span> <span class="o">=</span> <span class="n">clean_output</span><span class="p">(</span><span class="n">output_true</span><span class="p">)</span>
+<span class="n">true_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">w</span><span class="p">:</span><span class="n">modern_embeddings</span><span class="p">[</span><span class="n">vocab</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">w</span><span class="p">)]</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">output_true</span><span class="p">}</span>
+<span class="n">visualize_embeddings</span><span class="p">(</span><span class="n">output_true</span><span class="p">,</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">true_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1. 1. 1. ... 0. 0. 0.]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/share/apps/anaconda3/2020.02/lib/python3.7/site-packages/ipykernel_launcher.py:5: RuntimeWarning: divide by zero encountered in true_divide
+  &quot;&quot;&quot;
+/share/apps/anaconda3/2020.02/lib/python3.7/site-packages/ipykernel_launcher.py:6: RuntimeWarning: invalid value encountered in multiply
+  
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.000	true
+0.482	false
+0.441	truth
+0.408	indeed
+0.402	is
+0.399	correct
+0.397	though
+0.390	converse
+0.386	untrue
+0.383	say
+0.378	certainly
+0.375	believe
+0.371	believes
+0.370	quite
+0.367	inasmuch
+0.361	discern
+0.356	falsity
+0.353	if
+0.353	knows
+0.350	whilst
+1.0307229629381038
+1.0102473530785536
+</pre></div>
+</div>
+<img alt="../../_images/CleanEEBOEmbeddings_43_3.png" src="../../_images/CleanEEBOEmbeddings_43_3.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_awe</span> <span class="o">=</span> <span class="n">find_nearest</span><span class="p">(</span><span class="s1">&#39;awe&#39;</span><span class="p">,</span> <span class="n">modern_embeddings</span><span class="p">,</span> <span class="n">vocab</span><span class="p">)</span>
+<span class="n">output_awe</span> <span class="o">=</span> <span class="n">clean_output</span><span class="p">(</span><span class="n">output_awe</span><span class="p">)</span>
+<span class="n">awe_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">w</span><span class="p">:</span><span class="n">modern_embeddings</span><span class="p">[</span><span class="n">vocab</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">w</span><span class="p">)]</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">output_awe</span><span class="p">}</span>
+<span class="n">visualize_embeddings</span><span class="p">(</span><span class="n">output_awe</span><span class="p">,</span> <span class="s1">&#39;awe&#39;</span><span class="p">,</span> <span class="n">awe_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1.  1.  1. ... nan nan nan]
+1.000	awe
+0.535	reverence
+0.519	astonishment
+0.515	admiration
+0.502	amazement
+0.482	dread
+0.457	wonder
+0.444	horror
+0.440	fascination
+0.435	inspiring
+0.434	delight
+0.431	gazed
+0.414	indignation
+0.406	curiosity
+0.404	dismay
+0.404	gratitude
+0.403	bewildered
+0.401	feeling
+0.401	contempt
+0.400	sadness
+0.9803908669641848
+0.9156536351305079
+</pre></div>
+</div>
+<img alt="../../_images/CleanEEBOEmbeddings_44_1.png" src="../../_images/CleanEEBOEmbeddings_44_1.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="pre-post-formation-of-the-royal-society">
+<h1>Pre/Post Formation of the Royal Society<a class="headerlink" href="#pre-post-formation-of-the-royal-society" title="Permalink to this headline">¶</a></h1>
+<p>The Royal Society, the UK’s national academy of sciences, was formed in 1660. This could lead to a shift towards more scientific senses of words. To analyze the change in word embeddings, we will regenerate the word vectors with Fasttext using only pre-1660 and post-1660 texts.</p>
+<p>Fasttext will only take one single file as an input. Therefore, first we need to concatenate all pre-1660 and post-1660 texts into two large txt files, pre1660.txt and post1660.txt. This cell will take ~3 minutes to run.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">skipped</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">pre</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">post</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;pre1660.txt&#39;</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;pre1660.txt&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;post1660.txt&#39;</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;post1660.txt&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">glob</span><span class="p">(</span><span class="s2">&quot;no_punct/*.txt&quot;</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># Find the corresponding date file and read the year</span>
+    <span class="n">date_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;date_txt&#39;</span><span class="p">,</span> <span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;.txt&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">date_file</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">date_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">reader</span><span class="p">:</span>
+            <span class="n">year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">reader</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">year</span> <span class="o">&lt;</span> <span class="mi">1660</span><span class="p">:</span>
+            <span class="n">write_file</span> <span class="o">=</span> <span class="s1">&#39;pre1660.txt&#39;</span>
+            <span class="n">pre</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">write_file</span> <span class="o">=</span> <span class="s1">&#39;post1660.txt&#39;</span>
+            <span class="n">post</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">write_file</span><span class="p">,</span> <span class="s1">&#39;a+&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span> 
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">reader</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+                    <span class="n">writer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">skipped</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number texts skipped due to not being able to find a date from xml: </span><span class="si">{</span><span class="n">skipped</span><span class="si">}</span><span class="s1"> out of </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;no_punct/*.txt&quot;</span><span class="p">))</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of Pre-1660 Texts </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of Post-1660 Texts </span><span class="si">{</span><span class="n">post</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number texts skipped due to not being able to find a date from xml: 11561 out of 19946
+Number of Pre-1660 Texts 4330
+Number of Post-1660 Texts 4055
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre_true</span> <span class="o">=</span> <span class="o">!</span>python nearest.py embeddings/sgns_v1_v2_pre1660.vec true
+<span class="n">execute_graph_embeddings</span><span class="p">(</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="s1">&#39;embeddings/sgns_v1_v2_pre1660.vec&#39;</span><span class="p">,</span> <span class="n">pre_true</span><span class="p">,</span> <span class="s1">&#39;Pre-1660&#39;</span><span class="p">)</span>
+<span class="n">post_true</span> <span class="o">=</span> <span class="o">!</span>python nearest.py embeddings/sgns_v1_v2_post1660.vec true
+<span class="n">execute_graph_embeddings</span><span class="p">(</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="s1">&#39;embeddings/sgns_v1_v2_post1660.vec&#39;</span><span class="p">,</span> <span class="n">post_true</span><span class="p">,</span> <span class="s1">&#39;Post-1660&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11.430988758357127
+14.632903289126197
+12.022654903721623
+13.245121212359058
+</pre></div>
+</div>
+<img alt="../../_images/CleanEEBOEmbeddings_48_1.png" src="../../_images/CleanEEBOEmbeddings_48_1.png" />
+<img alt="../../_images/CleanEEBOEmbeddings_48_2.png" src="../../_images/CleanEEBOEmbeddings_48_2.png" />
+</div>
+</div>
+<p>As expected, “true” has slightly shifted towards more scientific senses after 1660. Examples are “evident” and “reality” that are present in the post-1660 word embeddings but not the pre-1660. More colloquial co-occuring terms were also picked up in the post-1660 word embeddings, such as “indeed”, “really”, “certainly” which is likely due to the popular phrases “really true”, “indeed true”, “certainly true”.
+<br>
+We also see a weakening of the religious sense and character sense in post-1660. In the catholike/faith/christian cluster in pre-1660, catholike was dropped in post-1660. Similarly, in the sincere/faithfull cluster in pre-1660, faithfull was dropped.</p>
+<p>However, we see an increase in the “authentic” meaning of true with the addition of genuine to the “real”/ “essential” cluster in post-1660.</p>
+<p>Another interesting observations is the consistency in spelling. In the post-1660 texts, spelling became much more regularized and therefore the word embeddings picked up fewer alternative spellings. In the pre-1660, we notice many repeated words with different spellings (e.g. veritie and verity, truth and trueth).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre_right</span> <span class="o">=</span> <span class="o">!</span>python nearest.py embeddings/sgns_v1_v2_pre1660.vec right
+<span class="n">execute_graph_embeddings</span><span class="p">(</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="s1">&#39;embeddings/sgns_v1_v2_pre1660.vec&#39;</span><span class="p">,</span> <span class="n">pre_right</span><span class="p">,</span> <span class="s1">&#39;Pre-1660&#39;</span><span class="p">)</span>
+<span class="n">post_right</span> <span class="o">=</span> <span class="o">!</span>python nearest.py embeddings/sgns_v1_v2_post1660.vec right
+<span class="n">execute_graph_embeddings</span><span class="p">(</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="s1">&#39;embeddings/sgns_v1_v2_post1660.vec&#39;</span><span class="p">,</span> <span class="n">post_right</span><span class="p">,</span> <span class="s1">&#39;Post-1660&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16.54113004139494
+17.087018320832712
+15.319454154235144
+10.699959211006494
+</pre></div>
+</div>
+<img alt="../../_images/CleanEEBOEmbeddings_50_1.png" src="../../_images/CleanEEBOEmbeddings_50_1.png" />
+<img alt="../../_images/CleanEEBOEmbeddings_50_2.png" src="../../_images/CleanEEBOEmbeddings_50_2.png" />
+</div>
+</div>
+<p>More philosophical senses of “right” were picked up post-1660. Some examples are the new clusters “legislation”/”rightfull”/”wrong” as well as the cluster “privilege”/”rights”!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre_natural</span> <span class="o">=</span> <span class="o">!</span>python nearest.py embeddings/sgns_v1_v2_pre1660.vec natural
+<span class="nb">print</span><span class="p">(</span><span class="n">clean_output</span><span class="p">(</span><span class="n">pre_natural</span><span class="p">))</span> <span class="c1"># Print due to some crowded text in the graph</span>
+<span class="n">execute_graph_embeddings</span><span class="p">(</span><span class="s1">&#39;natural&#39;</span><span class="p">,</span> <span class="s1">&#39;embeddings/sgns_v1_v2_pre1660.vec&#39;</span><span class="p">,</span> <span class="n">pre_natural</span><span class="p">,</span> <span class="s1">&#39;Pre-1660&#39;</span><span class="p">)</span>
+<span class="n">post_natural</span> <span class="o">=</span> <span class="o">!</span>python nearest.py embeddings/sgns_v1_v2_post1660.vec natural
+<span class="nb">print</span><span class="p">(</span><span class="n">clean_output</span><span class="p">(</span><span class="n">post_natural</span><span class="p">))</span>
+<span class="n">execute_graph_embeddings</span><span class="p">(</span><span class="s1">&#39;natural&#39;</span><span class="p">,</span> <span class="s1">&#39;embeddings/sgns_v1_v2_post1660.vec&#39;</span><span class="p">,</span> <span class="n">post_natural</span><span class="p">,</span> <span class="s1">&#39;Post-1660&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;natural&#39;, &#39;supernatural&#39;, &#39;naturall&#39;, &#39;innate&#39;, &#39;adventitious&#39;, &#39;internal&#39;, &#39;nature&#39;, &#39;vegetative&#39;, &#39;human&#39;, &#39;aptitude&#39;, &#39;intrinsecal&#39;, &#39;temperament&#39;, &#39;accidental&#39;, &#39;implanted&#39;, &#39;physical&#39;, &#39;microcosmicall&#39;, &#39;intellectual&#39;, &#39;vegetable&#39;, &#39;sensation&#39;, &#39;formative&#39;]
+11.320082642044111
+9.45423138764749
+[&#39;natural&#39;, &#39;nature&#39;, &#39;naturall&#39;, &#39;inbred&#39;, &#39;innate&#39;, &#39;moral&#39;, &#39;humane&#39;, &#39;rational&#39;, &#39;naturally&#39;, &#39;human&#39;, &#39;instincts&#39;, &#39;adventitious&#39;, &#39;supernatural&#39;, &#39;connatural&#39;, &#39;intellectual&#39;, &#39;propensions&#39;, &#39;consentaneous&#39;, &#39;corporeal&#39;, &#39;repugnance&#39;, &#39;morall&#39;]
+9.931324555436948
+11.840064720888883
+</pre></div>
+</div>
+<img alt="../../_images/CleanEEBOEmbeddings_52_1.png" src="../../_images/CleanEEBOEmbeddings_52_1.png" />
+<img alt="../../_images/CleanEEBOEmbeddings_52_2.png" src="../../_images/CleanEEBOEmbeddings_52_2.png" />
+</div>
+</div>
+<p>As hoped, some more philosophical senses of “natural” appeared post-1660! Some examples are “moral”/”morall”/”humane”/”rational”.</p>
+</div>
+<div class="section" id="change-in-language-over-time-using-eebo">
+<h1>Change in Language Over Time using EEBO<a class="headerlink" href="#change-in-language-over-time-using-eebo" title="Permalink to this headline">¶</a></h1>
+<p>Even within the Early Modern English time period, English may not have been stable. There may specific years or decades during this period in which the English language has changed more than usual due to important historic events (such as the formation of the British Royal Society). In which decades do we see the change in the English language accelerate (or decelerate) compared to the previous decade?</p>
+<p>For each 10 year period in EEBO (1474-1700), we will calculate the top 100 most common words and find the similarity between the previous period. Similarity between two consecutive time periods is measured by the number of overlapping words in the top 100 most common words.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parse in all filenames and years into a tuple list, then sort by year. </span>
+<span class="n">date_tuples</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">glob</span><span class="p">(</span><span class="s1">&#39;date_txt/all/*.txt&#39;</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">reader</span><span class="p">:</span>
+        <span class="n">year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">reader</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="n">f_basename</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span>
+        <span class="n">date_tuples</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">f_basename</span><span class="p">,</span> <span class="n">year</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are some texts outside of our date range so we will be filtering them out by strictly limiting our time period to 1470-1710.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date_tuples</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">pair</span><span class="p">:</span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The 10 earliest texts and dates are: </span><span class="se">\n</span><span class="si">{</span><span class="n">date_tuples</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The 10 latest texts and dates are: </span><span class="se">\n</span><span class="si">{</span><span class="n">date_tuples</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The 10 earliest texts and dates are: 
+[(&#39;B01696&#39;, 16), (&#39;B02239&#39;, 16), (&#39;A89204&#39;, 169), (&#39;A05232&#39;, 1473), (&#39;A18343&#39;, 1474), (&#39;A18231&#39;, 1476), (&#39;A06567&#39;, 1476), (&#39;A16385&#39;, 1477), (&#39;A18230&#39;, 1477), (&#39;A18294&#39;, 1477)]
+
+The 10 latest texts and dates are: 
+[(&#39;A52339&#39;, 1709), (&#39;A46610&#39;, 1710), (&#39;A52980&#39;, 1711), (&#39;A57093&#39;, 1714), (&#39;B03369&#39;, 1715), (&#39;A67608&#39;, 1715), (&#39;A44500&#39;, 1717), (&#39;A42246&#39;, 1720), (&#39;A11759&#39;, 1800), (&#39;A57257&#39;, 1818)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Estimated run time is 10 minutes</span>
+<span class="c1"># Find the top 100 words for each time period from 1470 to 1710. </span>
+<span class="c1"># The length of a time period is set by INCREMENT. </span>
+<span class="n">time_period</span> <span class="o">=</span> <span class="mi">1470</span>
+<span class="n">curr_file</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">skipped</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">INCREMENT</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">stop_words</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;thy&#39;</span><span class="p">]</span>
+<span class="n">most_common_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span> <span class="c1"># key is start of time period, value is 100 most common words</span>
+<span class="k">for</span> <span class="n">start_period</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1470</span><span class="p">,</span> <span class="mi">1710</span><span class="p">,</span> <span class="n">INCREMENT</span><span class="p">):</span>
+    <span class="n">time_period_counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span> <span class="c1"># Counter of word frequencies for this time period</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Starting period </span><span class="si">{</span><span class="n">start_period</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">date_tuples</span><span class="p">[</span><span class="n">curr_file</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">start_period</span> <span class="o">+</span> <span class="n">INCREMENT</span><span class="p">:</span>
+        <span class="c1"># Find the corresponding punctuated text file </span>
+        <span class="n">basename</span> <span class="o">=</span> <span class="n">date_tuples</span><span class="p">[</span><span class="n">curr_file</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;no_punct&#39;</span><span class="p">,</span> <span class="n">basename</span><span class="o">+</span><span class="s1">&#39;.headed.txt&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">reader</span><span class="p">:</span> <span class="c1"># Read file, tokenize, and update Counter</span>
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span> 
+                    <span class="n">line_tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">token</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">token</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stop_words</span><span class="p">]</span>
+                    <span class="n">time_period_counter</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">line_tokens</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">skipped</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">curr_file</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">most_common_dict</span><span class="p">[</span><span class="n">start_period</span><span class="p">]</span> <span class="o">=</span> <span class="n">time_period_counter</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Skipped: </span><span class="si">{</span><span class="n">skipped</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Starting period 1470
+Starting period 1480
+Starting period 1490
+Starting period 1500
+Starting period 1510
+Starting period 1520
+Starting period 1530
+Starting period 1540
+Starting period 1550
+Starting period 1560
+Starting period 1570
+Starting period 1580
+Starting period 1590
+Starting period 1600
+Starting period 1610
+Starting period 1620
+Starting period 1630
+Starting period 1640
+Starting period 1650
+Starting period 1660
+Starting period 1670
+Starting period 1680
+Starting period 1690
+Starting period 1700
+Skipped: 16979
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">most_common_dict</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;most_common_dict.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">most_common_dict</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;most_common_dict.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the number of overlapping common words between consecutive time periods</span>
+<span class="n">prev_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">most_common_dict</span><span class="p">[</span><span class="mi">1470</span><span class="p">]]</span>
+<span class="n">dates</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1470</span><span class="o">+</span><span class="n">INCREMENT</span><span class="p">,</span> <span class="mi">1710</span><span class="p">,</span> <span class="n">INCREMENT</span><span class="p">)]</span>
+<span class="n">similarities</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1470</span><span class="o">+</span><span class="n">INCREMENT</span><span class="p">,</span> <span class="mi">1710</span><span class="p">,</span> <span class="n">INCREMENT</span><span class="p">):</span> 
+    <span class="n">curr_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">most_common_dict</span><span class="p">[</span><span class="n">year</span><span class="p">]]</span>
+    <span class="n">similarity</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">prev_words</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">curr_words</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Similarity between </span><span class="si">{</span><span class="n">year</span><span class="o">-</span><span class="n">INCREMENT</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">year</span><span class="o">+</span><span class="n">INCREMENT</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">similarity</span><span class="p">)</span><span class="si">}</span><span class="s2">%</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Top 15 words in </span><span class="si">{</span><span class="n">year</span><span class="o">-</span><span class="n">INCREMENT</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">prev_words</span><span class="p">[:</span><span class="mi">20</span><span class="p">]</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">similarities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">similarity</span><span class="p">))</span>
+    <span class="n">prev_words</span> <span class="o">=</span> <span class="n">curr_words</span>
+    
+<span class="c1"># Graph the number of overlapping common words (similarity)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span><span class="n">similarities</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">dates</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">dates</span><span class="p">)</span><span class="o">+</span><span class="n">INCREMENT</span><span class="p">,</span> <span class="n">INCREMENT</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Similarity of Top Words over Time, Time Period=</span><span class="si">{</span><span class="n">INCREMENT</span><span class="si">}</span><span class="s1"> years&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Start of Time Period&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Similarity (%) with Previous Time Period&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Similarity between 1470-1480 and 1480-1490: 41%
+
+Top 15 words in 1470: [&#39;thou&#39;, &#39;thinges&#39;, &#39;thing&#39;, &#39;whiche&#39;, &#39;hem&#39;, &#39;good&#39;, &#39;ben&#39;, &#39;men&#39;, &#39;may&#39;, &#39;whan&#39;, &#39;haue&#39;, &#39;hath&#39;, &#39;right&#39;, &#39;god&#39;, &#39;certes&#39;, &#39;yet&#39;, &#39;hit&#39;, &#39;then̄e&#39;, &#39;thilke&#39;, &#39;man&#39;]
+
+
+Similarity between 1480-1490 and 1490-1500: 53%
+
+Top 15 words in 1480: [&#39;hym&#39;, &#39;est&#39;, &#39;thenne&#39;, &#39;haue&#39;, &#39;per&#39;, &#39;grete&#39;, &#39;quod&#39;, &#39;god&#39;, &#39;whan&#39;, &#39;sayd&#39;, &#39;whiche&#39;, &#39;said&#39;, &#39;thou&#39;, &#39;man&#39;, &#39;alle&#39;, &#39;made&#39;, &#39;men&#39;, &#39;shold&#39;, &#39;kynge&#39;, &#39;saynt&#39;]
+
+
+Similarity between 1490-1500 and 1500-1510: 60%
+
+Top 15 words in 1490: [&#39;god&#39;, &#39;haue&#39;, &#39;man&#39;, &#39;men&#39;, &#39;hym&#39;, &#39;ād&#39;, &#39;grete&#39;, &#39;also&#39;, &#39;thou&#39;, &#39;shall&#39;, &#39;ther&#39;, &#39;nat&#39;, &#39;kyng&#39;, &#39;may&#39;, &#39;hys&#39;, &#39;whiche&#39;, &#39;made&#39;, &#39;hem&#39;, &#39;vnto&#39;, &#39;therfore&#39;]
+
+
+Similarity between 1500-1510 and 1510-1520: 61%
+
+Top 15 words in 1500: [&#39;whiche&#39;, &#39;haue&#39;, &#39;hym&#39;, &#39;vnto&#39;, &#39;god&#39;, &#39;thou&#39;, &#39;per&#39;, &#39;may&#39;, &#39;shall&#39;, &#39;grete&#39;, &#39;sayd&#39;, &#39;man&#39;, &#39;holy&#39;, &#39;good&#39;, &#39;also&#39;, &#39;loue&#39;, &#39;hath&#39;, &#39;suche&#39;, &#39;whan&#39;, &#39;tyme&#39;]
+
+
+Similarity between 1510-1520 and 1520-1530: 52%
+
+Top 15 words in 1510: [&#39;hym&#39;, &#39;shall&#39;, &#39;haue&#39;, &#39;sayd&#39;, &#39;grete&#39;, &#39;whiche&#39;, &#39;god&#39;, &#39;kynge&#39;, &#39;vnto&#39;, &#39;hir&#39;, &#39;ponthus&#39;, &#39;good&#39;, &#39;theyr&#39;, &#39;well&#39;, &#39;whan&#39;, &#39;ryght&#39;, &#39;sholde&#39;, &#39;made&#39;, &#39;men&#39;, &#39;may&#39;]
+
+
+Similarity between 1520-1530 and 1530-1540: 68%
+
+Top 15 words in 1520: [&#39;hym&#39;, &#39;god&#39;, &#39;whiche&#39;, &#39;nat&#39;, &#39;vnto&#39;, &#39;thou&#39;, &#39;haue&#39;, &#39;good&#39;, &#39;man&#39;, &#39;shall&#39;, &#39;hath&#39;, &#39;one&#39;, &#39;hit&#39;, &#39;whan&#39;, &#39;also&#39;, &#39;take&#39;, &#39;que&#39;, &#39;theyr&#39;, &#39;moche&#39;, &#39;may&#39;]
+
+
+Similarity between 1530-1540 and 1540-1550: 73%
+
+Top 15 words in 1530: [&#39;hym&#39;, &#39;vnto&#39;, &#39;haue&#39;, &#39;god&#39;, &#39;hys&#39;, &#39;whiche&#39;, &#39;thou&#39;, &#39;theyr&#39;, &#39;man&#39;, &#39;also&#39;, &#39;shall&#39;, &#39;men&#39;, &#39;thys&#39;, &#39;one&#39;, &#39;wyth&#39;, &#39;good&#39;, &#39;hath&#39;, &#39;yet&#39;, &#39;lorde&#39;, &#39;made&#39;]
+
+
+Similarity between 1540-1550 and 1550-1560: 82%
+
+Top 15 words in 1540: [&#39;god&#39;, &#39;whiche&#39;, &#39;haue&#39;, &#39;vnto&#39;, &#39;hym&#39;, &#39;also&#39;, &#39;shall&#39;, &#39;one&#39;, &#39;man&#39;, &#39;theyr&#39;, &#39;thou&#39;, &#39;hath&#39;, &#39;men&#39;, &#39;yet&#39;, &#39;made&#39;, &#39;good&#39;, &#39;great&#39;, &#39;suche&#39;, &#39;lorde&#39;, &#39;iesus&#39;]
+
+
+Similarity between 1550-1560 and 1560-1570: 79%
+
+Top 15 words in 1550: [&#39;haue&#39;, &#39;god&#39;, &#39;whiche&#39;, &#39;man&#39;, &#39;also&#39;, &#39;one&#39;, &#39;vnto&#39;, &#39;good&#39;, &#39;hys&#39;, &#39;hym&#39;, &#39;shall&#39;, &#39;thou&#39;, &#39;men&#39;, &#39;hath&#39;, &#39;yet&#39;, &#39;made&#39;, &#39;thys&#39;, &#39;great&#39;, &#39;vpon&#39;, &#39;theyr&#39;]
+
+
+Similarity between 1560-1570 and 1570-1580: 81%
+
+Top 15 words in 1560: [&#39;haue&#39;, &#39;god&#39;, &#39;vnto&#39;, &#39;one&#39;, &#39;whiche&#39;, &#39;also&#39;, &#39;man&#39;, &#39;shall&#39;, &#39;hath&#39;, &#39;yet&#39;, &#39;thou&#39;, &#39;christ&#39;, &#39;good&#39;, &#39;men&#39;, &#39;may&#39;, &#39;hym&#39;, &#39;made&#39;, &#39;great&#39;, &#39;vpon&#39;, &#39;make&#39;]
+
+
+Similarity between 1570-1580 and 1580-1590: 81%
+
+Top 15 words in 1570: [&#39;haue&#39;, &#39;god&#39;, &#39;vnto&#39;, &#39;one&#39;, &#39;also&#39;, &#39;men&#39;, &#39;king&#39;, &#39;shall&#39;, &#39;man&#39;, &#39;hath&#39;, &#39;good&#39;, &#39;hee&#39;, &#39;yet&#39;, &#39;great&#39;, &#39;may&#39;, &#39;bee&#39;, &#39;whiche&#39;, &#39;wee&#39;, &#39;made&#39;, &#39;vpon&#39;]
+
+
+Similarity between 1580-1590 and 1590-1600: 89%
+
+Top 15 words in 1580: [&#39;haue&#39;, &#39;god&#39;, &#39;vnto&#39;, &#39;one&#39;, &#39;also&#39;, &#39;may&#39;, &#39;hath&#39;, &#39;man&#39;, &#39;yet&#39;, &#39;great&#39;, &#39;good&#39;, &#39;men&#39;, &#39;shall&#39;, &#39;christ&#39;, &#39;doe&#39;, &#39;bee&#39;, &#39;hee&#39;, &#39;time&#39;, &#39;thou&#39;, &#39;church&#39;]
+
+
+Similarity between 1590-1600 and 1600-1610: 90%
+
+Top 15 words in 1590: [&#39;haue&#39;, &#39;god&#39;, &#39;one&#39;, &#39;vnto&#39;, &#39;also&#39;, &#39;man&#39;, &#39;may&#39;, &#39;thou&#39;, &#39;great&#39;, &#39;shall&#39;, &#39;men&#39;, &#39;good&#39;, &#39;yet&#39;, &#39;hath&#39;, &#39;king&#39;, &#39;hee&#39;, &#39;time&#39;, &#39;vpon&#39;, &#39;christ&#39;, &#39;first&#39;]
+
+
+Similarity between 1600-1610 and 1610-1620: 93%
+
+Top 15 words in 1600: [&#39;haue&#39;, &#39;god&#39;, &#39;vnto&#39;, &#39;one&#39;, &#39;may&#39;, &#39;vpon&#39;, &#39;man&#39;, &#39;great&#39;, &#39;yet&#39;, &#39;hath&#39;, &#39;hee&#39;, &#39;good&#39;, &#39;men&#39;, &#39;shall&#39;, &#39;thou&#39;, &#39;lord&#39;, &#39;king&#39;, &#39;also&#39;, &#39;made&#39;, &#39;first&#39;]
+
+
+Similarity between 1610-1620 and 1620-1630: 92%
+
+Top 15 words in 1610: [&#39;haue&#39;, &#39;god&#39;, &#39;hee&#39;, &#39;one&#39;, &#39;vnto&#39;, &#39;may&#39;, &#39;man&#39;, &#39;vpon&#39;, &#39;shall&#39;, &#39;yet&#39;, &#39;great&#39;, &#39;king&#39;, &#39;hath&#39;, &#39;good&#39;, &#39;men&#39;, &#39;bee&#39;, &#39;first&#39;, &#39;thou&#39;, &#39;would&#39;, &#39;many&#39;]
+
+
+Similarity between 1620-1630 and 1630-1640: 84%
+
+Top 15 words in 1620: [&#39;haue&#39;, &#39;god&#39;, &#39;one&#39;, &#39;may&#39;, &#39;hee&#39;, &#39;great&#39;, &#39;hath&#39;, &#39;shall&#39;, &#39;yet&#39;, &#39;vnto&#39;, &#39;vpon&#39;, &#39;man&#39;, &#39;good&#39;, &#39;bee&#39;, &#39;men&#39;, &#39;doe&#39;, &#39;many&#39;, &#39;would&#39;, &#39;thou&#39;, &#39;king&#39;]
+
+
+Similarity between 1630-1640 and 1640-1650: 87%
+
+Top 15 words in 1630: [&#39;god&#39;, &#39;one&#39;, &#39;may&#39;, &#39;hee&#39;, &#39;shall&#39;, &#39;man&#39;, &#39;hath&#39;, &#39;good&#39;, &#39;yet&#39;, &#39;doe&#39;, &#39;bee&#39;, &#39;first&#39;, &#39;great&#39;, &#39;men&#39;, &#39;haue&#39;, &#39;also&#39;, &#39;time&#39;, &#39;thou&#39;, &#39;much&#39;, &#39;lord&#39;]
+
+
+Similarity between 1640-1650 and 1650-1660: 89%
+
+Top 15 words in 1640: [&#39;god&#39;, &#39;may&#39;, &#39;upon&#39;, &#39;shall&#39;, &#39;one&#39;, &#39;hath&#39;, &#39;yet&#39;, &#39;unto&#39;, &#39;man&#39;, &#39;king&#39;, &#39;men&#39;, &#39;would&#39;, &#39;great&#39;, &#39;lord&#39;, &#39;church&#39;, &#39;first&#39;, &#39;made&#39;, &#39;christ&#39;, &#39;good&#39;, &#39;time&#39;]
+
+
+Similarity between 1650-1660 and 1660-1670: 91%
+
+Top 15 words in 1650: [&#39;god&#39;, &#39;may&#39;, &#39;upon&#39;, &#39;one&#39;, &#39;shall&#39;, &#39;hath&#39;, &#39;yet&#39;, &#39;man&#39;, &#39;would&#39;, &#39;christ&#39;, &#39;unto&#39;, &#39;men&#39;, &#39;first&#39;, &#39;great&#39;, &#39;made&#39;, &#39;much&#39;, &#39;good&#39;, &#39;must&#39;, &#39;many&#39;, &#39;church&#39;]
+
+
+Similarity between 1660-1670 and 1670-1680: 92%
+
+Top 15 words in 1660: [&#39;god&#39;, &#39;may&#39;, &#39;upon&#39;, &#39;one&#39;, &#39;shall&#39;, &#39;hath&#39;, &#39;yet&#39;, &#39;would&#39;, &#39;great&#39;, &#39;man&#39;, &#39;men&#39;, &#39;king&#39;, &#39;made&#39;, &#39;much&#39;, &#39;many&#39;, &#39;good&#39;, &#39;first&#39;, &#39;christ&#39;, &#39;lord&#39;, &#39;make&#39;]
+
+
+Similarity between 1670-1680 and 1680-1690: 91%
+
+Top 15 words in 1670: [&#39;god&#39;, &#39;upon&#39;, &#39;may&#39;, &#39;one&#39;, &#39;shall&#39;, &#39;would&#39;, &#39;yet&#39;, &#39;great&#39;, &#39;man&#39;, &#39;hath&#39;, &#39;christ&#39;, &#39;men&#39;, &#39;much&#39;, &#39;made&#39;, &#39;good&#39;, &#39;first&#39;, &#39;things&#39;, &#39;many&#39;, &#39;must&#39;, &#39;make&#39;]
+
+
+Similarity between 1680-1690 and 1690-1700: 90%
+
+Top 15 words in 1680: [&#39;god&#39;, &#39;upon&#39;, &#39;one&#39;, &#39;may&#39;, &#39;great&#39;, &#39;shall&#39;, &#39;would&#39;, &#39;yet&#39;, &#39;made&#39;, &#39;men&#39;, &#39;time&#39;, &#39;king&#39;, &#39;lord&#39;, &#39;man&#39;, &#39;good&#39;, &#39;hath&#39;, &#39;first&#39;, &#39;said&#39;, &#39;church&#39;, &#39;much&#39;]
+
+
+Similarity between 1690-1700 and 1700-1710: 83%
+
+Top 15 words in 1690: [&#39;god&#39;, &#39;upon&#39;, &#39;one&#39;, &#39;may&#39;, &#39;great&#39;, &#39;would&#39;, &#39;shall&#39;, &#39;men&#39;, &#39;made&#39;, &#39;yet&#39;, &#39;king&#39;, &#39;time&#39;, &#39;man&#39;, &#39;much&#39;, &#39;first&#39;, &#39;good&#39;, &#39;must&#39;, &#39;make&#39;, &#39;many&#39;, &#39;said&#39;]
+</pre></div>
+</div>
+<img alt="../../_images/CleanEEBOEmbeddings_61_1.png" src="../../_images/CleanEEBOEmbeddings_61_1.png" />
+</div>
+</div>
+<p>English was rapidly stabilizing between 1480 and 1550! After 1550, English was slow-changing, with 80-90% overlap with the previous decade. 1530s-1550s seems to be two pivotal decades, jumping roughly 30% in similarity as opposed to the 1520s. One reason may be the official publications of central Christian texts and service books that are used widely across all churches during this period, including the <a class="reference external" href="https://en.wikipedia.org/wiki/Great_Bible">the Great Bible</a> in 1539 and <a class="reference external" href="https://en.wikipedia.org/wiki/Book_of_Common_Prayer">Book of Common Prayer</a> 1549, which helped standardize English and popularize certain words, and thereby giving rise to the stabilization of English in the 1530s-1550s.
+<br>
+The popularity of these religious texts is further shown by the frequency of the mention of “god”. From 1540s onward to the end of the Early Modern English era, “god” has consistently been the top first or second word in the top 15 words of each decade.</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks/Issue-1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="Mapping-Kate-Chopin.html" title="previous page">Mapping Kate Chopin’s <em>The Awakening</em></a>
+    <a class='right-next' id="next-link" href="Scandinavian-Languages.html" title="next page">Scandinavian Languages Project</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Lux Lab // Cornell University<br/>
+        
+            &copy; Copyright 2020.<br/>
+          <div class="extra_footer">
+            <div>
+<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img class="license" alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a> This series is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>. The code is licensed under a <a href="https://choosealicense.com/licenses/gpl-3.0/#">GNU General Public License v3.0</a>.
+</div>
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
