@@ -14,5 +14,9 @@
     title: Issue 1
     sections:
       - file: notebooks/Issue-1/Mapping-Kate-Chopin 
+      - file: notebooks/Issue-1/EEBO-Project/CleanEEBOEmbeddings
+        title: EEBO
+      - file: notebooks/Issue-1/Scandinavian-Languages-Project/Scandinavian-Languages
+        title: Scandivanian Languages
 
 
