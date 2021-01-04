@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; Cornell Digital Humanities Notebook Series</title>
+    <title>Languages-Project &#8212; Cornell Digital Humanities Notebook Series</title>
     
   <link rel="stylesheet" href="../../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -52,7 +52,7 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://melaniewalsh.github.io/Cornell-DH-Notebooks/notebooks/Issue-1/Scandinavian-Languages-Project/PlayDatas.html" />
+    <link rel="canonical" href="https://melaniewalsh.github.io/Cornell-DH-Notebooks/notebooks/Issue-1/EEBO-Project/README.html" />
     <link rel="shortcut icon" href="../../../_static/clocktower.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -62,10 +62,10 @@
 
 
 <!-- Opengraph tags -->
-<meta property="og:url"         content="https://melaniewalsh.github.io/Cornell-DH-Notebooks/notebooks/Issue-1/Scandinavian-Languages-Project/PlayDatas.html" />
+<meta property="og:url"         content="https://melaniewalsh.github.io/Cornell-DH-Notebooks/notebooks/Issue-1/EEBO-Project/README.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="&lt;no title&gt;" />
-<meta property="og:description" content="" />
+<meta property="og:title"       content="Languages-Project" />
+<meta property="og:description" content="Languages-Project  Modeling change in the meaning of English words from 1470-Present using word embeddings" />
 <meta property="og:image"       content="https://melaniewalsh.github.io/Cornell-DH-Notebooks/_static/clocktower.jpeg" />
 
 <meta name="twitter:card" content="summary" />
@@ -118,17 +118,17 @@
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="../EEBO-Project/CleanEEBOEmbeddings.html">
+    <a class="reference internal" href="CleanEEBOEmbeddings.html">
      Modeling Change in English Language from 1470-Present
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="Scandinavian-Languages.html">
+    <a class="reference internal" href="../Scandinavian-Languages-Project/Scandinavian-Languages.html">
      Scandinavian Languages Project
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="Scandinavian-Languages.html#word-analysis">
+    <a class="reference internal" href="../Scandinavian-Languages-Project/Scandinavian-Languages.html#word-analysis">
      3. Word Analysis
     </a>
    </li>
@@ -176,9 +176,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/notebooks/Issue-1/Scandinavian-Languages-Project/PlayDatas.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../../_sources/notebooks/Issue-1/EEBO-Project/README.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -196,7 +196,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/melaniewalsh/Cornell-DH-Notebooks/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Issue-1/Scandinavian-Languages-Project/PlayDatas.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/melaniewalsh/Cornell-DH-Notebooks/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Issue-1/EEBO-Project/README.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -212,36 +212,10 @@
 
         <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/melaniewalsh/Cornell-DH-Notebooks/main?urlpath=lab/tree/jupyterbook/notebooks/Issue-1/Scandinavian-Languages-Project/PlayDatas.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
     </div>
 
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="simple nav section-nav flex-column">
-</ul>
-
-        </nav>
         
     </div>
 </div>
@@ -250,91 +224,9 @@
         
               <div>
                 
-  <div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils</span>
-<span class="kn">import</span> <span class="nn">xml.etree.cElementTree</span>  <span class="k">as</span> <span class="nn">ET</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
-<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
-<span class="kn">import</span> <span class="nn">itertools</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">utils</span><span class="o">.</span><span class="n">data_dir</span> <span class="o">=</span> <span class="s2">&quot;/home/lm686/data/Swedish/lb/resurser/meningsmangder&quot;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/share/magpie/datasets/Swedish/klk-sv-1771-1879-vrt/klk-sv-1870.vrt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">reader</span><span class="p">:</span> 
-    <span class="n">file</span> <span class="o">=</span> <span class="s2">&quot;klk-sv-1900-s.vrt&quot;</span>
-    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> 
-    <span class="n">words</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>     
-        <span class="c1"># If at a text line and not just tags</span>
-        <span class="k">if</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;&lt;&quot;</span><span class="p">:</span> 
-            <span class="n">wordInfo</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-            <span class="c1">#print(wordInfo)</span>
-            <span class="n">words</span> <span class="o">+=</span> <span class="p">[</span><span class="n">wordInfo</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
-            <span class="n">cleanWord</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">clean_text</span><span class="p">(</span><span class="n">wordInfo</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cleanWord</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">count</span><span class="p">[</span><span class="n">cleanWord</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="c1">#count1880.update(wordInfo[0])</span>
-            
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span> <span class="o">==</span> <span class="n">utils</span><span class="o">.</span><span class="n">write_checkpoint</span><span class="p">:</span>
-            <span class="c1">#utils.words_to_lines(words, file, count)</span>
-            <span class="n">words</span> <span class="o">=</span> <span class="p">[]</span>
-            
-        <span class="n">i</span> <span class="o">+=</span><span class="mi">1</span>
-        <span class="c1"># if i ==500: break # uncomment for debug purposes</span>
-        
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;./Finnish/temp_txt/1870.pickle&quot;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> 
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;./Finnish/temp_txt/klk-sv-1880-s.vrt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">counter1880</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count1900</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;./Swedish/kubhist2-lundsweckoblad-1780.pickle&quot;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+  <div class="section" id="languages-project">
+<h1>Languages-Project<a class="headerlink" href="#languages-project" title="Permalink to this headline">¶</a></h1>
+<p>Modeling change in the meaning of English words from 1470-Present using word embeddings</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -350,7 +242,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./notebooks/Issue-1/Scandinavian-Languages-Project"
+            path: "./notebooks/Issue-1/EEBO-Project"
         },
         predefinedOutput: true
     }

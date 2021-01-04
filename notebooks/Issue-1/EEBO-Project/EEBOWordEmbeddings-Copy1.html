@@ -1,0 +1,1950 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EEBO Word Embeddings &#8212; Cornell Digital Humanities Notebook Series</title>
+    
+  <link rel="stylesheet" href="../../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://melaniewalsh.github.io/Cornell-DH-Notebooks/notebooks/Issue-1/EEBO-Project/EEBOWordEmbeddings-Copy1.html" />
+    <link rel="shortcut icon" href="../../../_static/clocktower.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://melaniewalsh.github.io/Cornell-DH-Notebooks/notebooks/Issue-1/EEBO-Project/EEBOWordEmbeddings-Copy1.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="EEBO Word Embeddings" />
+<meta property="og:description" content="EEBO Word Embeddings  Helen Liang &lt;br&gt; Last updated: 12/2/2020 &lt;br&gt;  Updates:  Topic modeling  Cleaning notebook  import sys import os from glob import glob fro" />
+<meta property="og:image"       content="https://melaniewalsh.github.io/Cornell-DH-Notebooks/_static/clocktower.jpeg" />
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../index.html">
+  
+  <img src="../../../_static/clocktower.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Cornell Digital Humanities Notebook Series</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  How To
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../How-To-Interact-With-This-Series.html">
+   Interact With This Series
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Issues
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../intro.html">
+   Issue 1
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="CleanEEBOEmbeddings.html">
+     Modeling Change in English Language from 1470-Present
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Scandinavian-Languages-Project/Scandinavian-Languages.html">
+     Scandinavian Languages Project
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Scandinavian-Languages-Project/Scandinavian-Languages.html#word-analysis">
+     3. Word Analysis
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/notebooks/Issue-1/EEBO-Project/EEBOWordEmbeddings-Copy1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/melaniewalsh/Cornell-DH-Notebooks"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/melaniewalsh/Cornell-DH-Notebooks/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Issue-1/EEBO-Project/EEBOWordEmbeddings-Copy1.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/melaniewalsh/Cornell-DH-Notebooks/main?urlpath=lab/tree/jupyterbook/notebooks/Issue-1/EEBO-Project/EEBOWordEmbeddings-Copy1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   EEBO Word Embeddings
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#updates">
+     <em>
+      Updates
+     </em>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preprocessing">
+     Preprocessing
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nearest-words">
+     Nearest Words
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualization">
+     Visualization
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#comparison-with-1890-english-history-corpus">
+       Comparison with 1890 English History Corpus
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#comparison-with-1990-english-history-corpus">
+       Comparison with 1990 English History Corpus
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#topic-modeling-on-eebo">
+   Topic Modeling on EEBO
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tokenization">
+     Tokenization
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lda-topic-modeling">
+     LDA Topic Modeling
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mimno-s-topic-model">
+     Mimno’s Topic Model
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pre-post-formation-of-the-royal-society">
+   Pre/Post Formation of the Royal Society
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#change-in-language-over-time-using-eebo">
+     Change in Language Over Time using EEBO
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="eebo-word-embeddings">
+<h1>EEBO Word Embeddings<a class="headerlink" href="#eebo-word-embeddings" title="Permalink to this headline">¶</a></h1>
+<p>Helen Liang
+<br>
+Last updated: 12/2/2020
+<br></p>
+<div class="section" id="updates">
+<h2><em>Updates</em>:<a class="headerlink" href="#updates" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Topic modeling</p></li>
+<li><p>Cleaning notebook</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">regex</span>
+<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
+<span class="kn">import</span> <span class="nn">gensim</span>
+<span class="kn">from</span> <span class="nn">gensim</span> <span class="kn">import</span> <span class="n">corpora</span>
+<span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">CoherenceModel</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>In this project, we are modeling change in the same English word from the Early Modern English period.
+<br>
+English is an unstable language, with spellings, usage, and word frequencies changing rapidly over short periods of time. Even within the same time period, there are many variation of the same word, lacking a consistent spelling. Because of the instability of English, we are interested in seeing how the meaning of words change over time using word embeddings.
+<br>
+There is relatively more stability in Early Modern English than Old or Middle English, hence the choice of early modern english texts. Our early modern corpus is <a class="reference external" href="https://quod.lib.umich.edu/e/eebogroup/">EEBO</a>, which will be compared with books from 1800-1990.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ALL_DIR</span> <span class="o">=</span> <span class="s1">&#39;date_txt/all/&#39;</span>
+<span class="k">def</span> <span class="nf">extract_year</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.xml&#39;</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="n">f_name</span> <span class="o">=</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">file</span><span class="p">))</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">f_name</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+                <span class="k">while</span> <span class="n">line</span> <span class="ow">and</span> <span class="s1">&#39;&lt;date&gt;&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span> 
+                    <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span> 
+                <span class="n">searcher</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;(?&lt;=&lt;date&gt;)[0-9]+(?=.*&lt;\/date&gt;)&#39;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span> <span class="c1"># match the first date that occurs between the tags &lt;date&gt; &lt;/date&gt;</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">searcher</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="n">f_name</span><span class="p">)</span>
+                <span class="n">year</span> <span class="o">=</span> <span class="n">searcher</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">century</span> <span class="o">=</span> <span class="n">year</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;00&quot;</span>
+                <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;date_txt&#39;</span><span class="p">,</span> <span class="n">century</span><span class="p">)</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">exist_ok</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> 
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">Path</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span> <span class="o">+</span> <span class="s2">&quot;.txt&quot;</span><span class="p">),</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">ALL_DIR</span><span class="p">,</span> <span class="n">exist_ok</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ALL_DIR</span><span class="p">,</span> <span class="n">Path</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span> <span class="o">+</span> <span class="s2">&quot;.txt&quot;</span><span class="p">),</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eebo</span> <span class="o">=</span> <span class="n">extract_year</span><span class="p">(</span><span class="s1">&#39;xml&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;date_txt/all/*&#39;</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25370
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;balanced_txt/**/*.txt&#39;</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20076
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;no_punct/*.txt&#39;</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>19946
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;xml/*&#39;</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25373
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="preprocessing">
+<h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h2>
+<p>To preprocess the text, we must first strip punctuation. A modified strip_punct.py script was run on all_text_v1_v2.txt
+(all of the EEBO text in one file) to create all_text_v1_v2_nopunct.txt, a clean version of all_text_v1_v2.txt with all non-words removed. A demo of strip punctuation is shown below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eebo</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;balanced_txt/050/A00778.headed.txt&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">strip_punct</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+    <span class="n">token_pattern</span> <span class="o">=</span> <span class="n">regex</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;(\w[\w</span><span class="se">\&#39;</span><span class="s2">\-]*\w|\w)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">f_name</span> <span class="ow">in</span> <span class="n">glob</span><span class="p">(</span><span class="n">directory</span> <span class="o">+</span> <span class="s2">&quot;**/*.txt&quot;</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">f_name</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">reader</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;no_punct&#39;</span><span class="p">,</span> <span class="n">exist_ok</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> 
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;no_punct&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f_name</span><span class="p">)),</span> <span class="s1">&#39;a+&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span> 
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span> 
+                    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;∣&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                    <span class="n">tokens</span> <span class="o">=</span> <span class="n">token_pattern</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                    <span class="n">writer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">strip_punct</span><span class="p">(</span><span class="s1">&#39;balanced_txt/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>balanced_txt/
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">strip_punct</span><span class="p">(</span><span class="s1">&#39;balanced_txt/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>balanced_txt/
+balanced_txt/000/B30830.headed.txt
+T1987A [ocm]18719324 205392
+AN Epistle of Love TO Friends in the Womens Meetings in London, &amp;c. To be read among them in the fear of God. DEar Friends and Sisters in Christ Jesus to you is the salu∣tation of my true and sincere Love, in the ever blessed pure and precious truth of our God: and to you is my Heart open, in the tender love of our heavenly Fa∣ther, who hath reached unto us, and lifted up the light of his countenance upon us, and caused the ever blessed light, of his everlasting day to shine among us; and hath made known the riches of his grace unto us, in order to fit and prepare us for his own work and service: To you my wellbeloved in the Lord, doth my Love and Life reach at this time; to you that are given up to serve the Lord his Truth and People; with chearfullness of Heart and readiness of mind, according to the measure of his grace committed unto you; and the breathings of my Soul unto the God of my Life is, that he may entich you all with his heavenly Gifts, and Graces, that you may be strong in the power of his might, and made able to perform the work and service of the Lord, in the Church of Christ in this your day, and serve up your Generation in faithfulness unto the end: Oh! my tender Friends, and well-beloved Sisters in the Lord, having a sence of your great Loss, in parting with one so dearly beloved of the Lord, and well esteemed among his people Anne Whitehead, who was a worthy Instrument, and faithful Labourer in the Church of Christ, one
+whom the Lord had furnished with his heavenly Wisdom, and so filled with divine vertues, that she was able and ready to be help∣ful in all concerns in the Church of Christ, both Spiritual and Temporal; this I was sensible of by that acquaintance I had with her: She was indeed one of the Lords worthies; who hath taken her unto himself; and he was right worthy of her; who had made her worthy of so blessed a work, and honourable a service in the Church of Christ: who blessed her labour and made i effectual for good (as is well known to you that have been Eye witnesses, and conversant with her) as by the many living testi∣monys from the faithful Brethren and Sisters is demonstrated, and I had true unity with you in it, and I was refreshed, and my heart was truely tendered, and broken before the Lord; and I was af∣fected with your care and diligence to leave it upon Record, that her worthiness may not be forgotten, nor her faithfulness be Bu∣ried in the Grave of Oblivion; I say my heart was affected in the reading thereof, and the desire of my Soul is, that we that are left behind, may walk in the same Path, and that her past publick restimony that she bore among you, may not be forgotten by you, but that it may be had in remembrance; for it was seasonable, and needful, viz. Against Pride and Vanity and superfluity in many of the younger sort that profess the Holy Truth: which is a grief to the righteous to see how it abounds among such in the City of London, and some other places: My spirit have been long grieved, and my Soul bowed down under the weight of it: but considering how many worthy Instruments attended your Meet∣ings, and not doubting but the Lord hath put it into their hearts to testifie against it, I was willing to be silent, and bear the burthen and mourn in secret to see how Pride and Vanity notwith∣standing hath taken place in many that profess the truth; so the true desire of my Soul is, that those concerned may lay it to heart, and be bowed down, and cast of that which causeth the weights, and brings the heavy burthens upon the honest hearted, and grieves the Holy spirit of the Lord, which is the Sin that so easily besets, to wit Pride, and is so delightful to the young people, that the Enemy hath captivated many and taken many in that Snare, to the dishonour of God and his precious truth which they profess; and that to the hurt of their own Souls; therefore in bowels of tender Love, I exhort you all whom it may concern, to whom this may
+come in the City of London, &amp;c. To incline your hearts to seek the Glory of God and the peace and welfare of your own Souls; and the advancement of the Holy truth that you profess, and are convinced of, which the God of all our mercies hath made known unto you: let your adorning be that comely ornament of a meek and quiet spirit, like Holy women professing godliness with good works: Oh! that I might prevail with you to follow the council of the Lord, and his servants, and mind the light of Christ in your own hearts and Consciences, to be guided by it into plainness and hu∣mility of mind, that you might not be evil examples to others round about you; for the Eyes of many in the Nation are upon you, and those that are inclined to take liberty in Pride and vanity, and superfluity, take strength by you; and when such have been cautioned and admonished to plainness as be∣comes the truth, they turn it upon us, and say, This is little to what Friends wear in London: (which is too true on some) therefore I intreat you to deny your selves, and take up the Cross and follow Christ Jesus, in the streight and narrow way that leads to Life and peace: And you that are Elders in the Church and Mothers in Israel, I intreat you watch over the younger for good, and be good patterns and Holy examples to them, and use all diligence to admonish, and counsel, with much tenderness in the wisdom and power of God, and judge down Pride and vanity, especially in your own Families, and give no liberty to your Children to please them in any thing that is contrary to truth: when they shall say to you such a one have a Chain of Gold, why may not I? or any other needless thing that may give occasion to the enemies of truth, to point at it, and say the Quakers are as ready to run into any new fashion as we, and so cause the weak to stumble, and turn the simple out of the way: therefore my dear Friends and Sisters, you that have a concern upon you for the Church, and are Elders in the Family of God, stand up in the power and Holy authority of God, to find the Babilonish garment, and the wedge of Gold, that hinders Israels prosperity, and put it out of the Camp; away with the naked Necks and Backs, the needless pinches and Ruffles the high dresses upon the Head, and tiring the Hair wanton Eyes walking and mincing as they go, and all superfluity that dishonours God and
+his truth; least instead of a Girdle he send a Rent; and instead of well-set Hair Baldness, and instead of a Stomacher a girding of Sackcloth, and burning instead of beauty, except you repent: therefore, I intreat you, receive it in Love, as a warning to you, laying aside all superfluity, and receive with meekness the ingrafted Word which is able to save you out of all those things (which grieves the good Spirit of the Lord:) and build you up in that most holy Faith which purifies the Heart, and gives Victory over the World. These things have been a grief unto me, and lay as a weight upon me for a long time: and when I heard the testimony of our dear Sister, which may be taken as the Dying words of so worthy an Instrument; it, I say, was more to be observed, and minded by those concerned. And it arose in my Heart, in the open∣ings of Life, now it is a seasonable time for me to ease my Spirit, and clear my self, to back or revive, this the last publick testi∣mony of our dear Sister, that it may not be forgotten by any that are concerned: so my dear Friends, I have this to say to you t love the Lord above all, and are given up in his service, in the works of Piety and Charity; you are the Chosen Vessels of the Lord, who will be with you, notwithstanding he hath removed and taken away such a faithful Labourer, and fellow helper from among you, yet the Lord is with you my tender Friends, yea, I say, Israels God is among you, and he will give you wisdom and strength, as you wait upon him; therefore be incouraged in the blessed work of the Lord, unto which you are called, and be bold and valiant for the truth, to withstand all the false pretend∣ers to love and unity, and are in a dividing Spirit, and secretly endeavouring, to disturb the Churches peace. And stand up in the strength of the Lord, and in the power of his might against all such which would destroy your comly Order (into which the Lord hath gathered you) and bring all into Confusion as they are: and as your Hearts are inclined to this good work, the Lord who is rich in mercy and goodness, he will fill your Qivers with pollished Arrows, and cause your Bow to abide in strength, and so furnish you with his heavenly vertues to inable you for his work and service, that he calls you to; that hard things will be made asie unto you; Ye beloved of the Lord, Gods power will surround you, and his Salvation will be as Walls and Bulwarks about you, and his pure Powerful presence will uphold
+you, and preserve you unto the end, Amen. So to the grace of God, I recommend you, that is able to keep both you and me, and all his Flock and Family every where, in the unity of the Spirit, which is the bond of true peace, and in the Holy fellowship of the Gospel of peace: where there is no seperation, for we have large experience of his goodness and mercies and favours; for our God hath done great things for us even beyond utterance; what Tongue is able to declare, his notable Acts, and his wonderful doings ong his faithful people? Oh! who can but praise him, and mag∣f;ie his glorious name and return thanksgiving with Hallelujah r all, for he is worthy saith my Soul, who am your Friend and r in the Lord Jesus Christ, and have thus far cleared my Con∣nce and eased my Spirit. Theophila Townsend. Bear with my plainness and homely expressi Charity make way for it, for the truths sake.
+A Testimony out of the Old Testament and New of the Lord sending his Prophets to declare his Judgments against the Disobedience and Pride of the Jews; and how his Judgments were Fulfilled upon them that did not Repent; and how the Apostle did ad∣monish and Reprove such as went into Pride and the Fashions of the World. THE Lord saith, Because the Daughters of Sion are Haughty, and walk with stretched forth Necks and wanton Eyes, walk∣ing and Mincing as they go, and making a Tinkling with their Feet; therefore the Lord will smite with a Scab the Crown of the Head of the Daughters of Sion; and the Lord will discover their Secret Parts; in that Day the Lord will take away the Bravery of their Tinkling Ornament about their Feet, and their Caules, and their Round Tyres like the Moon, the Chains, (Mark the Chains) and the Brace∣lets, and the Mufflers, the Bonnets and the Ornaments of the Legs, and the Head-bonds and the Tablets, and the Ear-rings, the Rings, and Nose-Jewels, the Changable Suits of Apparel, and the Mantles and the Wimples, and the Crisping-pins, the Glasses, and the fine Linnen, and the Hoods, and the Veils; and it shall come to pass, that instead of Sweet Smell, there shall be Stink, and instead of a Girdle, a Rent, and instead of a wel-set Hair Baldness, and instead of a Stoma∣cher, a girding of Sack-cloath, and Burning instead of Beauty Thy Men shall fall by the Sword, and thy Mighty in the War, and her Gates shall Lament and Mourn, and she being Desolate, shall sit upon the Ground, Isai. 3.16. to the End: And you may Read in 2. Kings 17. how that the Children of Israel were carried into Captivity into Assyria, for the King of Assyria he Besieged Sa∣maria, and after three years Besieging, he took it and carried away the ten Tribes, Children of Israel, into the Land of Assyria. And Isaiah according to the Word of the Lord, went to the Prophetess, and she Conceived and bore a Son, &amp;c.
+And the Lord said, Before the Child should have the Knowledge to Cry, My Father and my Mother, the Riches of Damascus, and the Spoil of Samaria, shall be taken away by the King of Assyria, Isai. 8.3, 4. Now here you may see what a Destruction came upon Samaria and the Jews, because of their Rebellion, and Disobedience, and their Haughtiness and Pride, as Isaiah cried against in Chap. 3. And then, What became of all their Haughtiness and Pride, and their Mincing, and their Tinkling with their Feet, and their Chains, and Bracelets, and Jewels, and Round Attire, with their Glasses, and Hoods, and Veils, when they were driven away by Droves by the King of Assyria, into Captivity, into Assyria, out of their own Land, Houfes and Cities? Then Isaiah&#39;s Prophecy was fulfilled upon those Haughty and Proud Jews; and did not Nebuchadnezzer afterwards carry away the two Tribes, and destroy Jerusalem, because of their Disobedience, Rebellion, Haughtiness, and Pride, who would not regard the Lord, nor his Prophets, therefore the Lord suffered them to be led away Prisoners, out of their own Houses, Cities, and Land, into Babylon, so stripp&#39;d them of their Pride, and caused them to be carried away into strange Countries; so was not Jeremiah&#39;s Prophecy fulfilled upon them? The Lord saith, Behold the day cometh that shall burn as an Oven, and all the Proud, yea, all that do Wickedly, shall be as Stubble; and the Day that cometh shall burn them up, saith the Lord of Host, that it shall leave them neither Root nor Branch; But unto them that fear my Name, shall the Son of Righteousness arise, with healing in his Wings, and ye shall go forth and grow up as the Calves in the Stall, Mal. 4.1, 2. Therefore it is good for all to keep out of Pride and Wickedness in Humility, lest they be Burnt up. And the Apostle commanded, that Women adorn themselves in modest Apparel with Shamefacedness and Sobriety, not with Brodered Hair, or Gold or Pearls, or Costly Array, but that which becometh Women professing Godliness, with good Works, 1 Tim. 2.9, 10. And likewise Peter in his general Epistle, saith to the Women whose Adorning, Let it not be that outward Adorning of Platting the Hair, and of wearing of Gold, and of putting on of Apparel, but let it be the hidden Man of the Heart, in that which is not Corruptible,
+even the Ornament of a meek and quiet Spirit, which is in the sight of God of a great price; for after this manner in the Old time, the Holy Women who trusted in God, Adorned themselves, being in Subjection unto their own Husbands, 1. Pet. 3.3, 4, 5. Here you may see both the Prophets and Apostles declared against the Pride and Haughtiness of People▪ both in the Old and New Testament. And the Apostle John saith in his first General Epistle to the Church of Christ, Love not the World, neither the things that are in the World; if any one love the World, the love of the Father is not in him; for all that is in the World, the Lust of the Flesh, the Lust of the Eye, and the Pride of Life, is not of the Father, but is of the World, and the World Passeth away and the Lust thereof, but he that doth the will of God, abideth for Ever, 1. John 2.2, 15.16, 17. Now here you may see an express Command to the true Chri∣stians the Church of Christ, against the Love of the World, and the Things of the World, and the Lust of the Eye, and the Lust of the Flesh, and the Pride of Life; and they that love the World, the love of the Father is not in them, and how that the World passeth away, and the Lust thereof; and therefore love not the Lust of the Eye, the Lust of the Flesh, and Pride of Life, which is not of the Father. And do not most, or all Christendom say the Lords Prayer, Our Father which art in Heaven, Hollowed be thy Name, &amp;c. and you that live in the Lust of the Flesh, and the Lust of the Eyes, and the Pride of your Life, which is not of the Father which is in Heaven, but of the World that Passeth away, and the Lust thereof; And is it not said, the Devil is the King of Pride, and therefore do not do his Lusts, but he that doth the will of God, abi∣deth for ever. And therefore consider when you say, Our Father which art in Heaven, Hollowed be thy Name, &amp;c. when you live in those things which are not of the Father, which is in Heaven, and daily Obey and love the Lust of your Eye, the Lust of your Flesh and the Pride of your Life, which is not of the Father, but of the World: And the Apostle John tells you, He that loves the World, the love of the Father is not in him. G. F. THE END.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Uncomment this</span>
+<span class="n">strip_punct</span><span class="p">(</span><span class="s1">&#39;balanced_txt/000/A00268.headed.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10376 99847128 12146
+articles to be enquired off within the prouince of yorke in the metropoliticall visitation of the most reuerend father in go edwin archbishoppe of yorke primate of england and metropolitane in the xix and xx yeare of the raigne of our most gratious souereigne lady elizabeth by the grace of god of england fraunce and ireland queene defendor of the fayth c 1577 1578 imprinted at london by william seres
+articles to be enqvired off within the prouince of yorke in the metropoliticall visitation of the most reuerend father in god edwin archbishoppe of yorke primate of england and metropolitane in the xix yeare of the raigne of our most gratious soueraigne lady elizabath by the grace of god of england fraunce and ireland queene defendour of the faith c first whether commō praier be sayd in your church or chappel vpon the sundaies holy dayes at conuenient houres reuerently distinctly and in such order without any kinde of alteration as is appoynted by the booke of commō prayer and whether your minister so turne himselfe and stande in such place of your church or chauncell as the people may best here the same and whether the holy sacraments be duely and reuerently ministred in such manner as is set foorth by the same booke and whether vpon wednesdayes and fridaies the letany and other prayers be sayd accordingly the comminatiō against sinners redde thryce yearely 2 whether you haue in your church or chappell all things necessarie and requisite for common prayer administration of the holy sacramentes specially the booke of common prayer with the newe kalender the psalter the bible of the largest volume the homilies bothe the firste and seconde tome a comely and decent table standing on a frame for the communion table with a fayre linnen cloth to lay vpon the same and some coueringe of silke buckram or other such like for the cleane kéeping thereof a fayre and comely communion cup of siluer and a couer of siluer for the same which may serue for the administration of the lordes bread a comely large
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="nearest-words">
+<h2>Nearest Words<a class="headerlink" href="#nearest-words" title="Permalink to this headline">¶</a></h2>
+<p>The slurm script fasttext.sub was then run on all_text_v1_v2_nopunct.txt to generate the word embedding vectors. Fasttext.sub calls fasttext using the cbow model to output embeddings/sgns_v1_v2_d100_1.vec, the human readable version of word embeddings. Tokenization has already been done by fasttext.</p>
+<p>After the slurm job has completed, run nearest.py to find the 20 nearest words to the input word.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="o">!</span>python nearest.py embeddings/sgns_v1_v2_d100_1.vec true
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clean_output</span><span class="p">(</span><span class="n">output</span><span class="p">):</span>
+    <span class="c1">#[^a-zA-Z-\&#39;]+</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;[\.0-9]+&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">output</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">read_vec_file</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="n">words_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">file</span><span class="p">):</span> 
+            <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span> 
+                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+                <span class="n">words_dict</span><span class="p">[</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+        <span class="k">return</span> <span class="n">words_dict</span>
+<span class="n">words_dict</span> <span class="o">=</span> <span class="n">read_vec_file</span><span class="p">(</span><span class="s1">&#39;embeddings/sgns_v1_v2_d100_1.vec&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find nearest function from nearest.py</span>
+<span class="k">def</span> <span class="nf">find_nearest</span><span class="p">(</span><span class="n">input_word</span><span class="p">,</span> <span class="n">embeddings</span><span class="p">,</span> <span class="n">vocab</span><span class="p">):</span>
+    <span class="n">query_id</span> <span class="o">=</span> <span class="n">vocab</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">input_word</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">embeddings</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+    <span class="n">normalizer</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">embeddings</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">embeddings</span> <span class="o">*=</span> <span class="n">normalizer</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">embeddings</span><span class="p">,</span> <span class="n">embeddings</span><span class="p">[</span><span class="n">query_id</span><span class="p">,:])</span>
+    <span class="n">sorted_list</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">vocab</span><span class="p">)),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="n">nearest</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">score</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">sorted_list</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.3f}</span><span class="se">\t</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">word</span><span class="p">))</span>
+        <span class="n">nearest</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">nearest</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>words_dict is a dictionary representation of the .vec file. Words from the corpus are keys and their respective vector representations are values. Take a look below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">words_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the
+[-0.18489848, 0.06808506, 0.25595662, 0.17188543, 0.037654955, 0.0051366338, -0.04474668, -0.043178707, 0.04380905, -0.3671004, 0.15313336, -0.13872255, -0.49349466, 0.1728954, 0.18529195, 0.038108274, 0.20786463, 0.15146597, -0.044726238, 0.049716745, -0.26126888, -0.10828109, -0.04244245, 0.01174636, 0.04659954, 0.26178488, 0.08462093, -0.03321066, -0.020420447, -0.24766025, -0.050465543, -0.28281528, 0.13968821, -0.3628608, 0.07868071, 0.068998545, -0.056997843, 0.19090831, -0.15597442, 0.1672764, 0.20952386, -0.100779526, -0.08410791, 0.009130444, 0.17206787, -0.05249392, -0.14769125, -0.2557637, -0.14989932, -0.055034913, -0.27376437, 0.17862496, 0.06681945, -0.15870348, 0.055367753, -0.21392596, -0.24123484, 0.29547364, 0.22669992, 0.17882921, -0.22640234, -0.30965278, 0.16120891, 0.048422385, 0.05698442, 0.17416024, 0.13867001, -0.17245133, 0.11170741, -0.020344907, 0.06829954, 0.043494076, -0.08843164, -0.11732712, -0.2400157, 0.049039885, 0.06697231, 0.24299929, 0.3211362, 0.1534983, 0.16074911, -0.004460037, -0.24492615, 0.015541584, 0.03150539, 0.018963872, -0.022136496, 0.009280925, 0.11890575, 0.119002886, 0.010449158, 0.20215543, 0.26147762, 0.009835368, -0.2393157, -0.030447803, 0.027741708, 0.0014076424, 0.13687038, -0.054821152]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="visualization">
+<h2>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">¶</a></h2>
+<p>The EEBO word embeddings are visualized below. The green indicates the ranking of a neighbor word of how close it is to the input word according to nearest.py. The distance of a neighbor word to the input word is closeness determined by PCA. The words we will be looking at are ‘true’ and ‘awe’.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Word</p></th>
+<th class="head"><p>Modern Meaning</p></th>
+<th class="head"><p>Expected ME Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>true</p></td>
+<td><p>True (not False)</p></td>
+<td><p>True/just/righteous</p></td>
+</tr>
+<tr class="row-odd"><td><p>awe</p></td>
+<td><p>awe/fear/terror</p></td>
+<td><p>awesome/amazing</p></td>
+</tr>
+</tbody>
+</table>
+<p>The embeddings graph was created with help from <a class="reference external" href="https://towardsdatascience.com/visualization-of-word-embedding-vectors-using-gensim-and-pca-8f592a5d3354">reference</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">visualize_embeddings</span><span class="p">(</span><span class="n">nearest_words</span><span class="p">,</span> <span class="n">target_word</span><span class="p">,</span> <span class="n">words_dict</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Word Embedding Space&#39;</span><span class="p">):</span> 
+    <span class="n">vectors</span> <span class="o">=</span> <span class="p">[</span><span class="n">words_dict</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">nearest_words</span><span class="p">]</span>
+    <span class="n">two_dim</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">vectors</span><span class="p">)[:,:</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">x_length</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">two_dim</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">two_dim</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x_length</span><span class="p">)</span>
+    <span class="n">y_length</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">two_dim</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">two_dim</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">y_length</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">two_dim</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">two_dim</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="n">linewidths</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;PC1&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;PC2&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nearest_words</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">word</span> <span class="o">==</span> <span class="n">target_word</span><span class="p">:</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">two_dim</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">0.02</span><span class="o">*</span><span class="n">x_length</span><span class="p">,</span><span class="n">two_dim</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mf">0.015</span><span class="o">*</span><span class="n">y_length</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">)</span>
+        
+        <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">two_dim</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">0.01</span><span class="o">*</span><span class="n">x_length</span><span class="p">,</span><span class="n">two_dim</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mf">0.05</span><span class="o">*</span><span class="n">y_length</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;input word&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="n">two_dim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">two_dim</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">two_dim</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="p">),</span>
+        <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.05</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="n">clean_output</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+<span class="n">visualize_embeddings</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">words_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Some notable observations for ‘true’ in EEBO and PCA:
+<br></p>
+<ol class="simple">
+<li><p>The word embeddings visualized above capture synonyms, alternate spellings, and co-occurrence. An example of a synonym is “truth” or “sincere”. An example of alternate spelling is “trew” or “tru”. An example of co-occurrence is christian and and certainly (i.e. true christian or certainly true)
+<br></p></li>
+<li><p>PCA and nearest neighbors have different similarity rankings. For example, the word “verity” is the 7th nearest word to true using dot product but after reducing vector dimensions down to 2, it is roughly the 2nd closest word. The PCA graph therefore is not a perfect visualization of the nearest words.</p></li>
+<li><p>Some clusters of words with similar meanings are revealed in this graph. The religious cluster on the top left with words such as faith and religion. There there “truth” and “verity” cluster on bottom left. “certainly” and “indeed” are synonyms and form the cluster meaning agreement on the bottom left.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_awe</span> <span class="o">=</span> <span class="o">!</span>python nearest.py embeddings/sgns_v1_v2_d100_1.vec awe
+<span class="n">output_awe</span> <span class="o">=</span> <span class="n">clean_output</span><span class="p">(</span><span class="n">output_awe</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output_awe</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;awe&#39;, &#39;awes&#39;, &#39;dread&#39;, &#39;awfull&#39;, &#39;awefull&#39;, &#39;aw&#39;, &#39;terrour&#39;, &#39;feare&#39;, &#39;awed&#39;, &#39;awful&#39;, &#39;terror&#39;, &#39;awd&#39;, &#39;tremble&#39;, &#39;terrifie&#39;, &#39;daunt&#39;, &#39;dreading&#39;, &#39;reverential&#39;, &#39;dreade&#39;, &#39;affright&#39;, &#39;overawe&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">visualize_embeddings</span><span class="p">(</span><span class="n">output_awe</span><span class="p">,</span> <span class="s1">&#39;awe&#39;</span><span class="p">,</span> <span class="n">words_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.5739378722161357
+4.018452160636973
+</pre></div>
+</div>
+<img alt="../../../_images/EEBOWordEmbeddings-Copy1_31_1.png" src="../../../_images/EEBOWordEmbeddings-Copy1_31_1.png" />
+</div>
+</div>
+<p>Some notable clusters ‘awe’ in EEBO:
+<br></p>
+<ol class="simple">
+<li><p>Terror as a Synonym. The words “dreading”, “feare”, “tremble” in the bottom left corner form this definition.</p></li>
+<li><p>Bad as a Synonym. The cluster of various spellings of ‘awful’ in the bottom right form this cluster.</p></li>
+<li><p>Reverential as a Synonym. Despite being ranked as 16 (out of 20) and located in the far bottom right corner, ‘reverential’ could be an emerging definition for ‘awe’ that is more similar to the way we use ‘awe’ positively today.</p></li>
+</ol>
+<div class="section" id="comparison-with-1890-english-history-corpus">
+<h3>Comparison with 1890 English History Corpus<a class="headerlink" href="#comparison-with-1890-english-history-corpus" title="Permalink to this headline">¶</a></h3>
+<p>The English History Corpus uses data and embeddings from <a class="reference external" href="https://nlp.stanford.edu/projects/histwords/">here</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;sgns/1890-vocab.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">vocab</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modern_embeddings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;sgns/1890-w.npy&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_true</span> <span class="o">=</span> <span class="n">find_nearest</span><span class="p">(</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">modern_embeddings</span><span class="p">,</span> <span class="n">vocab</span><span class="p">)</span>
+<span class="n">output_true</span> <span class="o">=</span> <span class="n">clean_output</span><span class="p">(</span><span class="n">output_true</span><span class="p">)</span>
+<span class="n">true_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">w</span><span class="p">:</span><span class="n">modern_embeddings</span><span class="p">[</span><span class="n">vocab</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">w</span><span class="p">)]</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">output_true</span><span class="p">}</span>
+<span class="n">visualize_embeddings</span><span class="p">(</span><span class="n">output_true</span><span class="p">,</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">true_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1.  1.  1. ... nan nan nan]
+1.000	true
+0.448	truth
+0.389	genuine
+0.385	false
+0.376	ideal
+0.365	nevertheless
+0.359	essence
+0.356	axiomatic
+0.352	believed
+0.349	demonstrably
+0.348	meaning
+0.347	reality
+0.344	untrue
+0.341	sincere
+0.340	truer
+0.340	faith
+0.334	statement
+0.332	real
+0.331	correct
+0.323	because
+0.9873966504203289
+0.856515680236961
+</pre></div>
+</div>
+<img alt="../../../_images/EEBOWordEmbeddings-Copy1_37_1.png" src="../../../_images/EEBOWordEmbeddings-Copy1_37_1.png" />
+</div>
+</div>
+<p>Exciting to see that the meaning of ‘true’ has shifted a lot from ME to Late Modern English!
+Some things to note for ‘true’ in 1800:
+<br></p>
+<ol class="simple">
+<li><p>The religious co-occurrence has mostly disappeared (as expected)! ‘Faith’ is the only word left and is ranked 15 out of 20.</p></li>
+<li><p>Many, many new definitions of ‘true’ have emerged. This could in part be due to the greater diversity of modern day fiction texts and topics. ‘True’ today could mean ‘real’ (bottom left cluster) or ‘truth’ (middle bottom cluster) or correct/false (bottom right cluster) or genuine/sincere (top left cluster).</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_awe</span> <span class="o">=</span> <span class="n">find_nearest</span><span class="p">(</span><span class="s1">&#39;awe&#39;</span><span class="p">,</span> <span class="n">modern_embeddings</span><span class="p">,</span> <span class="n">vocab</span><span class="p">)</span>
+<span class="n">output_awe</span> <span class="o">=</span> <span class="n">clean_output</span><span class="p">(</span><span class="n">output_awe</span><span class="p">)</span>
+<span class="n">awe_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">w</span><span class="p">:</span><span class="n">modern_embeddings</span><span class="p">[</span><span class="n">vocab</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">w</span><span class="p">)]</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">output_awe</span><span class="p">}</span>
+<span class="n">visualize_embeddings</span><span class="p">(</span><span class="n">output_awe</span><span class="p">,</span> <span class="s1">&#39;awe&#39;</span><span class="p">,</span> <span class="n">awe_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1.  1.  1. ... nan nan nan]
+1.000	awe
+0.536	reverence
+0.514	terror
+0.514	veneration
+0.479	horror
+0.460	dread
+0.453	inspire
+0.445	wonder
+0.436	amazement
+0.431	admiration
+0.416	dismay
+0.414	astonishment
+0.408	superstitious
+0.394	beholder
+0.392	sadness
+0.391	solemnity
+0.381	inspiring
+0.379	awful
+0.375	speechless
+0.375	inspired
+0.9810345491670139
+1.0859115367774033
+</pre></div>
+</div>
+<img alt="../../../_images/EEBOWordEmbeddings-Copy1_39_1.png" src="../../../_images/EEBOWordEmbeddings-Copy1_39_1.png" />
+</div>
+</div>
+<p>Similarly, ‘awe’ has also become overloaded with meaning in Late Modern English.
+For example, some synonyms are amazement/astonishment in bottom right, reverence/inspired in the bottom left, sadness/awful in top middle, and terror/horror in the middle right.</p>
+</div>
+<div class="section" id="comparison-with-1990-english-history-corpus">
+<h3>Comparison with 1990 English History Corpus<a class="headerlink" href="#comparison-with-1990-english-history-corpus" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;sgns/1990-vocab.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">vocab</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">modern_embeddings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;sgns/1990-w.npy&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_true</span> <span class="o">=</span> <span class="n">find_nearest</span><span class="p">(</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">modern_embeddings</span><span class="p">,</span> <span class="n">vocab</span><span class="p">)</span>
+<span class="n">output_true</span> <span class="o">=</span> <span class="n">clean_output</span><span class="p">(</span><span class="n">output_true</span><span class="p">)</span>
+<span class="n">true_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">w</span><span class="p">:</span><span class="n">modern_embeddings</span><span class="p">[</span><span class="n">vocab</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">w</span><span class="p">)]</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">output_true</span><span class="p">}</span>
+<span class="n">visualize_embeddings</span><span class="p">(</span><span class="n">output_true</span><span class="p">,</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">true_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1.  1.  1. ... nan nan nan]
+1.000	true
+0.482	false
+0.441	truth
+0.408	indeed
+0.402	is
+0.399	correct
+0.397	though
+0.390	converse
+0.386	untrue
+0.383	say
+0.378	certainly
+0.375	believe
+0.371	believes
+0.370	quite
+0.367	inasmuch
+0.361	discern
+0.356	falsity
+0.353	if
+0.353	knows
+0.350	whilst
+1.0307229629381038
+1.0102473530785536
+</pre></div>
+</div>
+<img alt="../../../_images/EEBOWordEmbeddings-Copy1_43_1.png" src="../../../_images/EEBOWordEmbeddings-Copy1_43_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_awe</span> <span class="o">=</span> <span class="n">find_nearest</span><span class="p">(</span><span class="s1">&#39;awe&#39;</span><span class="p">,</span> <span class="n">modern_embeddings</span><span class="p">,</span> <span class="n">vocab</span><span class="p">)</span>
+<span class="n">output_awe</span> <span class="o">=</span> <span class="n">clean_output</span><span class="p">(</span><span class="n">output_awe</span><span class="p">)</span>
+<span class="n">awe_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">w</span><span class="p">:</span><span class="n">modern_embeddings</span><span class="p">[</span><span class="n">vocab</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">w</span><span class="p">)]</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">output_awe</span><span class="p">}</span>
+<span class="n">visualize_embeddings</span><span class="p">(</span><span class="n">output_awe</span><span class="p">,</span> <span class="s1">&#39;awe&#39;</span><span class="p">,</span> <span class="n">awe_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1.  1.  1. ... nan nan nan]
+1.000	awe
+0.535	reverence
+0.519	astonishment
+0.515	admiration
+0.502	amazement
+0.482	dread
+0.457	wonder
+0.444	horror
+0.440	fascination
+0.435	inspiring
+0.434	delight
+0.431	gazed
+0.414	indignation
+0.406	curiosity
+0.404	dismay
+0.404	gratitude
+0.403	bewildered
+0.401	feeling
+0.401	contempt
+0.400	sadness
+0.9803908669641848
+0.9156536351305079
+</pre></div>
+</div>
+<img alt="../../../_images/EEBOWordEmbeddings-Copy1_44_1.png" src="../../../_images/EEBOWordEmbeddings-Copy1_44_1.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="topic-modeling-on-eebo">
+<h1>Topic Modeling on EEBO<a class="headerlink" href="#topic-modeling-on-eebo" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="tokenization">
+<h2>Tokenization<a class="headerlink" href="#tokenization" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="n">stop_words</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
+
+<span class="n">tokens</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">as</span> <span class="n">reader</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span> 
+        <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="c1"># Original text too large, take only 1/15 of it </span>
+            <span class="n">line_tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">token</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">token</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stop_words</span><span class="p">]</span>
+            <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line_tokens</span><span class="p">)</span>
+    <span class="n">dictionary</span> <span class="o">=</span> <span class="n">corpora</span><span class="o">.</span><span class="n">Dictionary</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+    <span class="n">corpus</span> <span class="o">=</span> <span class="p">[</span><span class="n">dictionary</span><span class="o">.</span><span class="n">doc2bow</span><span class="p">(</span><span class="n">text_lst</span><span class="p">)</span> <span class="k">for</span> <span class="n">text_lst</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">]</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">corpus</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;corpus.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">))</span>
+    <span class="n">dictionary</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;dictionary.gensim&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="lda-topic-modeling">
+<h2>LDA Topic Modeling<a class="headerlink" href="#lda-topic-modeling" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## This is better run as a slurm job</span>
+<span class="n">NUM_TOPICS</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">corpus</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;corpus.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+<span class="n">dictionary</span> <span class="o">=</span> <span class="n">corpora</span><span class="o">.</span><span class="n">Dictionary</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;dictionary.gensim&#39;</span><span class="p">)</span>
+<span class="n">ldamodel</span> <span class="o">=</span> <span class="n">gensim</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">ldamulticore</span><span class="o">.</span><span class="n">LdaMulticore</span><span class="p">(</span><span class="n">corpus</span><span class="p">,</span> <span class="n">num_topics</span> <span class="o">=</span> <span class="n">NUM_TOPICS</span><span class="p">,</span> <span class="n">id2word</span><span class="o">=</span><span class="n">dictionary</span><span class="p">,</span> <span class="n">passes</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">workers</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">ldamodel</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;model4.gensim&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corpus</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;corpus.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+<span class="n">dictionary</span> <span class="o">=</span> <span class="n">corpora</span><span class="o">.</span><span class="n">Dictionary</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;dictionary.gensim&#39;</span><span class="p">)</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">dictionary</span><span class="o">.</span><span class="n">cfs</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="n">w</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>god
+may
+one
+shall
+upon
+man
+hath
+yet
+great
+christ
+men
+good
+would
+made
+first
+also
+lord
+time
+thou
+much
+many
+haue
+must
+make
+thy
+said
+king
+things
+church
+therefore
+without
+unto
+say
+like
+well
+come
+two
+see
+doth
+might
+let
+vnto
+take
+people
+life
+though
+day
+world
+place
+thing
+thus
+part
+could
+hee
+power
+true
+way
+thee
+faith
+called
+word
+others
+death
+holy
+another
+every
+doe
+know
+law
+cannot
+saith
+reason
+gods
+bee
+spirit
+nothing
+put
+body
+done
+name
+onely
+cause
+nature
+little
+never
+set
+vpon
+love
+words
+give
+father
+long
+self
+whole
+heart
+grace
+either
+came
+end
+taken
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">dictionary</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1170057
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dictionary</span><span class="o">.</span><span class="n">filter_extremes</span><span class="p">(</span><span class="n">no_above</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">dictionary</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ldamodel</span> <span class="o">=</span> <span class="n">gensim</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">ldamodel</span><span class="o">.</span><span class="n">LdaModel</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;model4.gensim&#39;</span><span class="p">)</span>
+<span class="n">topics</span> <span class="o">=</span> <span class="n">ldamodel</span><span class="o">.</span><span class="n">print_topics</span><span class="p">(</span><span class="n">num_words</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">topic</span> <span class="ow">in</span> <span class="n">topics</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">topic</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0, &#39;0.011*&quot;god&quot; + 0.010*&quot;haue&quot; + 0.007*&quot;hee&quot; + 0.007*&quot;vnto&quot; + 0.006*&quot;bee&quot; + 0.006*&quot;doe&quot; + 0.006*&quot;man&quot; + 0.006*&quot;shall&quot; + 0.005*&quot;hath&quot; + 0.005*&quot;may&quot; + 0.005*&quot;one&quot; + 0.005*&quot;yet&quot; + 0.005*&quot;vpon&quot; + 0.005*&quot;good&quot; + 0.005*&quot;wee&quot; + 0.004*&quot;men&quot; + 0.004*&quot;christ&quot; + 0.004*&quot;thou&quot; + 0.004*&quot;owne&quot; + 0.004*&quot;himselfe&quot;&#39;)
+
+
+(1, &#39;0.010*&quot;haue&quot; + 0.008*&quot;whiche&quot; + 0.008*&quot;vnto&quot; + 0.007*&quot;hym&quot; + 0.006*&quot;god&quot; + 0.005*&quot;also&quot; + 0.005*&quot;theyr&quot; + 0.005*&quot;lorde&quot; + 0.005*&quot;man&quot; + 0.004*&quot;thou&quot; + 0.004*&quot;shall&quot; + 0.004*&quot;men&quot; + 0.004*&quot;tyme&quot; + 0.004*&quot;hys&quot; + 0.004*&quot;suche&quot; + 0.003*&quot;good&quot; + 0.003*&quot;made&quot; + 0.003*&quot;one&quot; + 0.003*&quot;sayd&quot; + 0.003*&quot;shal&quot;&#39;)
+
+
+(2, &#39;0.007*&quot;one&quot; + 0.007*&quot;water&quot; + 0.007*&quot;may&quot; + 0.006*&quot;two&quot; + 0.005*&quot;also&quot; + 0.005*&quot;take&quot; + 0.004*&quot;like&quot; + 0.004*&quot;part&quot; + 0.004*&quot;parts&quot; + 0.004*&quot;make&quot; + 0.004*&quot;little&quot; + 0.004*&quot;first&quot; + 0.004*&quot;much&quot; + 0.004*&quot;body&quot; + 0.003*&quot;great&quot; + 0.003*&quot;must&quot; + 0.003*&quot;three&quot; + 0.003*&quot;made&quot; + 0.003*&quot;upon&quot; + 0.003*&quot;called&quot;&#39;)
+
+
+(3, &#39;0.015*&quot;est&quot; + 0.013*&quot;non&quot; + 0.007*&quot;per&quot; + 0.007*&quot;quod&quot; + 0.007*&quot;qui&quot; + 0.006*&quot;que&quot; + 0.005*&quot;cum&quot; + 0.005*&quot;sed&quot; + 0.004*&quot;pro&quot; + 0.004*&quot;quae&quot; + 0.004*&quot;vel&quot; + 0.004*&quot;esse&quot; + 0.003*&quot;hoc&quot; + 0.003*&quot;sunt&quot; + 0.003*&quot;lib&quot; + 0.003*&quot;nec&quot; + 0.003*&quot;quam&quot; + 0.002*&quot;aut&quot; + 0.002*&quot;enim&quot; + 0.002*&quot;agus&quot;&#39;)
+
+
+(4, &#39;0.011*&quot;god&quot; + 0.009*&quot;church&quot; + 0.009*&quot;christ&quot; + 0.008*&quot;may&quot; + 0.007*&quot;one&quot; + 0.005*&quot;upon&quot; + 0.005*&quot;first&quot; + 0.005*&quot;yet&quot; + 0.005*&quot;hath&quot; + 0.005*&quot;law&quot; + 0.005*&quot;things&quot; + 0.004*&quot;faith&quot; + 0.004*&quot;therefore&quot; + 0.004*&quot;man&quot; + 0.004*&quot;must&quot; + 0.004*&quot;men&quot; + 0.004*&quot;power&quot; + 0.004*&quot;also&quot; + 0.004*&quot;shall&quot; + 0.004*&quot;say&quot;&#39;)
+
+
+(5, &#39;0.013*&quot;king&quot; + 0.007*&quot;said&quot; + 0.007*&quot;great&quot; + 0.006*&quot;time&quot; + 0.006*&quot;upon&quot; + 0.005*&quot;made&quot; + 0.005*&quot;one&quot; + 0.004*&quot;two&quot; + 0.004*&quot;shall&quot; + 0.004*&quot;sir&quot; + 0.003*&quot;england&quot; + 0.003*&quot;would&quot; + 0.003*&quot;kings&quot; + 0.003*&quot;first&quot; + 0.003*&quot;came&quot; + 0.003*&quot;many&quot; + 0.003*&quot;parliament&quot; + 0.003*&quot;sent&quot; + 0.003*&quot;day&quot; + 0.003*&quot;also&quot;&#39;)
+
+
+(6, &#39;0.014*&quot;god&quot; + 0.008*&quot;shall&quot; + 0.008*&quot;upon&quot; + 0.007*&quot;thy&quot; + 0.007*&quot;thou&quot; + 0.007*&quot;may&quot; + 0.006*&quot;man&quot; + 0.006*&quot;lord&quot; + 0.006*&quot;would&quot; + 0.005*&quot;good&quot; + 0.005*&quot;yet&quot; + 0.005*&quot;men&quot; + 0.005*&quot;love&quot; + 0.004*&quot;unto&quot; + 0.004*&quot;one&quot; + 0.004*&quot;great&quot; + 0.004*&quot;hath&quot; + 0.004*&quot;thee&quot; + 0.004*&quot;much&quot; + 0.004*&quot;make&quot;&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Evaluate our LDA model using u-mass coherence score. The closer to 0 the better.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corpus</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;corpus.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+<span class="n">dictionary</span> <span class="o">=</span> <span class="n">corpora</span><span class="o">.</span><span class="n">Dictionary</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;dictionary.gensim&#39;</span><span class="p">)</span>
+<span class="n">coherence_model_lda</span> <span class="o">=</span> <span class="n">CoherenceModel</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">ldamodel</span><span class="p">,</span> <span class="n">corpus</span><span class="o">=</span><span class="n">corpus</span><span class="p">,</span> <span class="n">dictionary</span><span class="o">=</span><span class="n">dictionary</span><span class="p">,</span> <span class="n">coherence</span><span class="o">=</span><span class="s1">&#39;u_mass&#39;</span><span class="p">)</span>
+<span class="n">coherence_lda</span> <span class="o">=</span> <span class="n">coherence_model_lda</span><span class="o">.</span><span class="n">get_coherence</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> Coherence Score: &#39;</span><span class="p">,</span> <span class="n">coherence_lda</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Coherence Score:  -1.7368693174812166
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="mimno-s-topic-model">
+<h2>Mimno’s Topic Model<a class="headerlink" href="#mimno-s-topic-model" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_topics</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">doc_smoothing</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">word_smoothing</span> <span class="o">=</span> <span class="mf">0.01</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="o">%</span><span class="k">load_ext</span> cython
+
+<span class="kn">import</span> <span class="nn">re</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">random</span><span class="o">,</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">default_timer</span> <span class="k">as</span> <span class="n">timer</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">clear_output</span><span class="p">,</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">Latex</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+
+<span class="n">word_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;\w[\w\-</span><span class="se">\&#39;</span><span class="s2">]*\w|\w&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The cython extension is already loaded. To reload it, use:
+  %reload_ext cython
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">cython</span>
+from cython.view cimport array as cvarray
+import numpy as np
+import random
+from timeit import default_timer as timer
+
+class Document:
+    
+    def __init__(self, long[:] doc_tokens, long[:] doc_topics, long[:] topic_changes, long[:] doc_topic_counts):
+        self.doc_tokens = doc_tokens
+        self.doc_topics = doc_topics
+        self.topic_changes = topic_changes
+        self.doc_topic_counts = doc_topic_counts
+
+cdef class TopicModel:
+    
+    cdef long[:] topic_totals
+    cdef long[:,:] word_topics
+    cdef int num_topics
+    cdef int vocab_size
+    
+    cdef double[:] topic_probs
+    cdef double[:] topic_normalizers
+    cdef float doc_smoothing
+    cdef float word_smoothing
+    cdef float smoothing_times_vocab_size
+    
+    documents = []
+    vocabulary = []
+    
+    def __init__(self, num_topics, vocabulary, doc_smoothing, word_smoothing):
+        self.num_topics = num_topics
+        self.vocabulary.extend(vocabulary)
+        self.vocab_size = len(vocabulary)
+        
+        self.doc_smoothing = doc_smoothing
+        self.word_smoothing = word_smoothing
+        self.smoothing_times_vocab_size = word_smoothing * self.vocab_size
+        
+        self.topic_totals = np.zeros(num_topics, dtype=int)
+        self.word_topics = np.zeros((self.vocab_size, num_topics), dtype=int)
+    
+    def clear_documents(self):
+        self.documents.clear()
+    
+    def add_document(self, doc):
+        cdef int word_id, topic
+        
+        self.documents.append(doc)
+        
+        for i in range(len(doc.doc_tokens)):
+            word_id = doc.doc_tokens[i]
+            topic = random.randrange(self.num_topics)
+            doc.doc_topics[i] = topic
+            
+            self.word_topics[word_id,topic] += 1
+            self.topic_totals[topic] += 1
+            doc.doc_topic_counts[topic] += 1
+            
+    def sample(self, iterations):
+        cdef int old_topic, new_topic, word_id, topic, i, doc_length
+        cdef double sampling_sum = 0
+        cdef double sample
+        cdef long[:] word_topic_counts
+        
+        cdef long[:] doc_tokens
+        cdef long[:] doc_topics
+        cdef long[:] doc_topic_counts
+        cdef long[:] topic_changes
+        
+        cdef double[:] uniform_variates
+        cdef double[:] topic_probs = np.zeros(self.num_topics, dtype=float)
+        cdef double[:] topic_normalizers = np.zeros(self.num_topics, dtype=float)
+        
+        for topic in range(self.num_topics):
+            topic_normalizers[topic] = 1.0 / (self.topic_totals[topic] + self.smoothing_times_vocab_size)
+        
+        for iteration in range(iterations):
+            for document in self.documents:
+                doc_tokens = document.doc_tokens
+                doc_topics = document.doc_topics
+                doc_topic_counts = document.doc_topic_counts
+                topic_changes = document.topic_changes
+                
+                doc_length = len(document.doc_tokens)
+                uniform_variates = np.random.random_sample(doc_length)
+                
+                for i in range(doc_length):
+                    word_id = doc_tokens[i]
+                    old_topic = doc_topics[i]
+                    word_topic_counts = self.word_topics[word_id,:]
+        
+                    ## erase the effect of this token
+                    word_topic_counts[old_topic] -= 1
+                    self.topic_totals[old_topic] -= 1
+                    doc_topic_counts[old_topic] -= 1
+        
+                    topic_normalizers[old_topic] = 1.0 / (self.topic_totals[old_topic] + self.smoothing_times_vocab_size)
+        
+                    ###
+                    ### SAMPLING DISTRIBUTION
+                    ###
+        
+                    sampling_sum = 0.0
+                    for topic in range(self.num_topics):
+                        topic_probs[topic] = (doc_topic_counts[topic] + self.doc_smoothing) * (word_topic_counts[topic] + self.word_smoothing) * topic_normalizers[topic]
+                        sampling_sum += topic_probs[topic]
+
+                    sample = uniform_variates[i] * sampling_sum
+        
+                    new_topic = 0
+                    while sample &gt; topic_probs[new_topic]:
+                        sample -= topic_probs[new_topic]
+                        new_topic += 1
+            
+                    ## add the effect of this token back in
+                    word_topic_counts[new_topic] += 1
+                    self.topic_totals[new_topic] += 1
+                    doc_topic_counts[new_topic] += 1
+                    topic_normalizers[new_topic] = 1.0 / (self.topic_totals[new_topic] + self.smoothing_times_vocab_size)
+
+                    doc_topics[i] = new_topic
+        
+                    if new_topic != old_topic:
+                        #pass
+                        topic_changes[i] += 1
+
+    def topic_words(self, int topic, n_words=12):
+        sorted_words = sorted(zip(self.word_topics[:,topic], self.vocabulary), reverse=True)
+        return &quot; &quot;.join([w for x, w in sorted_words[:n_words]])
+
+    def print_all_topics(self):
+        for topic in range(self.num_topics):
+            print(topic, self.topic_words(topic))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_topics</span> <span class="o">=</span> <span class="mi">50</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="n">stop_words</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
+        
+<span class="n">word_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="n">documents</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;all_text_v1_v2_nopunct.txt&quot;</span><span class="p">):</span>
+    <span class="c1">#line = line.lower()</span>
+    <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">line_tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">token</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">token</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stop_words</span><span class="p">]</span>
+        <span class="n">word_counts</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">line_tokens</span><span class="p">)</span>
+        <span class="n">doc_topic_counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_topics</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">documents</span><span class="o">.</span><span class="n">append</span><span class="p">({</span> <span class="s2">&quot;original&quot;</span><span class="p">:</span> <span class="n">line</span><span class="p">,</span> <span class="s2">&quot;token_strings&quot;</span><span class="p">:</span> <span class="n">line_tokens</span><span class="p">,</span> <span class="s2">&quot;topic_counts&quot;</span><span class="p">:</span> <span class="n">doc_topic_counts</span> <span class="p">})</span>
+
+<span class="c1"># Get vocabulary</span>
+<span class="n">vocabulary</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">word_counts</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">word_ids</span> <span class="o">=</span> <span class="p">{</span> <span class="n">w</span><span class="p">:</span> <span class="n">i</span> <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">vocabulary</span><span class="p">)</span> <span class="p">}</span>
+
+<span class="c1">## With the vocabulary, go back and create arrays of numeric word IDs</span>
+<span class="k">for</span> <span class="n">document</span> <span class="ow">in</span> <span class="n">documents</span><span class="p">:</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="n">document</span><span class="p">[</span><span class="s2">&quot;token_strings&quot;</span><span class="p">]</span>
+    <span class="n">doc_topic_counts</span> <span class="o">=</span> <span class="n">document</span><span class="p">[</span><span class="s2">&quot;topic_counts&quot;</span><span class="p">]</span>
+    
+    <span class="n">doc_tokens</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">doc_topics</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">topic_changes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
+        <span class="n">doc_tokens</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">word_ids</span><span class="p">[</span><span class="n">w</span><span class="p">]</span>
+        <span class="c1">## topics will be initialized by the model</span>
+    
+    <span class="n">document</span><span class="p">[</span><span class="s2">&quot;doc_tokens&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">doc_tokens</span>
+    <span class="n">document</span><span class="p">[</span><span class="s2">&quot;doc_topics&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">doc_topics</span>
+    <span class="n">document</span><span class="p">[</span><span class="s2">&quot;topic_changes&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">topic_changes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">TopicModel</span><span class="p">(</span><span class="n">num_topics</span><span class="p">,</span> <span class="n">vocabulary</span><span class="p">,</span> <span class="n">doc_smoothing</span><span class="p">,</span> <span class="n">word_smoothing</span><span class="p">)</span>
+
+<span class="c1">## `documents` seems to be a class variable, not an object variable</span>
+<span class="n">model</span><span class="o">.</span><span class="n">clear_documents</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">document</span> <span class="ow">in</span> <span class="n">documents</span><span class="p">:</span>
+    <span class="n">document</span><span class="p">[</span><span class="s2">&quot;topic_changes&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">document</span><span class="p">[</span><span class="s2">&quot;topic_counts&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">c_doc</span> <span class="o">=</span> <span class="n">Document</span><span class="p">(</span><span class="n">document</span><span class="p">[</span><span class="s2">&quot;doc_tokens&quot;</span><span class="p">],</span> <span class="n">document</span><span class="p">[</span><span class="s2">&quot;doc_topics&quot;</span><span class="p">],</span> <span class="n">document</span><span class="p">[</span><span class="s2">&quot;topic_changes&quot;</span><span class="p">],</span> <span class="n">document</span><span class="p">[</span><span class="s2">&quot;topic_counts&quot;</span><span class="p">])</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add_document</span><span class="p">(</span><span class="n">c_doc</span><span class="p">)</span>
+
+<span class="n">sampling_dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_topics</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">doc_topic_probs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">documents</span><span class="p">),</span> <span class="n">num_topics</span><span class="p">))</span>
+<span class="n">word_topic_probs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">vocabulary</span><span class="p">),</span> <span class="n">num_topics</span><span class="p">))</span>
+
+<span class="c1"># Initial burn-in iterations</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span> <span class="c1"># using 500 iterations for faster stoplist curation</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+    <span class="n">elapsed_time</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+    
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">&quot;### Iteration </span><span class="si">{}</span><span class="s2">, </span><span class="si">{:.2f}</span><span class="s2"> seconds per iteration&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">50</span><span class="p">,</span> <span class="n">elapsed_time</span> <span class="o">/</span> <span class="mi">50</span><span class="p">)))</span>
+    
+    <span class="n">table_markdown</span> <span class="o">=</span> <span class="s2">&quot;### Iteration </span><span class="si">{}</span><span class="s2">, </span><span class="si">{:.2f}</span><span class="s2"> seconds per iteration</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">50</span><span class="p">,</span> <span class="n">elapsed_time</span> <span class="o">/</span> <span class="mi">50</span><span class="p">)</span>
+    <span class="n">table_markdown</span> <span class="o">+=</span> <span class="s2">&quot;|Topic | Most likely words (descending)|</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">table_markdown</span> <span class="o">+=</span> <span class="s2">&quot;|--|--|</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="k">for</span> <span class="n">topic</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_topics</span><span class="p">):</span>
+        <span class="n">table_markdown</span> <span class="o">+=</span> <span class="s2">&quot;|</span><span class="si">{}</span><span class="s2">|</span><span class="si">{}</span><span class="s2">|</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">topic</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">topic_words</span><span class="p">(</span><span class="n">topic</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+    
+    <span class="n">clear_output</span><span class="p">()</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">table_markdown</span><span class="p">))</span>
+        
+<span class="c1"># Saved samples</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">doc_id</span><span class="p">,</span> <span class="n">doc</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">documents</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">word_id</span><span class="p">,</span> <span class="n">topic</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">doc_tokens</span><span class="p">,</span> <span class="n">doc</span><span class="o">.</span><span class="n">doc_topics</span><span class="p">):</span>
+            <span class="n">doc_topic_probs</span><span class="p">[</span><span class="n">doc_id</span><span class="p">,</span><span class="n">topic</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">word_topic_probs</span><span class="p">[</span><span class="n">word_id</span><span class="p">,</span><span class="n">topic</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+            
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done!&quot;</span><span class="p">)</span>
+            
+<span class="c1"># Normalize</span>
+<span class="n">doc_row_sums</span> <span class="o">=</span> <span class="n">doc_topic_probs</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">doc_topic_probs</span> <span class="o">/=</span> <span class="n">doc_row_sums</span><span class="p">[:,</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+
+<span class="n">word_col_sums</span> <span class="o">=</span> <span class="n">word_topic_probs</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">word_topic_probs</span> <span class="o">/=</span> <span class="n">word_col_sums</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,:]</span>
+
+<span class="n">topic_top_words</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">topic</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_topics</span><span class="p">):</span>
+    <span class="n">sorted_words</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">word_topic_probs</span><span class="p">[:,</span><span class="n">topic</span><span class="p">],</span> <span class="n">vocabulary</span><span class="p">),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">topic_top_words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">w</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">sorted_words</span><span class="p">[:</span><span class="mi">12</span><span class="p">]]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/melaniewalsh/Cornell_DH_Notebooks/jupyterbook/notebooks/Issue-1/EEBO-Project/EEBOWordEmbeddings-Copy1.ipynb</span>, line 1)</p>
+<p>Non-consecutive header level increase; 0 to 3</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="pre-post-formation-of-the-royal-society">
+<h1>Pre/Post Formation of the Royal Society<a class="headerlink" href="#pre-post-formation-of-the-royal-society" title="Permalink to this headline">¶</a></h1>
+<p>The Royal Society, the UK’s national academy of sciences, was formed in 1660. This could lead to a shift towards more scientific senses of words. To do this, we must regenerate the word vectors with Fasttext using only pre-1660 and post-1660 texts.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">skipped</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">pre</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">post</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;pre1660.txt&#39;</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;pre1660.txt&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;post1660.txt&#39;</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;post1660.txt&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">glob</span><span class="p">(</span><span class="s2">&quot;no_punct/*.txt&quot;</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># Find the corresponding date file and read the year</span>
+    <span class="n">date_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;date_txt&#39;</span><span class="p">,</span> <span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;.txt&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">date_file</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">date_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">reader</span><span class="p">:</span>
+            <span class="n">year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">reader</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">year</span> <span class="o">&lt;</span> <span class="mi">1660</span><span class="p">:</span>
+            <span class="n">write_file</span> <span class="o">=</span> <span class="s1">&#39;pre1660.txt&#39;</span>
+            <span class="n">pre</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">write_file</span> <span class="o">=</span> <span class="s1">&#39;post1660.txt&#39;</span>
+            <span class="n">post</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">write_file</span><span class="p">,</span> <span class="s1">&#39;a+&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span> 
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">reader</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+                    <span class="n">writer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">skipped</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number texts skipped due to not being able to find a date from xml: </span><span class="si">{</span><span class="n">skipped</span><span class="si">}</span><span class="s1"> out of </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;no_punct/*.txt&quot;</span><span class="p">))</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of Pre-1660 Texts </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of Post-1660 Texts </span><span class="si">{</span><span class="n">post</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number texts skipped due to not being able to find a date from xml: 11561 out of 19946
+Number of Pre-1660 Texts 4330
+Number of Post-1660 Texts 4055
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre_true</span> <span class="o">=</span> <span class="o">!</span>python nearest.py embeddings/sgns_v1_v2_pre1660.vec true
+<span class="n">pre_true</span> <span class="o">=</span> <span class="n">clean_output</span><span class="p">(</span><span class="n">pre_true</span><span class="p">)</span>
+<span class="n">words_dict</span> <span class="o">=</span> <span class="n">read_vec_file</span><span class="p">(</span><span class="s1">&#39;embeddings/sgns_v1_v2_pre1660.vec&#39;</span><span class="p">)</span>
+<span class="n">visualize_embeddings</span><span class="p">(</span><span class="n">pre_true</span><span class="p">,</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">words_dict</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Word Embedding for &quot;True&quot; Pre-1660&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11.430988758357127
+14.632903289126197
+</pre></div>
+</div>
+<img alt="../../../_images/EEBOWordEmbeddings-Copy1_66_1.png" src="../../../_images/EEBOWordEmbeddings-Copy1_66_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">post_true</span> <span class="o">=</span> <span class="o">!</span>python nearest.py embeddings/sgns_v1_v2_post1660.vec true
+<span class="n">post_true</span> <span class="o">=</span> <span class="n">clean_output</span><span class="p">(</span><span class="n">post_true</span><span class="p">)</span>
+<span class="n">words_dict</span> <span class="o">=</span> <span class="n">read_vec_file</span><span class="p">(</span><span class="s1">&#39;embeddings/sgns_v1_v2_post1660.vec&#39;</span><span class="p">)</span>
+<span class="n">visualize_embeddings</span><span class="p">(</span><span class="n">post_true</span><span class="p">,</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">words_dict</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Word Embedding for &quot;True&quot; Post-1660&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12.022654903721623
+13.245121212359058
+</pre></div>
+</div>
+<img alt="../../../_images/EEBOWordEmbeddings-Copy1_67_1.png" src="../../../_images/EEBOWordEmbeddings-Copy1_67_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre_awe</span> <span class="o">=</span> <span class="o">!</span>python nearest.py embeddings/sgns_v1_v2_pre1660.vec awe
+<span class="n">pre_awe</span> <span class="o">=</span> <span class="n">clean_output</span><span class="p">(</span><span class="n">pre_awe</span><span class="p">)</span>
+<span class="n">words_dict</span> <span class="o">=</span> <span class="n">read_vec_file</span><span class="p">(</span><span class="s1">&#39;embeddings/sgns_v1_v2_pre1660.vec&#39;</span><span class="p">)</span>
+<span class="n">visualize_embeddings</span><span class="p">(</span><span class="n">pre_awe</span><span class="p">,</span> <span class="s1">&#39;awe&#39;</span><span class="p">,</span> <span class="n">words_dict</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Word Embedding for &quot;Awe&quot; Pre-1660&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14.62286511256583
+16.409843592606286
+</pre></div>
+</div>
+<img alt="../../../_images/EEBOWordEmbeddings-Copy1_68_1.png" src="../../../_images/EEBOWordEmbeddings-Copy1_68_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">post_awe</span> <span class="o">=</span> <span class="o">!</span>python nearest.py embeddings/sgns_v1_v2_post1660.vec awe
+<span class="n">post_awe</span> <span class="o">=</span> <span class="n">clean_output</span><span class="p">(</span><span class="n">post_awe</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">post_awe</span><span class="p">)</span>
+<span class="n">words_dict</span> <span class="o">=</span> <span class="n">read_vec_file</span><span class="p">(</span><span class="s1">&#39;embeddings/sgns_v1_v2_post1660.vec&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">words_dict</span><span class="p">))</span>
+<span class="n">visualize_embeddings</span><span class="p">(</span><span class="n">post_awe</span><span class="p">,</span> <span class="s1">&#39;awe&#39;</span><span class="p">,</span> <span class="n">words_dict</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Word Embedding for &quot;Awe&quot; Post-1660&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;awe&#39;, &#39;aw&#39;, &#39;awful&#39;, &#39;dread&#39;, &#39;awfull&#39;, &#39;reverence&#39;, &#39;awed&#39;, &#39;terror&#39;, &#39;reverential&#39;, &#39;terrour&#39;, &#39;fear&#39;, &#39;revere&#39;, &quot;aw&#39;d&quot;, &#39;slavish&#39;, &#39;subjection&#39;, &#39;jealous&#39;, &#39;servility&#39;, &#39;sway&#39;, &#39;disobey&#39;, &#39;obey&#39;]
+47107
+15.5307117104881
+13.055259865510774
+</pre></div>
+</div>
+<img alt="../../../_images/EEBOWordEmbeddings-Copy1_69_1.png" src="../../../_images/EEBOWordEmbeddings-Copy1_69_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre_right</span> <span class="o">=</span> <span class="o">!</span>python nearest.py embeddings/sgns_v1_v2_pre1660.vec right
+<span class="n">pre_right</span> <span class="o">=</span> <span class="n">clean_output</span><span class="p">(</span><span class="n">pre_right</span><span class="p">)</span>
+<span class="n">words_dict</span> <span class="o">=</span> <span class="n">read_vec_file</span><span class="p">(</span><span class="s1">&#39;embeddings/sgns_v1_v2_pre1660.vec&#39;</span><span class="p">)</span>
+<span class="n">visualize_embeddings</span><span class="p">(</span><span class="n">pre_right</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">words_dict</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Word Embedding for &quot;Right&quot; Pre-1660&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16.54113004139494
+17.087018320832712
+</pre></div>
+</div>
+<img alt="../../../_images/EEBOWordEmbeddings-Copy1_70_1.png" src="../../../_images/EEBOWordEmbeddings-Copy1_70_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">post_right</span> <span class="o">=</span> <span class="o">!</span>python nearest.py embeddings/sgns_v1_v2_post1660.vec right
+<span class="n">post_right</span> <span class="o">=</span> <span class="n">clean_output</span><span class="p">(</span><span class="n">post_right</span><span class="p">)</span>
+<span class="n">words_dict</span> <span class="o">=</span> <span class="n">read_vec_file</span><span class="p">(</span><span class="s1">&#39;embeddings/sgns_v1_v2_post1660.vec&#39;</span><span class="p">)</span>
+<span class="n">visualize_embeddings</span><span class="p">(</span><span class="n">post_right</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">words_dict</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Word Embedding for &quot;right&quot; Post-1660&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15.319454154235144
+10.699959211006494
+</pre></div>
+</div>
+<img alt="../../../_images/EEBOWordEmbeddings-Copy1_71_1.png" src="../../../_images/EEBOWordEmbeddings-Copy1_71_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre_real</span> <span class="o">=</span> <span class="o">!</span>python nearest.py embeddings/sgns_v1_v2_pre1660.vec natural
+<span class="nb">print</span><span class="p">(</span><span class="n">pre_real</span><span class="p">)</span>
+<span class="n">pre_real</span> <span class="o">=</span> <span class="n">clean_output</span><span class="p">(</span><span class="n">pre_real</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pre_real</span><span class="p">)</span>
+<span class="n">words_dict</span> <span class="o">=</span> <span class="n">read_vec_file</span><span class="p">(</span><span class="s1">&#39;embeddings/sgns_v1_v2_pre1660.vec&#39;</span><span class="p">)</span>
+<span class="n">visualize_embeddings</span><span class="p">(</span><span class="n">pre_real</span><span class="p">,</span> <span class="s1">&#39;natural&#39;</span><span class="p">,</span> <span class="n">words_dict</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Word Embedding for &quot;natural&quot; Pre-1660&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;1.000\tnatural&#39;, &#39;0.731\tsupernatural&#39;, &#39;0.712\tnaturall&#39;, &#39;0.691\tinnate&#39;, &#39;0.679\tadventitious&#39;, &#39;0.678\tinternal&#39;, &#39;0.678\tnature&#39;, &#39;0.666\tvegetative&#39;, &#39;0.663\thuman&#39;, &#39;0.663\taptitude&#39;, &#39;0.659\tintrinsecal&#39;, &#39;0.657\ttemperament&#39;, &#39;0.654\taccidental&#39;, &#39;0.653\timplanted&#39;, &#39;0.652\tphysical&#39;, &#39;0.652\tmicrocosmicall&#39;, &#39;0.651\tintellectual&#39;, &#39;0.651\tvegetable&#39;, &#39;0.647\tsensation&#39;, &#39;0.645\tformative&#39;]
+[&#39;natural&#39;, &#39;supernatural&#39;, &#39;naturall&#39;, &#39;innate&#39;, &#39;adventitious&#39;, &#39;internal&#39;, &#39;nature&#39;, &#39;vegetative&#39;, &#39;human&#39;, &#39;aptitude&#39;, &#39;intrinsecal&#39;, &#39;temperament&#39;, &#39;accidental&#39;, &#39;implanted&#39;, &#39;physical&#39;, &#39;microcosmicall&#39;, &#39;intellectual&#39;, &#39;vegetable&#39;, &#39;sensation&#39;, &#39;formative&#39;]
+11.320082642044111
+9.45423138764749
+</pre></div>
+</div>
+<img alt="../../../_images/EEBOWordEmbeddings-Copy1_72_1.png" src="../../../_images/EEBOWordEmbeddings-Copy1_72_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">post_real</span> <span class="o">=</span> <span class="o">!</span>python nearest.py embeddings/sgns_v1_v2_post1660.vec natural
+<span class="nb">print</span><span class="p">(</span><span class="n">post_real</span><span class="p">)</span>
+<span class="n">post_real</span> <span class="o">=</span> <span class="n">clean_output</span><span class="p">(</span><span class="n">post_real</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">post_real</span><span class="p">)</span>
+<span class="n">words_dict</span> <span class="o">=</span> <span class="n">read_vec_file</span><span class="p">(</span><span class="s1">&#39;embeddings/sgns_v1_v2_post1660.vec&#39;</span><span class="p">)</span>
+<span class="n">visualize_embeddings</span><span class="p">(</span><span class="n">post_real</span><span class="p">,</span> <span class="s1">&#39;natural&#39;</span><span class="p">,</span> <span class="n">words_dict</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Word Embedding for &quot;know&quot; Post-1660&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;1.000\tnatural&#39;, &#39;0.763\tnature&#39;, &#39;0.727\tnaturall&#39;, &#39;0.694\tinbred&#39;, &#39;0.676\tinnate&#39;, &#39;0.670\tmoral&#39;, &#39;0.659\thumane&#39;, &#39;0.657\trational&#39;, &#39;0.646\tnaturally&#39;, &#39;0.644\thuman&#39;, &#39;0.644\tinstincts&#39;, &#39;0.640\tadventitious&#39;, &#39;0.639\tsupernatural&#39;, &#39;0.625\tconnatural&#39;, &#39;0.623\tintellectual&#39;, &#39;0.620\tpropensions&#39;, &#39;0.618\tconsentaneous&#39;, &#39;0.617\tcorporeal&#39;, &#39;0.617\trepugnance&#39;, &#39;0.607\tmorall&#39;]
+[&#39;natural&#39;, &#39;nature&#39;, &#39;naturall&#39;, &#39;inbred&#39;, &#39;innate&#39;, &#39;moral&#39;, &#39;humane&#39;, &#39;rational&#39;, &#39;naturally&#39;, &#39;human&#39;, &#39;instincts&#39;, &#39;adventitious&#39;, &#39;supernatural&#39;, &#39;connatural&#39;, &#39;intellectual&#39;, &#39;propensions&#39;, &#39;consentaneous&#39;, &#39;corporeal&#39;, &#39;repugnance&#39;, &#39;morall&#39;]
+9.931324555436948
+11.840064720888883
+</pre></div>
+</div>
+<img alt="../../../_images/EEBOWordEmbeddings-Copy1_73_1.png" src="../../../_images/EEBOWordEmbeddings-Copy1_73_1.png" />
+</div>
+</div>
+<div class="section" id="change-in-language-over-time-using-eebo">
+<h2>Change in Language Over Time using EEBO<a class="headerlink" href="#change-in-language-over-time-using-eebo" title="Permalink to this headline">¶</a></h2>
+<p>For each 20 year period in EEBO (1474-1700), we will calculate the top 100 most common words. Similarity between two consecutive time periods is measured by how much overlap in the top 100 most common words.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start from 1470, end at 1710</span>
+<span class="c1"># Parse in all filenames and years into a tuple list, then sort by year. </span>
+<span class="n">date_tuples</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">glob</span><span class="p">(</span><span class="s1">&#39;date_txt/all/*.txt&#39;</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">reader</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">file</span> <span class="o">==</span> <span class="s1">&#39;B01696&#39;</span><span class="p">:</span>
+            <span class="nb">print</span>
+        <span class="n">year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">reader</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="n">f_basename</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span>
+        <span class="n">date_tuples</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">f_basename</span><span class="p">,</span> <span class="n">year</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;A16110&#39;, 1639)
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are some texts outside of our date range so we will be filtering them out by strictly limiting our time period to 1470-1710.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date_tuples</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">pair</span><span class="p">:</span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The 10 earliest texts and dates are: </span><span class="se">\n</span><span class="si">{</span><span class="n">date_tuples</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The 10 latest texts and dates are: </span><span class="se">\n</span><span class="si">{</span><span class="n">date_tuples</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The 10 earliest texts and dates are: 
+[(&#39;B01696&#39;, 16), (&#39;B02239&#39;, 16), (&#39;A89204&#39;, 169), (&#39;A05232&#39;, 1473), (&#39;A18343&#39;, 1474), (&#39;A18231&#39;, 1476), (&#39;A06567&#39;, 1476), (&#39;A16385&#39;, 1477), (&#39;A18230&#39;, 1477), (&#39;A18294&#39;, 1477)]
+
+The 10 latest texts and dates are: 
+[(&#39;A52339&#39;, 1709), (&#39;A46610&#39;, 1710), (&#39;A52980&#39;, 1711), (&#39;A57093&#39;, 1714), (&#39;B03369&#39;, 1715), (&#39;A67608&#39;, 1715), (&#39;A44500&#39;, 1717), (&#39;A42246&#39;, 1720), (&#39;A11759&#39;, 1800), (&#39;A57257&#39;, 1818)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_period</span> <span class="o">=</span> <span class="mi">1470</span>
+<span class="n">curr_file</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">skipped</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">INCREMENT</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">stop_words</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
+<span class="n">most_common_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span> <span class="c1"># key is start of time period, value is 100 most common words</span>
+<span class="k">for</span> <span class="n">start_period</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1470</span><span class="p">,</span> <span class="mi">1710</span><span class="p">,</span> <span class="n">INCREMENT</span><span class="p">):</span>
+    <span class="n">time_period_counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Starting period </span><span class="si">{</span><span class="n">start_period</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">date_tuples</span><span class="p">[</span><span class="n">curr_file</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">start_period</span> <span class="o">+</span> <span class="n">INCREMENT</span><span class="p">:</span>
+        <span class="c1"># Find the corresponding text file</span>
+        <span class="n">basename</span> <span class="o">=</span> <span class="n">date_tuples</span><span class="p">[</span><span class="n">curr_file</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;no_punct&#39;</span><span class="p">,</span> <span class="n">basename</span><span class="o">+</span><span class="s1">&#39;.headed.txt&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">reader</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span> 
+                    <span class="n">line_tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">token</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">token</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stop_words</span><span class="p">]</span>
+                    <span class="n">time_period_counter</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">line_tokens</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">skipped</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">curr_file</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">most_common_dict</span><span class="p">[</span><span class="n">start_period</span><span class="p">]</span> <span class="o">=</span> <span class="n">time_period_counter</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Skipped: </span><span class="si">{</span><span class="n">skipped</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Starting period 1470
+Starting period 1480
+Starting period 1490
+Starting period 1500
+Starting period 1510
+Starting period 1520
+Starting period 1530
+Starting period 1540
+Starting period 1550
+Starting period 1560
+Starting period 1570
+Starting period 1580
+Starting period 1590
+Starting period 1600
+Starting period 1610
+Starting period 1620
+Starting period 1630
+Starting period 1640
+Starting period 1650
+Starting period 1660
+Starting period 1670
+Starting period 1680
+Starting period 1690
+Starting period 1700
+Skipped: 16979
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">most_common_dict</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;most_common_dict.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">most_common_dict</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;most_common_dict.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prev_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">most_common_dict</span><span class="p">[</span><span class="mi">1470</span><span class="p">]]</span>
+<span class="n">dates</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1490</span><span class="p">,</span> <span class="mi">1710</span><span class="p">,</span> <span class="n">INCREMENT</span><span class="p">)]</span>
+<span class="n">similarities</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1490</span><span class="p">,</span> <span class="mi">1710</span><span class="p">,</span> <span class="n">INCREMENT</span><span class="p">):</span> 
+    <span class="n">curr_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">most_common_dict</span><span class="p">[</span><span class="n">year</span><span class="p">]]</span>
+    <span class="n">similarity</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">prev_words</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">curr_words</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Similarity between </span><span class="si">{</span><span class="n">year</span><span class="o">-</span><span class="n">INCREMENT</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">year</span><span class="o">+</span><span class="n">INCREMENT</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">similarity</span><span class="p">)</span><span class="si">}</span><span class="s2">%</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The similar words: </span><span class="si">{</span><span class="n">similarity</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">similarities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">similarity</span><span class="p">))</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span><span class="n">similarities</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">dates</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">dates</span><span class="p">)</span><span class="o">+</span><span class="n">INCREMENT</span><span class="p">,</span> <span class="n">INCREMENT</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Similarity of Top Words over Time, Time Period=</span><span class="si">{</span><span class="n">INCREMENT</span><span class="si">}</span><span class="s1"> years&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Start of Time Period&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Similarity (%) with Previous Time Period&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Similarity between 1480-1490 and 1490-1500: 39%
+
+The similar words: {&#39;alle&#39;, &#39;thy&#39;, &#39;moche&#39;, &#39;euery&#39;, &#39;per&#39;, &#39;tyme&#39;, &#39;fro&#39;, &#39;ben&#39;, &#39;maner&#39;, &#39;man&#39;, &#39;good&#39;, &#39;may&#39;, &#39;deth&#39;, &#39;body&#39;, &#39;therfore&#39;, &#39;haue&#39;, &#39;suche&#39;, &#39;god&#39;, &#39;hath&#39;, &#39;grete&#39;, &#39;whan&#39;, &#39;power&#39;, &#39;hem&#39;, &#39;make&#39;, &#39;noo&#39;, &#39;ther&#39;, &#39;many&#39;, &#39;thou&#39;, &#39;see&#39;, &#39;hym&#39;, &#39;also&#39;, &#39;cause&#39;, &#39;men&#39;, &#39;whiche&#39;, &#39;done&#39;, &#39;well&#39;, &#39;thus&#39;, &#39;shal&#39;, &#39;one&#39;}
+
+
+Similarity between 1490-1500 and 1500-1510: 46%
+
+The similar words: {&#39;alle&#39;, &#39;est&#39;, &#39;thenne&#39;, &#39;thy&#39;, &#39;moche&#39;, &#39;euery&#39;, &#39;per&#39;, &#39;tyme&#39;, &#39;fro&#39;, &#39;que&#39;, &#39;maner&#39;, &#39;man&#39;, &#39;good&#39;, &#39;ben&#39;, &#39;may&#39;, &#39;body&#39;, &#39;maye&#39;, &#39;therfore&#39;, &#39;haue&#39;, &#39;suche&#39;, &#39;god&#39;, &#39;hath&#39;, &#39;grete&#39;, &#39;whan&#39;, &#39;knowe&#39;, &#39;hem&#39;, &#39;make&#39;, &#39;ther&#39;, &#39;many&#39;, &#39;none&#39;, &#39;thou&#39;, &#39;yet&#39;, &#39;see&#39;, &#39;hym&#39;, &#39;also&#39;, &#39;cause&#39;, &#39;pro&#39;, &#39;men&#39;, &#39;whiche&#39;, &#39;ony&#39;, &#39;neuer&#39;, &#39;done&#39;, &#39;well&#39;, &#39;thus&#39;, &#39;shal&#39;, &#39;one&#39;}
+
+
+Similarity between 1500-1510 and 1510-1520: 34%
+
+The similar words: {&#39;moche&#39;, &#39;euery&#39;, &#39;thy&#39;, &#39;tyme&#39;, &#39;ben&#39;, &#39;maner&#39;, &#39;man&#39;, &#39;good&#39;, &#39;may&#39;, &#39;therfore&#39;, &#39;haue&#39;, &#39;suche&#39;, &#39;god&#39;, &#39;hath&#39;, &#39;selfe&#39;, &#39;grete&#39;, &#39;whan&#39;, &#39;knowe&#39;, &#39;make&#39;, &#39;many&#39;, &#39;none&#39;, &#39;thou&#39;, &#39;yet&#39;, &#39;hym&#39;, &#39;also&#39;, &#39;men&#39;, &#39;whiche&#39;, &#39;ony&#39;, &#39;neuer&#39;, &#39;done&#39;, &#39;well&#39;, &#39;thus&#39;, &#39;shal&#39;, &#39;one&#39;}
+
+
+Similarity between 1510-1520 and 1520-1530: 39%
+
+The similar words: {&#39;est&#39;, &#39;thy&#39;, &#39;moche&#39;, &#39;euery&#39;, &#39;per&#39;, &#39;tyme&#39;, &#39;que&#39;, &#39;ben&#39;, &#39;maner&#39;, &#39;man&#39;, &#39;good&#39;, &#39;may&#39;, &#39;body&#39;, &#39;therfore&#39;, &#39;maketh&#39;, &#39;haue&#39;, &#39;suche&#39;, &#39;god&#39;, &#39;hath&#39;, &#39;selfe&#39;, &#39;grete&#39;, &#39;whan&#39;, &#39;nature&#39;, &#39;hit&#39;, &#39;make&#39;, &#39;ther&#39;, &#39;many&#39;, &#39;thou&#39;, &#39;yet&#39;, &#39;hym&#39;, &#39;also&#39;, &#39;cause&#39;, &#39;pro&#39;, &#39;men&#39;, &#39;whiche&#39;, &#39;done&#39;, &#39;well&#39;, &#39;thus&#39;, &#39;one&#39;}
+
+
+Similarity between 1520-1530 and 1530-1540: 36%
+
+The similar words: {&#39;est&#39;, &#39;thy&#39;, &#39;euery&#39;, &#39;moche&#39;, &#39;per&#39;, &#39;tyme&#39;, &#39;ben&#39;, &#39;maner&#39;, &#39;man&#39;, &#39;good&#39;, &#39;may&#39;, &#39;maye&#39;, &#39;therfore&#39;, &#39;haue&#39;, &#39;suche&#39;, &#39;god&#39;, &#39;hath&#39;, &#39;selfe&#39;, &#39;whan&#39;, &#39;power&#39;, &#39;make&#39;, &#39;ther&#39;, &#39;many&#39;, &#39;thou&#39;, &#39;yet&#39;, &#39;hym&#39;, &#39;also&#39;, &#39;cause&#39;, &#39;men&#39;, &#39;whiche&#39;, &#39;neuer&#39;, &#39;done&#39;, &#39;well&#39;, &#39;thus&#39;, &#39;shal&#39;, &#39;one&#39;}
+
+
+Similarity between 1530-1540 and 1540-1550: 34%
+
+The similar words: {&#39;thy&#39;, &#39;euery&#39;, &#39;tyme&#39;, &#39;man&#39;, &#39;good&#39;, &#39;may&#39;, &#39;body&#39;, &#39;maye&#39;, &#39;therfore&#39;, &#39;haue&#39;, &#39;suche&#39;, &#39;god&#39;, &#39;hath&#39;, &#39;selfe&#39;, &#39;whan&#39;, &#39;thyng&#39;, &#39;bee&#39;, &#39;thinges&#39;, &#39;power&#39;, &#39;make&#39;, &#39;many&#39;, &#39;thou&#39;, &#39;yet&#39;, &#39;see&#39;, &#39;hym&#39;, &#39;also&#39;, &#39;cause&#39;, &#39;men&#39;, &#39;whiche&#39;, &#39;neuer&#39;, &#39;well&#39;, &#39;thus&#39;, &#39;shal&#39;, &#39;one&#39;}
+
+
+Similarity between 1540-1550 and 1550-1560: 36%
+
+The similar words: {&#39;thy&#39;, &#39;euery&#39;, &#39;tyme&#39;, &#39;maner&#39;, &#39;man&#39;, &#39;good&#39;, &#39;may&#39;, &#39;body&#39;, &#39;maye&#39;, &#39;therfore&#39;, &#39;haue&#39;, &#39;suche&#39;, &#39;god&#39;, &#39;hath&#39;, &#39;selfe&#39;, &#39;whan&#39;, &#39;bee&#39;, &#39;thinges&#39;, &#39;power&#39;, &#39;make&#39;, &#39;ther&#39;, &#39;many&#39;, &#39;thou&#39;, &#39;yet&#39;, &#39;thing&#39;, &#39;also&#39;, &#39;hym&#39;, &#39;cause&#39;, &#39;men&#39;, &#39;whiche&#39;, &#39;neuer&#39;, &#39;done&#39;, &#39;well&#39;, &#39;thus&#39;, &#39;shal&#39;, &#39;one&#39;}
+
+
+Similarity between 1550-1560 and 1560-1570: 34%
+
+The similar words: {&#39;thy&#39;, &#39;euery&#39;, &#39;tyme&#39;, &#39;vnder&#39;, &#39;man&#39;, &#39;good&#39;, &#39;may&#39;, &#39;body&#39;, &#39;therfore&#39;, &#39;haue&#39;, &#39;suche&#39;, &#39;god&#39;, &#39;hath&#39;, &#39;selfe&#39;, &#39;bee&#39;, &#39;thinges&#39;, &#39;power&#39;, &#39;make&#39;, &#39;many&#39;, &#39;thou&#39;, &#39;yet&#39;, &#39;thing&#39;, &#39;see&#39;, &#39;also&#39;, &#39;hym&#39;, &#39;cause&#39;, &#39;men&#39;, &#39;whiche&#39;, &#39;neuer&#39;, &#39;done&#39;, &#39;well&#39;, &#39;thus&#39;, &#39;shal&#39;, &#39;one&#39;}
+
+
+Similarity between 1560-1570 and 1570-1580: 30%
+
+The similar words: {&#39;thy&#39;, &#39;euery&#39;, &#39;tyme&#39;, &#39;vnder&#39;, &#39;man&#39;, &#39;good&#39;, &#39;may&#39;, &#39;haue&#39;, &#39;suche&#39;, &#39;god&#39;, &#39;hath&#39;, &#39;selfe&#39;, &#39;bee&#39;, &#39;power&#39;, &#39;make&#39;, &#39;many&#39;, &#39;thou&#39;, &#39;yet&#39;, &#39;thing&#39;, &#39;see&#39;, &#39;also&#39;, &#39;hym&#39;, &#39;cause&#39;, &#39;men&#39;, &#39;whiche&#39;, &#39;neuer&#39;, &#39;done&#39;, &#39;well&#39;, &#39;thus&#39;, &#39;one&#39;}
+
+
+Similarity between 1570-1580 and 1580-1590: 27%
+
+The similar words: {&#39;thy&#39;, &#39;euery&#39;, &#39;vnder&#39;, &#39;man&#39;, &#39;good&#39;, &#39;may&#39;, &#39;haue&#39;, &#39;god&#39;, &#39;hath&#39;, &#39;selfe&#39;, &#39;bee&#39;, &#39;thinges&#39;, &#39;power&#39;, &#39;make&#39;, &#39;many&#39;, &#39;thou&#39;, &#39;yet&#39;, &#39;thing&#39;, &#39;see&#39;, &#39;also&#39;, &#39;cause&#39;, &#39;men&#39;, &#39;neuer&#39;, &#39;well&#39;, &#39;thus&#39;, &#39;shal&#39;, &#39;one&#39;}
+
+
+Similarity between 1580-1590 and 1590-1600: 27%
+
+The similar words: {&#39;est&#39;, &#39;thy&#39;, &#39;euery&#39;, &#39;vnder&#39;, &#39;man&#39;, &#39;good&#39;, &#39;may&#39;, &#39;haue&#39;, &#39;god&#39;, &#39;hath&#39;, &#39;selfe&#39;, &#39;bee&#39;, &#39;power&#39;, &#39;make&#39;, &#39;many&#39;, &#39;thou&#39;, &#39;yet&#39;, &#39;thing&#39;, &#39;see&#39;, &#39;also&#39;, &#39;cause&#39;, &#39;men&#39;, &#39;neuer&#39;, &#39;done&#39;, &#39;well&#39;, &#39;thus&#39;, &#39;one&#39;}
+
+
+Similarity between 1590-1600 and 1600-1610: 27%
+
+The similar words: {&#39;thy&#39;, &#39;euery&#39;, &#39;vnder&#39;, &#39;man&#39;, &#39;good&#39;, &#39;may&#39;, &#39;haue&#39;, &#39;god&#39;, &#39;hath&#39;, &#39;selfe&#39;, &#39;bee&#39;, &#39;power&#39;, &#39;make&#39;, &#39;many&#39;, &#39;thou&#39;, &#39;yet&#39;, &#39;thing&#39;, &#39;see&#39;, &#39;also&#39;, &#39;cause&#39;, &#39;men&#39;, &#39;neuer&#39;, &#39;done&#39;, &#39;well&#39;, &#39;thus&#39;, &#39;shal&#39;, &#39;one&#39;}
+
+
+Similarity between 1600-1610 and 1610-1620: 26%
+
+The similar words: {&#39;thy&#39;, &#39;euery&#39;, &#39;vnder&#39;, &#39;man&#39;, &#39;good&#39;, &#39;may&#39;, &#39;haue&#39;, &#39;god&#39;, &#39;hath&#39;, &#39;selfe&#39;, &#39;bee&#39;, &#39;power&#39;, &#39;make&#39;, &#39;many&#39;, &#39;thou&#39;, &#39;yet&#39;, &#39;thing&#39;, &#39;see&#39;, &#39;also&#39;, &#39;cause&#39;, &#39;men&#39;, &#39;neuer&#39;, &#39;done&#39;, &#39;well&#39;, &#39;thus&#39;, &#39;one&#39;}
+
+
+Similarity between 1610-1620 and 1620-1630: 25%
+
+The similar words: {&#39;thy&#39;, &#39;euery&#39;, &#39;vnder&#39;, &#39;man&#39;, &#39;good&#39;, &#39;may&#39;, &#39;haue&#39;, &#39;god&#39;, &#39;hath&#39;, &#39;selfe&#39;, &#39;bee&#39;, &#39;make&#39;, &#39;many&#39;, &#39;thou&#39;, &#39;yet&#39;, &#39;thing&#39;, &#39;see&#39;, &#39;also&#39;, &#39;cause&#39;, &#39;men&#39;, &#39;neuer&#39;, &#39;done&#39;, &#39;well&#39;, &#39;thus&#39;, &#39;one&#39;}
+
+
+Similarity between 1620-1630 and 1630-1640: 23%
+
+The similar words: {&#39;thy&#39;, &#39;may&#39;, &#39;man&#39;, &#39;good&#39;, &#39;body&#39;, &#39;haue&#39;, &#39;god&#39;, &#39;hath&#39;, &#39;selfe&#39;, &#39;bee&#39;, &#39;nature&#39;, &#39;make&#39;, &#39;many&#39;, &#39;thou&#39;, &#39;yet&#39;, &#39;thing&#39;, &#39;see&#39;, &#39;also&#39;, &#39;cause&#39;, &#39;men&#39;, &#39;well&#39;, &#39;thus&#39;, &#39;one&#39;}
+
+
+Similarity between 1630-1640 and 1640-1650: 24%
+
+The similar words: {&#39;thy&#39;, &#39;man&#39;, &#39;good&#39;, &#39;may&#39;, &#39;body&#39;, &#39;god&#39;, &#39;hath&#39;, &#39;selfe&#39;, &#39;bee&#39;, &#39;nature&#39;, &#39;power&#39;, &#39;make&#39;, &#39;many&#39;, &#39;thou&#39;, &#39;yet&#39;, &#39;thing&#39;, &#39;see&#39;, &#39;also&#39;, &#39;cause&#39;, &#39;men&#39;, &#39;done&#39;, &#39;well&#39;, &#39;thus&#39;, &#39;one&#39;}
+
+
+Similarity between 1640-1650 and 1650-1660: 24%
+
+The similar words: {&#39;est&#39;, &#39;thy&#39;, &#39;may&#39;, &#39;man&#39;, &#39;good&#39;, &#39;body&#39;, &#39;god&#39;, &#39;hath&#39;, &#39;self&#39;, &#39;nature&#39;, &#39;power&#39;, &#39;make&#39;, &#39;many&#39;, &#39;thou&#39;, &#39;yet&#39;, &#39;thing&#39;, &#39;see&#39;, &#39;also&#39;, &#39;cause&#39;, &#39;men&#39;, &#39;done&#39;, &#39;well&#39;, &#39;thus&#39;, &#39;one&#39;}
+
+
+Similarity between 1650-1660 and 1660-1670: 24%
+
+The similar words: {&#39;est&#39;, &#39;thy&#39;, &#39;may&#39;, &#39;man&#39;, &#39;good&#39;, &#39;body&#39;, &#39;god&#39;, &#39;hath&#39;, &#39;self&#39;, &#39;nature&#39;, &#39;power&#39;, &#39;make&#39;, &#39;many&#39;, &#39;thou&#39;, &#39;yet&#39;, &#39;thing&#39;, &#39;see&#39;, &#39;also&#39;, &#39;cause&#39;, &#39;men&#39;, &#39;done&#39;, &#39;well&#39;, &#39;thus&#39;, &#39;one&#39;}
+
+
+Similarity between 1660-1670 and 1670-1680: 22%
+
+The similar words: {&#39;thy&#39;, &#39;may&#39;, &#39;man&#39;, &#39;good&#39;, &#39;body&#39;, &#39;god&#39;, &#39;hath&#39;, &#39;self&#39;, &#39;nature&#39;, &#39;power&#39;, &#39;make&#39;, &#39;many&#39;, &#39;thou&#39;, &#39;yet&#39;, &#39;thing&#39;, &#39;see&#39;, &#39;also&#39;, &#39;men&#39;, &#39;done&#39;, &#39;well&#39;, &#39;thus&#39;, &#39;one&#39;}
+
+
+Similarity between 1670-1680 and 1680-1690: 24%
+
+The similar words: {&#39;thy&#39;, &#39;may&#39;, &#39;man&#39;, &#39;good&#39;, &#39;body&#39;, &#39;god&#39;, &#39;hath&#39;, &#39;self&#39;, &#39;nature&#39;, &#39;power&#39;, &#39;make&#39;, &#39;many&#39;, &#39;thou&#39;, &#39;yet&#39;, &#39;thing&#39;, &#39;see&#39;, &#39;also&#39;, &#39;cause&#39;, &#39;men&#39;, &#39;right&#39;, &#39;done&#39;, &#39;well&#39;, &#39;thus&#39;, &#39;one&#39;}
+
+
+Similarity between 1680-1690 and 1690-1700: 22%
+
+The similar words: {&#39;thy&#39;, &#39;may&#39;, &#39;man&#39;, &#39;good&#39;, &#39;body&#39;, &#39;god&#39;, &#39;hath&#39;, &#39;self&#39;, &#39;nature&#39;, &#39;power&#39;, &#39;make&#39;, &#39;many&#39;, &#39;thou&#39;, &#39;yet&#39;, &#39;thing&#39;, &#39;see&#39;, &#39;also&#39;, &#39;men&#39;, &#39;done&#39;, &#39;well&#39;, &#39;thus&#39;, &#39;one&#39;}
+
+
+Similarity between 1690-1700 and 1700-1710: 22%
+
+The similar words: {&#39;thy&#39;, &#39;may&#39;, &#39;man&#39;, &#39;good&#39;, &#39;body&#39;, &#39;god&#39;, &#39;hath&#39;, &#39;self&#39;, &#39;nature&#39;, &#39;power&#39;, &#39;make&#39;, &#39;many&#39;, &#39;thou&#39;, &#39;yet&#39;, &#39;thing&#39;, &#39;see&#39;, &#39;also&#39;, &#39;men&#39;, &#39;done&#39;, &#39;well&#39;, &#39;thus&#39;, &#39;one&#39;}
+</pre></div>
+</div>
+<img alt="../../../_images/EEBOWordEmbeddings-Copy1_81_1.png" src="../../../_images/EEBOWordEmbeddings-Copy1_81_1.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks/Issue-1/EEBO-Project"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Lux Lab // Cornell University<br/>
+        
+            &copy; Copyright 2020.<br/>
+          <div class="extra_footer">
+            <div>
+<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img class="license" alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a> This series is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>. The code is licensed under a <a href="https://choosealicense.com/licenses/gpl-3.0/#">GNU General Public License v3.0</a>.
+</div>
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
