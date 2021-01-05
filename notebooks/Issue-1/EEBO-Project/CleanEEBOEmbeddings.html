@@ -67,7 +67,7 @@
 <meta property="og:url"         content="https://melaniewalsh.github.io/Cornell-DH-Notebooks/notebooks/Issue-1/EEBO-Project/CleanEEBOEmbeddings.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Modeling Change in English Language from 1470-Present" />
-<meta property="og:description" content="Modeling Change in English Language from 1470-Present  By Helen Liang (hl973), Undergraduate Student, Class of 2021  Introduction  In this project, we are model" />
+<meta property="og:description" content="Modeling Change in English Language from 1470-Present  By Helen Liang (hl973), Undergraduate Student, Class of 2021  Advised by David Mimno and Melanie Walsh  I" />
 <meta property="og:image"       content="https://melaniewalsh.github.io/Cornell-DH-Notebooks/_static/clocktower.jpeg" />
 
 <meta name="twitter:card" content="summary" />
@@ -312,6 +312,7 @@
   <div class="section" id="modeling-change-in-english-language-from-1470-present">
 <h1>Modeling Change in English Language from 1470-Present<a class="headerlink" href="#modeling-change-in-english-language-from-1470-present" title="Permalink to this headline">¶</a></h1>
 <p>By Helen Liang (hl973), Undergraduate Student, Class of 2021</p>
+<p>Advised by David Mimno and Melanie Walsh</p>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>In this project, we are modeling the change in how the same English word is used across the Early Modern English period and beyond. This project was inspired by and builds upon the <a class="reference external" href="https://earlyprint.org/lab/">EarlyPrint Lab project</a> by Anupam Basu and Joseph Loewenstein, with Douglas Knox, John Ladd, and Stephen Pentecost.</p>
@@ -325,9 +326,6 @@
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">import</span> <span class="nn">regex</span>
 <span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
-<span class="kn">import</span> <span class="nn">gensim</span>
-<span class="kn">from</span> <span class="nn">gensim</span> <span class="kn">import</span> <span class="n">corpora</span>
-<span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">CoherenceModel</span>
 <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">re</span>
@@ -465,7 +463,7 @@ articles to be enqvired off within the prouince of yorke in the metropoliticall 
 <h2>Nearest Words<a class="headerlink" href="#nearest-words" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://pypi.org/project/fasttext/">Fasttext</a> is an open-source library developed by Facebook AI that generates word embeddings given an input corpus. Fasttext provides two models: cbow and skipgram. Cbow, also known as continuous-bag-of-words, uses the sequence of nearby words to predict the target word. Skipgram sums up the nearby words’ vectors to predict the target word. The two models are described in more detail in <a class="reference external" href="https://fasttext.cc/docs/en/unsupervised-tutorial.html">Fasttext’s official documentation.</a> After trying both bbow and skipgram, cbow gave a better ranking of nearby words for EEBO. Therefore, this project uses Fasttext cbow’s word vectors.</p>
 <p>The .vec file outputted is the human readable version of word embeddings. Tokenization has already been done by fasttext.
-The nearest function below normalizes and performs dot product on all vectors with the input word vector to find the top 20 nearest words.</p>
+The nearest function below finds the cosine similarity with the input word vector by normalizing and performing dot product on all vectors with the input word vector to find the top 20 nearest words.</p>
 <p>Run this cell to find the 20 nearest words of “true”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -519,12 +517,13 @@ The nearest function below normalizes and performs dot product on all vectors wi
 </div>
 </div>
 </div>
-<p>words_dict is a dictionary representation of the .vec file returned by read_vec_file. Words from the corpus are keys and their respective vector representations are values. This will be later used to visualize embeddings.</p>
+<p>words_dict is a dictionary representation of the .vec file returned by read_vec_file. Words from the corpus are keys and their respective vector representations are values. This will be later used to visualize embeddings. The first word in the dictionary, “the”, is shown below. The length of the vector representation is 100.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">words_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
     <span class="k">break</span>
 </pre></div>
 </div>
@@ -532,6 +531,7 @@ The nearest function below normalizes and performs dot product on all vectors wi
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the
 [-0.18489848, 0.06808506, 0.25595662, 0.17188543, 0.037654955, 0.0051366338, -0.04474668, -0.043178707, 0.04380905, -0.3671004, 0.15313336, -0.13872255, -0.49349466, 0.1728954, 0.18529195, 0.038108274, 0.20786463, 0.15146597, -0.044726238, 0.049716745, -0.26126888, -0.10828109, -0.04244245, 0.01174636, 0.04659954, 0.26178488, 0.08462093, -0.03321066, -0.020420447, -0.24766025, -0.050465543, -0.28281528, 0.13968821, -0.3628608, 0.07868071, 0.068998545, -0.056997843, 0.19090831, -0.15597442, 0.1672764, 0.20952386, -0.100779526, -0.08410791, 0.009130444, 0.17206787, -0.05249392, -0.14769125, -0.2557637, -0.14989932, -0.055034913, -0.27376437, 0.17862496, 0.06681945, -0.15870348, 0.055367753, -0.21392596, -0.24123484, 0.29547364, 0.22669992, 0.17882921, -0.22640234, -0.30965278, 0.16120891, 0.048422385, 0.05698442, 0.17416024, 0.13867001, -0.17245133, 0.11170741, -0.020344907, 0.06829954, 0.043494076, -0.08843164, -0.11732712, -0.2400157, 0.049039885, 0.06697231, 0.24299929, 0.3211362, 0.1534983, 0.16074911, -0.004460037, -0.24492615, 0.015541584, 0.03150539, 0.018963872, -0.022136496, 0.009280925, 0.11890575, 0.119002886, 0.010449158, 0.20215543, 0.26147762, 0.009835368, -0.2393157, -0.030447803, 0.027741708, 0.0014076424, 0.13687038, -0.054821152]
+100
 </pre></div>
 </div>
 </div>
@@ -540,7 +540,7 @@ The nearest function below normalizes and performs dot product on all vectors wi
 <div class="section" id="visualizing-eebo-word-embeddings">
 <h2>Visualizing EEBO Word Embeddings<a class="headerlink" href="#visualizing-eebo-word-embeddings" title="Permalink to this headline">¶</a></h2>
 <p>To visualize the EEBO word embeddings of each input word and its top 20 neighbors, we used Principal Component Analysis (PCA) to reduce the number of dimensions of each vector down to 2 so each vector may be graphed.</p>
-<p>In the following graphs, the green number indicates the ranking of a neighbor word of how close it is to the input word according to nearest.py. The physical distance of a neighbor word to the input word is closeness determined by PCA’s dimensionality reduction. The input words we will be looking at are ‘true’ and ‘awe’.</p>
+<p>In the following graphs, the green number indicates the similarity ranking of a word to the input word according to cosine similarity in the original vector dimensions before PCA. The visual distance of a neighbor word to the input word in the graph is essentially the Euclidean distance (physical space between two points) after PCA dimensionality reduction. Because we reduced the 100 dimensions down to 2, some information is lost by tossing away 98 dimensions. Therefore, we labeled the original rankings in green for a more accurate measurement of similarity than Euclidean distance in 2 dimensions. The input words we will be looking at are ‘true’ and ‘awe’.</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Word</p></th>
@@ -613,10 +613,10 @@ The nearest function below normalizes and performs dot product on all vectors wi
 <img alt="../../../_images/CleanEEBOEmbeddings_28_1.png" src="../../../_images/CleanEEBOEmbeddings_28_1.png" />
 </div>
 </div>
-<p>Some notable observations for ‘true’ in EEBO and PCA:</p>
+<p>Notice here that the Euclidean distance after PCA and cosine similarity before PCA have different similarity rankings. For instance, the word “verity” is the 7th nearest word to true using cosine similarity but after reducing vector dimensions down to 2, it is roughly the 2nd closest word. While the PCA graph is not the most accurate in visualizing distance, it can reveal other interesting information of word embeddings such as word clusters.</p>
+<p>Some observations for ‘true’ in EEBO:</p>
 <ol class="simple">
-<li><p>The word embeddings visualized above capture synonyms, alternate spellings, and co-occurrence. An example of a synonym is “truth” or “sincere”. An example of alternate spelling is “trew” or “tru”. An example of co-occurrence is “christian” and “certainly” (i.e. true christian or certainly true)</p></li>
-<li><p>PCA and nearest neighbors have different similarity rankings. For example, the word “verity” is the 7th nearest word to true using dot product but after reducing vector dimensions down to 2, it is roughly the 2nd closest word. The PCA graph therefore is not a perfect visualization of the nearest words.</p></li>
+<li><p>The word embeddings visualized above capture synonyms, alternate spellings, and co-occurrence. An example of a synonym is “truth” or “sincere”. An example of alternate spelling is “trew” or “tru”. An example of co-occurrence is christian and and certainly (i.e. true christian or certainly true)</p></li>
 <li><p>Some clusters of words with similar meanings are revealed in this graph. The religious cluster on the top left with words such as faith and religion. There there “truth” and “verity” cluster on bottom left. “certainly” and “indeed” are synonyms and form the cluster meaning agreement on the bottom left.</p></li>
 </ol>
 <div class="cell docutils container">
@@ -1235,12 +1235,19 @@ For example, some synonyms are amazement/astonishment in bottom right, reverence
 <div class="section" id="future-work">
 <h2>Future Work<a class="headerlink" href="#future-work" title="Permalink to this headline">¶</a></h2>
 <p>EEBO data covers the 1470-1700 period and HistWords data covers 1800 and beyond, so we did not have any 1700s data in this project. Potential future work may consist of looking at word embeddings as well as the acceleration of change in word usage from books in the 18th century to bridge century gap and create a more holistic view of the evolution of English words. In addition, it would be interesting to see how stable Late Modern English is. Because the HistWords data only included the words and not the frequencies, we did not have any data to graph the acceleration of change. In the future, word frequencies can be directly extracted from Google Books N-grams to plot change in top words between decades.</p>
+<p>Using word embeddings, we followed a few words through 5 centuries to track their change in meaning. More work could be done to track changes in meaning across the entire corpus to determine to what extent word meanings have changed since 1470. For instance, we noticed that “true” shed its religious meaning by the 19th century. Measuring the frequency of religious words in word embeddings of all words across decades could be used as evidence to generalize this trend of religious decline. Some other questions regarding the corpus that may be explored are</p>
+<ol class="simple">
+<li><p>In which years did the meaning of words change the most? Does this coincide with the years that the popular words have changed the most?</p></li>
+<li><p>Could we measure the change in word meanings quantitatively? For example, how many new meanings/senses/synonyms, on average, do words pick up between the end of EEBO (1700) and present time?</p></li>
+<li><p>How many new words have been introduced throughout the 1470-Present period and how many old words have disappeared? In which years did the rate of introduction or disappearance accelerate?</p></li>
+</ol>
+<p>The way that a word’s usage has changed could also be measured in different ways other than word embeddings. One way to do this is detecting the part-of-speech that a word is used and measuring the frequency of a that part-of-speech (e.g. love as a noun vs love as a verb).</p>
+<p>We also manually found clusters of meanings in the PCA graphs. An automatic detection of clusters could be created through by searching for nearby words within a given radius.</p>
 </div>
 <div class="section" id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
-<p>English was a rapidly evolving language in the Early Modern English era, particularly between 1470 and 1550. Many key events in the UK including the publication of popular religious texts and the formation of the Royal Society had major influence over the shifts in word meanings and usage. Throughout the end of the Early Modern era and Late Modern era, changes in the English language has been slow, although in general, words have picked up many more senses by the Late Modern English period and have become overloaded with meaning.
-Words that had a religious connotation and usage in the Early Modern English period like “true”
-saw the religious meaning mostly disappear by 1890, likely due to the decline in the popularity of religion and fewer texts written about religion.</p>
+<p>English was a rapidly evolving language in the Early Modern English era, particularly between 1470 and 1550. Many key events in the UK including the publication of popular religious texts and the formation of the Royal Society had major influence over the shifts in word meanings and usage. Throughout the end of the Early Modern era and Late Modern era, changes in the English language has been slow, although the words “true” and “awe” reveal that words have picked up more senses by the Late Modern English period and have become overloaded with meaning.</p>
+<p>The change in the word embeddings of “true” also suggests that words with religious connotation and usage in the Early Modern English period may have seen its religious meaning mostly disappear by 1890, perhaps due to the decline in the popularity of religion and fewer texts written about religion.</p>
 </div>
 </div>
 
