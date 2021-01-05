@@ -452,7 +452,7 @@ articles to be enqvired off within the prouince of yorke in the metropoliticall 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># To run this cell, uncomment. </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># To run the new redefined strip_punct, uncomment. </span>
 <span class="c1"># strip_punct(&#39;balanced_txt/**/&#39;)</span>
 </pre></div>
 </div>
@@ -569,7 +569,7 @@ The nearest function below finds the cosine similarity with the input word vecto
     <span class="nb">print</span><span class="p">(</span><span class="n">x_length</span><span class="p">)</span>
     <span class="n">y_length</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">two_dim</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">two_dim</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]))</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">y_length</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">two_dim</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">two_dim</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="n">linewidths</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;PC1&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;PC2&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
@@ -711,7 +711,7 @@ Number of Post-1660 Texts 4055
 <br>
 We also see a weakening of the religious sense and character sense in post-1660. In the catholike/faith/christian cluster in pre-1660, catholike was dropped in post-1660. Similarly, in the sincere/faithfull cluster in pre-1660, faithfull was dropped.</p>
 <p>However, we see an increase in the “authentic” meaning of true with the addition of genuine to the “real”/ “essential” cluster in post-1660.</p>
-<p>Another interesting observations is the consistency in spelling. In the post-1660 texts, spelling became much more regularized and therefore the word embeddings picked up fewer alternative spellings. In the pre-1660, we notice many repeated words with different spellings (e.g. veritie and verity, truth and trueth).</p>
+<p>Another interesting observation is the consistency in spelling. In the post-1660 texts, spelling became much more regularized and therefore the word embeddings picked up fewer alternative spellings. In the pre-1660, we notice many repeated words with different spellings (e.g. veritie and verity, truth and trueth).</p>
 <p>Now, let’s take a look at some other scientific words to see if their meanings have shifted due to the Royal Society.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -755,7 +755,7 @@ We also see a weakening of the religious sense and character sense in post-1660.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre_natural</span> <span class="o">=</span> <span class="o">!</span>python nearest.py embeddings/sgns_v1_v2_pre1660.vec natural
-<span class="nb">print</span><span class="p">(</span><span class="n">clean_output</span><span class="p">(</span><span class="n">pre_natural</span><span class="p">))</span> <span class="c1"># Print due to some crowded text in the graph</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">clean_output</span><span class="p">(</span><span class="n">pre_natural</span><span class="p">))</span> <span class="c1"># Print top words due to some crowded text in the graphs</span>
 <span class="n">execute_graph_embeddings</span><span class="p">(</span><span class="s1">&#39;natural&#39;</span><span class="p">,</span> <span class="s1">&#39;embeddings/sgns_v1_v2_pre1660.vec&#39;</span><span class="p">,</span> <span class="n">pre_natural</span><span class="p">,</span> <span class="s1">&#39;Pre-1660&#39;</span><span class="p">)</span>
 <span class="n">post_natural</span> <span class="o">=</span> <span class="o">!</span>python nearest.py embeddings/sgns_v1_v2_post1660.vec natural
 <span class="nb">print</span><span class="p">(</span><span class="n">clean_output</span><span class="p">(</span><span class="n">post_natural</span><span class="p">))</span>
@@ -1069,27 +1069,27 @@ Top 15 words in 1690: [&#39;god&#39;, &#39;upon&#39;, &#39;one&#39;, &#39;may&#3
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1.  1.  1. ... nan nan nan]
 1.000	true
-0.448	truth
-0.389	genuine
-0.385	false
-0.376	ideal
-0.365	nevertheless
-0.359	essence
-0.356	axiomatic
-0.352	believed
-0.349	demonstrably
-0.348	meaning
-0.347	reality
-0.344	untrue
-0.341	sincere
-0.340	truer
-0.340	faith
-0.334	statement
-0.332	real
-0.331	correct
-0.323	because
-0.9873966504203295
-0.85651568023696
+0.482	false
+0.441	truth
+0.408	indeed
+0.402	is
+0.399	correct
+0.397	though
+0.390	converse
+0.386	untrue
+0.383	say
+0.378	certainly
+0.375	believe
+0.371	believes
+0.370	quite
+0.367	inasmuch
+0.361	discern
+0.356	falsity
+0.353	if
+0.353	knows
+0.350	whilst
+1.0307229629381038
+1.0102473530785532
 </pre></div>
 </div>
 <img alt="../../../_images/CleanEEBOEmbeddings_54_1.png" src="../../../_images/CleanEEBOEmbeddings_54_1.png" />
@@ -1132,8 +1132,8 @@ Some things to note for ‘true’ in 1890:</p>
 0.379	awful
 0.375	speechless
 0.375	inspired
-0.981034549167014
-1.085911536777402
+0.9810345491670139
+1.0859115367774033
 </pre></div>
 </div>
 <img alt="../../../_images/CleanEEBOEmbeddings_56_1.png" src="../../../_images/CleanEEBOEmbeddings_56_1.png" />
@@ -1166,27 +1166,27 @@ For example, some synonyms are amazement/astonishment in bottom right, reverence
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1.  1.  1. ... nan nan nan]
 1.000	true
-0.448	truth
-0.389	genuine
-0.385	false
-0.376	ideal
-0.365	nevertheless
-0.359	essence
-0.356	axiomatic
-0.352	believed
-0.349	demonstrably
-0.348	meaning
-0.347	reality
-0.344	untrue
-0.341	sincere
-0.340	truer
-0.340	faith
-0.334	statement
-0.332	real
-0.331	correct
-0.323	because
-0.9873966504203289
-0.856515680236961
+0.482	false
+0.441	truth
+0.408	indeed
+0.402	is
+0.399	correct
+0.397	though
+0.390	converse
+0.386	untrue
+0.383	say
+0.378	certainly
+0.375	believe
+0.371	believes
+0.370	quite
+0.367	inasmuch
+0.361	discern
+0.356	falsity
+0.353	if
+0.353	knows
+0.350	whilst
+1.0307229629381038
+1.0102473530785536
 </pre></div>
 </div>
 <img alt="../../../_images/CleanEEBOEmbeddings_61_1.png" src="../../../_images/CleanEEBOEmbeddings_61_1.png" />
@@ -1204,27 +1204,27 @@ For example, some synonyms are amazement/astonishment in bottom right, reverence
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1.  1.  1. ... nan nan nan]
 1.000	awe
-0.536	reverence
-0.514	terror
-0.514	veneration
-0.479	horror
-0.460	dread
-0.453	inspire
-0.445	wonder
-0.436	amazement
-0.431	admiration
-0.416	dismay
-0.414	astonishment
-0.408	superstitious
-0.394	beholder
-0.392	sadness
-0.391	solemnity
-0.381	inspiring
-0.379	awful
-0.375	speechless
-0.375	inspired
-0.9810345491670139
-1.0859115367774033
+0.535	reverence
+0.519	astonishment
+0.515	admiration
+0.502	amazement
+0.482	dread
+0.457	wonder
+0.444	horror
+0.440	fascination
+0.435	inspiring
+0.434	delight
+0.431	gazed
+0.414	indignation
+0.406	curiosity
+0.404	dismay
+0.404	gratitude
+0.403	bewildered
+0.401	feeling
+0.401	contempt
+0.400	sadness
+0.9803908669641848
+0.9156536351305079
 </pre></div>
 </div>
 <img alt="../../../_images/CleanEEBOEmbeddings_62_1.png" src="../../../_images/CleanEEBOEmbeddings_62_1.png" />
