@@ -501,7 +501,6 @@ The nearest function below finds the cosine similarity with the input word vecto
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find nearest function from nearest.py</span>
 <span class="k">def</span> <span class="nf">find_nearest</span><span class="p">(</span><span class="n">input_word</span><span class="p">,</span> <span class="n">embeddings</span><span class="p">,</span> <span class="n">vocab</span><span class="p">):</span>
     <span class="n">query_id</span> <span class="o">=</span> <span class="n">vocab</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">input_word</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">embeddings</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
     <span class="n">normalizer</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">embeddings</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
     <span class="n">embeddings</span> <span class="o">*=</span> <span class="n">normalizer</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
     <span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">embeddings</span><span class="p">,</span> <span class="n">embeddings</span><span class="p">[</span><span class="n">query_id</span><span class="p">,:])</span>
@@ -509,7 +508,6 @@ The nearest function below finds the cosine similarity with the input word vecto
     
     <span class="n">nearest</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">score</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">sorted_list</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">]:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.3f}</span><span class="se">\t</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">word</span><span class="p">))</span>
         <span class="n">nearest</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">nearest</span>
@@ -566,9 +564,7 @@ The nearest function below finds the cosine similarity with the input word vecto
     <span class="n">vectors</span> <span class="o">=</span> <span class="p">[</span><span class="n">words_dict</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">nearest_words</span><span class="p">]</span>
     <span class="n">two_dim</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">vectors</span><span class="p">)[:,:</span><span class="mi">2</span><span class="p">]</span>
     <span class="n">x_length</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">two_dim</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">two_dim</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">x_length</span><span class="p">)</span>
     <span class="n">y_length</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">two_dim</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">two_dim</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">y_length</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">two_dim</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">two_dim</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="n">linewidths</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;PC1&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
@@ -606,11 +602,7 @@ The nearest function below finds the cosine similarity with the input word vecto
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.1341537391016048
-2.6460360288361002
-</pre></div>
-</div>
-<img alt="../../../_images/CleanEEBOEmbeddings_28_1.png" src="../../../_images/CleanEEBOEmbeddings_28_1.png" />
+<img alt="../../../_images/CleanEEBOEmbeddings_28_0.png" src="../../../_images/CleanEEBOEmbeddings_28_0.png" />
 </div>
 </div>
 <p>Notice here that the Euclidean distance after PCA and cosine similarity before PCA have different similarity rankings. For instance, the word “verity” is the 7th nearest word to true using cosine similarity but after reducing vector dimensions down to 2, it is roughly the 2nd closest word. While the PCA graph is not the most accurate in visualizing distance, it can reveal other interesting information of word embeddings such as word clusters.</p>
@@ -627,11 +619,7 @@ The nearest function below finds the cosine similarity with the input word vecto
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.417725795343853
-3.601340399733183
-</pre></div>
-</div>
-<img alt="../../../_images/CleanEEBOEmbeddings_30_1.png" src="../../../_images/CleanEEBOEmbeddings_30_1.png" />
+<img alt="../../../_images/CleanEEBOEmbeddings_30_0.png" src="../../../_images/CleanEEBOEmbeddings_30_0.png" />
 </div>
 </div>
 <p>Some notable clusters ‘awe’ in EEBO:</p>
@@ -697,14 +685,8 @@ Number of Post-1660 Texts 4055
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11.430988758357127
-14.632903289126197
-12.022654903721623
-13.245121212359058
-</pre></div>
-</div>
+<img alt="../../../_images/CleanEEBOEmbeddings_35_0.png" src="../../../_images/CleanEEBOEmbeddings_35_0.png" />
 <img alt="../../../_images/CleanEEBOEmbeddings_35_1.png" src="../../../_images/CleanEEBOEmbeddings_35_1.png" />
-<img alt="../../../_images/CleanEEBOEmbeddings_35_2.png" src="../../../_images/CleanEEBOEmbeddings_35_2.png" />
 </div>
 </div>
 <p>As expected, “true” has slightly shifted towards more scientific senses after 1660. Examples are “evident” and “reality” that are present in the post-1660 word embeddings but not the pre-1660. More colloquial co-occuring terms were also picked up in the post-1660 word embeddings, such as “indeed”, “really”, “certainly” which is likely due to the popular phrases “really true”, “indeed true”, “certainly true”.
@@ -741,35 +723,28 @@ We also see a weakening of the religious sense and character sense in post-1660.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16.54113004139494
-17.087018320832712
-15.319454154235144
-10.699959211006494
-</pre></div>
-</div>
+<img alt="../../../_images/CleanEEBOEmbeddings_37_0.png" src="../../../_images/CleanEEBOEmbeddings_37_0.png" />
 <img alt="../../../_images/CleanEEBOEmbeddings_37_1.png" src="../../../_images/CleanEEBOEmbeddings_37_1.png" />
-<img alt="../../../_images/CleanEEBOEmbeddings_37_2.png" src="../../../_images/CleanEEBOEmbeddings_37_2.png" />
 </div>
 </div>
 <p>More philosophical senses of “right” were picked up post-1660. Some examples are the new clusters “legislation”/”rightfull”/”wrong” as well as the cluster “privilege”/”rights”!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre_natural</span> <span class="o">=</span> <span class="o">!</span>python nearest.py embeddings/sgns_v1_v2_pre1660.vec natural
-<span class="nb">print</span><span class="p">(</span><span class="n">clean_output</span><span class="p">(</span><span class="n">pre_natural</span><span class="p">))</span> <span class="c1"># Print top words due to some crowded text in the graphs</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Top 20 words closest to &quot;natural&quot; pre-1660:</span><span class="se">\n</span><span class="s1"> </span><span class="si">{</span><span class="n">clean_output</span><span class="p">(</span><span class="n">pre_natural</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># Print top words due to some crowded text in the graphs</span>
 <span class="n">execute_graph_embeddings</span><span class="p">(</span><span class="s1">&#39;natural&#39;</span><span class="p">,</span> <span class="s1">&#39;embeddings/sgns_v1_v2_pre1660.vec&#39;</span><span class="p">,</span> <span class="n">pre_natural</span><span class="p">,</span> <span class="s1">&#39;Pre-1660&#39;</span><span class="p">)</span>
 <span class="n">post_natural</span> <span class="o">=</span> <span class="o">!</span>python nearest.py embeddings/sgns_v1_v2_post1660.vec natural
-<span class="nb">print</span><span class="p">(</span><span class="n">clean_output</span><span class="p">(</span><span class="n">post_natural</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Top 20 words closest to &quot;natural&quot; post-1660:</span><span class="se">\n</span><span class="s1"> </span><span class="si">{</span><span class="n">clean_output</span><span class="p">(</span><span class="n">post_natural</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">execute_graph_embeddings</span><span class="p">(</span><span class="s1">&#39;natural&#39;</span><span class="p">,</span> <span class="s1">&#39;embeddings/sgns_v1_v2_post1660.vec&#39;</span><span class="p">,</span> <span class="n">post_natural</span><span class="p">,</span> <span class="s1">&#39;Post-1660&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;natural&#39;, &#39;supernatural&#39;, &#39;naturall&#39;, &#39;innate&#39;, &#39;adventitious&#39;, &#39;internal&#39;, &#39;nature&#39;, &#39;vegetative&#39;, &#39;human&#39;, &#39;aptitude&#39;, &#39;intrinsecal&#39;, &#39;temperament&#39;, &#39;accidental&#39;, &#39;implanted&#39;, &#39;physical&#39;, &#39;microcosmicall&#39;, &#39;intellectual&#39;, &#39;vegetable&#39;, &#39;sensation&#39;, &#39;formative&#39;]
-11.320082642044111
-9.45423138764749
-[&#39;natural&#39;, &#39;nature&#39;, &#39;naturall&#39;, &#39;inbred&#39;, &#39;innate&#39;, &#39;moral&#39;, &#39;humane&#39;, &#39;rational&#39;, &#39;naturally&#39;, &#39;human&#39;, &#39;instincts&#39;, &#39;adventitious&#39;, &#39;supernatural&#39;, &#39;connatural&#39;, &#39;intellectual&#39;, &#39;propensions&#39;, &#39;consentaneous&#39;, &#39;corporeal&#39;, &#39;repugnance&#39;, &#39;morall&#39;]
-9.931324555436948
-11.840064720888883
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Top 20 words closest to &quot;natural&quot; pre-1660:
+ [&#39;natural&#39;, &#39;supernatural&#39;, &#39;naturall&#39;, &#39;innate&#39;, &#39;adventitious&#39;, &#39;internal&#39;, &#39;nature&#39;, &#39;vegetative&#39;, &#39;human&#39;, &#39;aptitude&#39;, &#39;intrinsecal&#39;, &#39;temperament&#39;, &#39;accidental&#39;, &#39;implanted&#39;, &#39;physical&#39;, &#39;microcosmicall&#39;, &#39;intellectual&#39;, &#39;vegetable&#39;, &#39;sensation&#39;, &#39;formative&#39;]
+
+Top 20 words closest to &quot;natural&quot; post-1660:
+ [&#39;natural&#39;, &#39;nature&#39;, &#39;naturall&#39;, &#39;inbred&#39;, &#39;innate&#39;, &#39;moral&#39;, &#39;humane&#39;, &#39;rational&#39;, &#39;naturally&#39;, &#39;human&#39;, &#39;instincts&#39;, &#39;adventitious&#39;, &#39;supernatural&#39;, &#39;connatural&#39;, &#39;intellectual&#39;, &#39;propensions&#39;, &#39;consentaneous&#39;, &#39;corporeal&#39;, &#39;repugnance&#39;, &#39;morall&#39;]
 </pre></div>
 </div>
 <img alt="../../../_images/CleanEEBOEmbeddings_39_1.png" src="../../../_images/CleanEEBOEmbeddings_39_1.png" />
@@ -816,32 +791,42 @@ The 10 latest texts and dates are:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Estimated run time is 10 minutes</span>
-<span class="c1"># Find the top 100 words for each time period from 1470 to 1710. </span>
-<span class="c1"># The length of a time period is set by INCREMENT. </span>
-<span class="n">time_period</span> <span class="o">=</span> <span class="mi">1470</span>
-<span class="n">curr_file</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">skipped</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The length of a time period is set by INCREMENT. </span>
 <span class="n">INCREMENT</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">stop_words</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;thy&#39;</span><span class="p">]</span>
-<span class="n">most_common_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span> <span class="c1"># key is start of time period, value is 100 most common words</span>
-<span class="k">for</span> <span class="n">start_period</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1470</span><span class="p">,</span> <span class="mi">1710</span><span class="p">,</span> <span class="n">INCREMENT</span><span class="p">):</span>
-    <span class="n">time_period_counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span> <span class="c1"># Counter of word frequencies for this time period</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Starting period </span><span class="si">{</span><span class="n">start_period</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="k">while</span> <span class="n">date_tuples</span><span class="p">[</span><span class="n">curr_file</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">start_period</span> <span class="o">+</span> <span class="n">INCREMENT</span><span class="p">:</span>
-        <span class="c1"># Find the corresponding punctuated text file </span>
-        <span class="n">basename</span> <span class="o">=</span> <span class="n">date_tuples</span><span class="p">[</span><span class="n">curr_file</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;no_punct&#39;</span><span class="p">,</span> <span class="n">basename</span><span class="o">+</span><span class="s1">&#39;.headed.txt&#39;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
-            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">reader</span><span class="p">:</span> <span class="c1"># Read file, tokenize, and update Counter</span>
-                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span> 
-                    <span class="n">line_tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">token</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">token</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stop_words</span><span class="p">]</span>
-                    <span class="n">time_period_counter</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">line_tokens</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">skipped</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="n">curr_file</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="n">most_common_dict</span><span class="p">[</span><span class="n">start_period</span><span class="p">]</span> <span class="o">=</span> <span class="n">time_period_counter</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Skipped: </span><span class="si">{</span><span class="n">skipped</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">calculate_top_100</span><span class="p">():</span>
+    <span class="n">time_period</span> <span class="o">=</span> <span class="mi">1470</span>
+    <span class="n">curr_file</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">skipped</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">stop_words</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;thy&#39;</span><span class="p">]</span>
+    <span class="n">most_common_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span> <span class="c1"># key is start of time period, value is 100 most common words</span>
+    <span class="k">for</span> <span class="n">start_period</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1470</span><span class="p">,</span> <span class="mi">1710</span><span class="p">,</span> <span class="n">INCREMENT</span><span class="p">):</span>
+        <span class="n">time_period_counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span> <span class="c1"># Counter of word frequencies for this time period</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Starting period </span><span class="si">{</span><span class="n">start_period</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">while</span> <span class="n">date_tuples</span><span class="p">[</span><span class="n">curr_file</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">start_period</span> <span class="o">+</span> <span class="n">INCREMENT</span><span class="p">:</span>
+            <span class="c1"># Find the corresponding punctuated text file </span>
+            <span class="n">basename</span> <span class="o">=</span> <span class="n">date_tuples</span><span class="p">[</span><span class="n">curr_file</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;no_punct&#39;</span><span class="p">,</span> <span class="n">basename</span><span class="o">+</span><span class="s1">&#39;.headed.txt&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">reader</span><span class="p">:</span> <span class="c1"># Read file, tokenize, and update Counter</span>
+                    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span> 
+                        <span class="n">line_tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">token</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">token</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stop_words</span><span class="p">]</span>
+                        <span class="n">time_period_counter</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">line_tokens</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">skipped</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">curr_file</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">most_common_dict</span><span class="p">[</span><span class="n">start_period</span><span class="p">]</span> <span class="o">=</span> <span class="n">time_period_counter</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Skipped: </span><span class="si">{</span><span class="n">skipped</span><span class="si">}</span><span class="s1"> files out </span><span class="si">{</span><span class="n">curr_file</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s1"> files&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">most_common_dict</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This cell will take ~10 minutes to run and finds the top 100 words for each time period from 1470-1710. Some files are skipped due to an xml file (which contains the date) not being able to find a corresponding text file (which contains the data).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># COMMENT this if you are loading most_commmon_dict from pickle file</span>
+<span class="n">most_common_dict</span> <span class="o">=</span> <span class="n">calculate_top_100</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -870,11 +855,12 @@ Starting period 1670
 Starting period 1680
 Starting period 1690
 Starting period 1700
-Skipped: 16979
+Skipped: 16979 files out 25362 files
 </pre></div>
 </div>
 </div>
 </div>
+<p>OPTIONAL: Save the top 100 words dictionary as a Python pickle file so we do not need to re-run the previous cell. We can load this Python pickle file into a Python dictionary again.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">most_common_dict</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;most_common_dict.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">))</span>
@@ -1031,7 +1017,7 @@ Similarity between 1690-1700 and 1700-1710: 83%
 Top 15 words in 1690: [&#39;god&#39;, &#39;upon&#39;, &#39;one&#39;, &#39;may&#39;, &#39;great&#39;, &#39;would&#39;, &#39;shall&#39;, &#39;men&#39;, &#39;made&#39;, &#39;yet&#39;, &#39;king&#39;, &#39;time&#39;, &#39;man&#39;, &#39;much&#39;, &#39;first&#39;, &#39;good&#39;, &#39;must&#39;, &#39;make&#39;, &#39;many&#39;, &#39;said&#39;]
 </pre></div>
 </div>
-<img alt="../../../_images/CleanEEBOEmbeddings_48_1.png" src="../../../_images/CleanEEBOEmbeddings_48_1.png" />
+<img alt="../../../_images/CleanEEBOEmbeddings_51_1.png" src="../../../_images/CleanEEBOEmbeddings_51_1.png" />
 </div>
 </div>
 <p>English was rapidly stabilizing between 1480 and 1550! After 1550, English was slow-changing, with 80-90% overlap with the previous decade. 1530s-1550s seems to be two pivotal decades, jumping roughly 30% in similarity as opposed to the 1520s. One reason may be the official publications of central Christian texts and service books that are used widely across all churches during this period, including the <a class="reference external" href="https://en.wikipedia.org/wiki/Great_Bible">the Great Bible</a> in 1539 and <a class="reference external" href="https://en.wikipedia.org/wiki/Book_of_Common_Prayer">Book of Common Prayer</a> in 1549, which helped standardize English and popularize certain words, and thereby giving rise to the stabilization of English in the 1530s-1550s.</p>
@@ -1067,32 +1053,7 @@ Top 15 words in 1690: [&#39;god&#39;, &#39;upon&#39;, &#39;one&#39;, &#39;may&#3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1.  1.  1. ... nan nan nan]
-1.000	true
-0.482	false
-0.441	truth
-0.408	indeed
-0.402	is
-0.399	correct
-0.397	though
-0.390	converse
-0.386	untrue
-0.383	say
-0.378	certainly
-0.375	believe
-0.371	believes
-0.370	quite
-0.367	inasmuch
-0.361	discern
-0.356	falsity
-0.353	if
-0.353	knows
-0.350	whilst
-1.0307229629381038
-1.0102473530785532
-</pre></div>
-</div>
-<img alt="../../../_images/CleanEEBOEmbeddings_54_1.png" src="../../../_images/CleanEEBOEmbeddings_54_1.png" />
+<img alt="../../../_images/CleanEEBOEmbeddings_57_0.png" src="../../../_images/CleanEEBOEmbeddings_57_0.png" />
 </div>
 </div>
 <p>It is exciting to see that the meaning of ‘true’ has shifted a lot from Early Modern English to Late Modern English in the 1890s!
@@ -1111,32 +1072,7 @@ Some things to note for ‘true’ in 1890:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1.  1.  1. ... nan nan nan]
-1.000	awe
-0.536	reverence
-0.514	terror
-0.514	veneration
-0.479	horror
-0.460	dread
-0.453	inspire
-0.445	wonder
-0.436	amazement
-0.431	admiration
-0.416	dismay
-0.414	astonishment
-0.408	superstitious
-0.394	beholder
-0.392	sadness
-0.391	solemnity
-0.381	inspiring
-0.379	awful
-0.375	speechless
-0.375	inspired
-0.9810345491670139
-1.0859115367774033
-</pre></div>
-</div>
-<img alt="../../../_images/CleanEEBOEmbeddings_56_1.png" src="../../../_images/CleanEEBOEmbeddings_56_1.png" />
+<img alt="../../../_images/CleanEEBOEmbeddings_59_0.png" src="../../../_images/CleanEEBOEmbeddings_59_0.png" />
 </div>
 </div>
 <p>Similarly, ‘awe’ has also become overloaded with meaning in Late Modern English.
@@ -1164,32 +1100,7 @@ For example, some synonyms are amazement/astonishment in bottom right, reverence
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1.  1.  1. ... nan nan nan]
-1.000	true
-0.482	false
-0.441	truth
-0.408	indeed
-0.402	is
-0.399	correct
-0.397	though
-0.390	converse
-0.386	untrue
-0.383	say
-0.378	certainly
-0.375	believe
-0.371	believes
-0.370	quite
-0.367	inasmuch
-0.361	discern
-0.356	falsity
-0.353	if
-0.353	knows
-0.350	whilst
-1.0307229629381038
-1.0102473530785536
-</pre></div>
-</div>
-<img alt="../../../_images/CleanEEBOEmbeddings_61_1.png" src="../../../_images/CleanEEBOEmbeddings_61_1.png" />
+<img alt="../../../_images/CleanEEBOEmbeddings_64_0.png" src="../../../_images/CleanEEBOEmbeddings_64_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1202,32 +1113,7 @@ For example, some synonyms are amazement/astonishment in bottom right, reverence
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1.  1.  1. ... nan nan nan]
-1.000	awe
-0.535	reverence
-0.519	astonishment
-0.515	admiration
-0.502	amazement
-0.482	dread
-0.457	wonder
-0.444	horror
-0.440	fascination
-0.435	inspiring
-0.434	delight
-0.431	gazed
-0.414	indignation
-0.406	curiosity
-0.404	dismay
-0.404	gratitude
-0.403	bewildered
-0.401	feeling
-0.401	contempt
-0.400	sadness
-0.9803908669641848
-0.9156536351305079
-</pre></div>
-</div>
-<img alt="../../../_images/CleanEEBOEmbeddings_62_1.png" src="../../../_images/CleanEEBOEmbeddings_62_1.png" />
+<img alt="../../../_images/CleanEEBOEmbeddings_65_0.png" src="../../../_images/CleanEEBOEmbeddings_65_0.png" />
 </div>
 </div>
 </div>
